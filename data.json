@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-16T09:58:15.360Z",
+    "generatedAt": "2026-02-16T11:09:15.251Z",
     "sources": [
       "memberpress",
       "ga4"
@@ -973,15 +973,15 @@
         "totalActiveSubs": 2538,
         "activeSubsChange": -10.9,
         "totalMrr": 448434,
-        "newSignups": 267,
-        "signupsChange": -72.5,
-        "retentionRate": 79.8,
-        "retentionChange": 48.3,
+        "newSignups": 264,
+        "signupsChange": -72.8,
+        "retentionRate": 79.9,
+        "retentionChange": 48.2,
         "websiteSessions": 8700,
         "sessionsChange": 0,
-        "conversionRate": 3.07,
-        "churned": 41,
-        "churnChange": -89.7
+        "conversionRate": 3.03,
+        "churned": 40,
+        "churnChange": -89.9
       },
       "funnel": [
         {
@@ -991,12 +991,12 @@
         },
         {
           "stage": "New Signups",
-          "value": 267,
+          "value": 264,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 213,
+          "value": 211,
           "source": "memberpress"
         }
       ],
@@ -1027,11 +1027,6 @@
         }
       ],
       "dailySignups": [
-        {
-          "day": "2025-12-31",
-          "newSubs": 3,
-          "stillActive": 2
-        },
         {
           "day": "2026-01-01",
           "newSubs": 7,
@@ -1291,8 +1286,8 @@
       "subscriptionBreakdown": {
         "monthly": 1418,
         "annual": 1101,
-        "newActive": 213,
-        "newCancelled": 41,
+        "newActive": 211,
+        "newCancelled": 40,
         "newPending": 11,
         "newSuspended": 2
       }
