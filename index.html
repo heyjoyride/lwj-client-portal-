@@ -191,11 +191,15 @@
       .funnel-bar { font-size: 11px; min-width: 40px; }
       .funnel-source-tag { display: none; }
       .source-badge { display: none; }
-      .table-block, .plans-block { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .data-table { font-size: 12px; min-width: 400px; }
+      .data-table { font-size: 12px; width: 100%; }
       .data-table thead th, .data-table tbody td { padding: 10px 8px; }
+      /* Hide % of Active column on mobile — too wide */
+      .data-table th:nth-child(3).hide-mobile,
+      .data-table td:nth-child(3).hide-mobile { display: none; }
       .portal-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
-      .stat-row { flex-direction: column; }
+      /* Stat row: 2-column grid instead of stacking */
+      .stat-row { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 calc(50% - 8px); min-width: 0; }
     }
     @media (max-width: 480px) {
       .kpi-card { grid-column: span 6; }
@@ -600,7 +604,7 @@
           <tr>
             <td><span class="source-name">${label}</span></td>
             <td class="right">${fmtNum(p.activeCount)}</td>
-            <td><div class="conv-bar"><div class="conv-fill" style="width: ${Math.round(pctOfActive * 1.5)}px;"></div><span class="conv-value">${fmtPct(pctOfActive)}</span></div></td>
+            <td class="hide-mobile"><div class="conv-bar"><div class="conv-fill" style="width: ${Math.round(pctOfActive * 1.5)}px;"></div><span class="conv-value">${fmtPct(pctOfActive)}</span></div></td>
             <td class="right">${fmt$(p.mrr)}</td>
           </tr>`;
       }).join('');
@@ -609,13 +613,13 @@
         <div class="block full-block">
           <div class="block-header"><div class="block-title">Active Plans Breakdown</div></div>
           <table class="data-table">
-            <thead><tr><th>Plan</th><th class="right">Members</th><th>% of Active</th><th class="right">Value</th></tr></thead>
+            <thead><tr><th>Plan</th><th class="right">Members</th><th class="hide-mobile">% of Active</th><th class="right">Value</th></tr></thead>
             <tbody>
               ${planRows}
               <tr class="summary-row">
                 <td><span class="source-name">All Plans</span></td>
                 <td class="right">${fmtNum(global.totalActive)}</td>
-                <td><span class="conv-value">100%</span></td>
+                <td class="hide-mobile"><span class="conv-value">100%</span></td>
                 <td class="right">${fmt$(global.totalMrr)}</td>
               </tr>
             </tbody>
