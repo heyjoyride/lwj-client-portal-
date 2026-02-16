@@ -12,7 +12,7 @@ const path = require('path');
 
 const dataPath = path.join(__dirname, 'data.json');
 const htmlPath = path.join(__dirname, 'index.html');
-const distDir = path.join(__dirname, 'dist');
+const distDir = path.join(__dirname, 'docs');
 const outPath = path.join(distDir, 'index.html');
 
 if (!fs.existsSync(dataPath)) {
