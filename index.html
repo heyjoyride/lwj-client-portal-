@@ -455,12 +455,11 @@
       const totalSessions = trafficSources.reduce((s, r) => s + r.sessions, 0);
       const tableRows = trafficSources.map(row => {
         const pctOfTotal = totalSessions > 0 ? (row.sessions / totalSessions * 100) : 0;
-        const barWidth = Math.round(pctOfTotal * 1.5);
         return `
           <tr>
-            <td><span class="source-name">${row.source}</span><span class="source-badge ${sourceBadgeClass(row.source)}">${row.source.split(' ')[0]}</span></td>
+            <td><span class="source-name">${row.source}</span></td>
             <td class="right">${fmtNum(row.sessions)}</td>
-            <td><div class="conv-bar"><div class="conv-fill" style="width: ${barWidth}px;"></div><span class="conv-value">${fmtPct(pctOfTotal)}</span></div></td>
+            <td class="right">${fmtPct(pctOfTotal)}</td>
           </tr>`;
       }).join('');
 
@@ -468,13 +467,13 @@
         <div class="block table-block">
           <div class="block-header"><div class="block-title">Traffic Sources (GA4)</div></div>
           <table class="data-table">
-            <thead><tr><th>Source</th><th class="right">Sessions</th><th>% of Total</th></tr></thead>
+            <thead><tr><th>Source</th><th class="right">Sessions</th><th class="right">Share</th></tr></thead>
             <tbody>
               ${tableRows}
               <tr class="summary-row">
                 <td><span class="source-name">All Sources</span></td>
                 <td class="right">${fmtNum(totalSessions)}</td>
-                <td><span class="conv-value">100%</span></td>
+                <td class="right">100%</td>
               </tr>
             </tbody>
           </table>
@@ -601,15 +600,14 @@
           </table>
         </div>`;
 
-      // Plans table (detailed)
+      // Plans table (3 columns — fits all screen sizes)
       const planRows = global.plans.map(p => {
         const label = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
         const pctOfActive = global.totalActive > 0 ? (p.activeCount / global.totalActive * 100) : 0;
         return `
           <tr>
-            <td><span class="source-name">${label}</span></td>
+            <td><span class="source-name">${label}</span><br><small style="color:var(--text-muted);font-size:11px;">${fmtPct(pctOfActive)} of members</small></td>
             <td class="right">${fmtNum(p.activeCount)}</td>
-            <td class="hide-mobile"><div class="conv-bar"><div class="conv-fill" style="width: ${Math.round(pctOfActive * 1.5)}px;"></div><span class="conv-value">${fmtPct(pctOfActive)}</span></div></td>
             <td class="right">${fmt$(p.mrr)}</td>
           </tr>`;
       }).join('');
@@ -618,13 +616,12 @@
         <div class="block full-block">
           <div class="block-header"><div class="block-title">Active Plans Breakdown</div></div>
           <table class="data-table">
-            <thead><tr><th>Plan</th><th class="right">Members</th><th class="hide-mobile">% of Active</th><th class="right">Value</th></tr></thead>
+            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Value</th></tr></thead>
             <tbody>
               ${planRows}
               <tr class="summary-row">
                 <td><span class="source-name">All Plans</span></td>
                 <td class="right">${fmtNum(global.totalActive)}</td>
-                <td class="hide-mobile"><span class="conv-value">100%</span></td>
                 <td class="right">${fmt$(global.totalMrr)}</td>
               </tr>
             </tbody>
@@ -700,12 +697,11 @@
         .sort((a, b) => b.sessions - a.sessions)
         .map(row => {
           const pctOfTotal = totalSessions > 0 ? (row.sessions / totalSessions * 100) : 0;
-          const barWidth = Math.round(pctOfTotal * 2);
           return `
             <tr>
-              <td><span class="source-name">${row.source}</span><span class="source-badge ${sourceBadgeClass(row.source)}">${row.source.split(' ')[0]}</span></td>
+              <td><span class="source-name">${row.source}</span></td>
               <td class="right">${fmtNum(row.sessions)}</td>
-              <td><div class="conv-bar"><div class="conv-fill" style="width: ${barWidth}px;"></div><span class="conv-value">${fmtPct(pctOfTotal)}</span></div></td>
+              <td class="right">${fmtPct(pctOfTotal)}</td>
             </tr>`;
         }).join('');
 
@@ -713,7 +709,7 @@
         <div class="block full-block">
           <div class="block-header"><div class="block-title">Traffic Sources Breakdown</div></div>
           <table class="data-table">
-            <thead><tr><th>Source / Medium</th><th class="right">Sessions</th><th>Share of Total</th></tr></thead>
+            <thead><tr><th>Source</th><th class="right">Sessions</th><th class="right">Share</th></tr></thead>
             <tbody>
               ${sourceRows}
               <tr class="summary-row">
