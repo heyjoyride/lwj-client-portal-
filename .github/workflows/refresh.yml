@@ -37,11 +37,12 @@ jobs:
       - name: Encrypt with StaticCrypt
         run: |
           npx staticrypt docs/index.html \
-            --password '${{ secrets.DASHBOARD_PASSWORD }}' \
-            --output docs/index.html \
-            --short \
+            -p '${{ secrets.DASHBOARD_PASSWORD }}' \
+            -d docs_encrypted \
             --template-title "Lucy Walker Jewelry – Client Portal" \
             --template-instructions "Enter your portal password to continue."
+          cp docs_encrypted/index.html docs/index.html
+          rm -rf docs_encrypted
 
       - name: Clean up secrets
         run: rm -f keys/service-account.json
