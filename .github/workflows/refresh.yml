@@ -39,6 +39,7 @@ jobs:
           npx staticrypt docs/index.html \
             -p '${{ secrets.DASHBOARD_PASSWORD }}' \
             -d docs_encrypted \
+            --short \
             --template-title "Lucy Walker Jewelry – Client Portal" \
             --template-instructions "Enter your portal password to continue."
           cp docs_encrypted/index.html docs/index.html
