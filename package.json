@@ -1,0 +1,16 @@
+{
+  "name": "lucy-walker-jewelry-portal",
+  "version": "1.0.0",
+  "description": "**Client:** Lucy Walker Jewelry (luxury jewelry e-commerce) **Service:** Client Portal — Executive Summary Dashboard **Data:** Mock Google Ads performance metrics **Generated:** February 9, 2026",
+  "main": "fetch-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google-cloud/bigquery": "^8.1.1"
+  }
+}

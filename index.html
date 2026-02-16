@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucy Walker Jewelry - Client Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #1B3A52;
+      --primary-light: #2a5578;
+      --accent: #D64C00;
+      --accent-light: #e8622a;
+      --background: #f9fafb;
+      --surface: #ffffff;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --yellow: #ca8a04;
+      --yellow-bg: #fefce8;
+      --blue: #2563eb;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .header {
+      background: var(--primary);
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-left { display: flex; align-items: center; gap: 16px; }
+    .logo { font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; }
+    .logo-accent { color: var(--accent); }
+    .badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-size: 11px; font-weight: 600; padding: 4px 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .header-right { display: flex; align-items: center; gap: 24px; }
+    .nav { display: flex; gap: 24px; }
+    .nav a { text-decoration: none; color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; transition: color 0.2s; cursor: pointer; }
+    .nav a:hover, .nav a.active { color: #ffffff; }
+    .nav a.active { border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+    .updated { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px 32px; }
+
+    .title-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .page-title { font-size: 20px; font-weight: 700; color: var(--primary); }
+    .date-range { display: flex; gap: 8px; }
+    .date-btn { padding: 6px 14px; border: 2px solid var(--border); background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
+    .date-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .date-btn.active { background: var(--primary); border-color: var(--primary); color: #ffffff; }
+
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .block { background: var(--surface); border: 2px solid var(--border); padding: 24px; }
+
+    /* KPI Cards */
+    .kpi-card { grid-column: span 2; position: relative; border-left: 4px solid var(--border); }
+    .kpi-card.primary { border-left-color: var(--primary); }
+    .kpi-card.accent { border-left-color: var(--accent); }
+    .kpi-card.green { border-left-color: var(--green); }
+    .kpi-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+    .kpi-source { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); opacity: 0.7; margin-bottom: 4px; }
+    .kpi-value { font-size: 28px; font-weight: 700; color: var(--primary); line-height: 1; margin-bottom: 8px; }
+    .kpi-change { font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+    .kpi-change.positive { color: var(--green); }
+    .kpi-change.negative { color: var(--red); }
+    .kpi-change.neutral { color: var(--text-muted); }
+    .kpi-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+    /* Funnel */
+    .funnel-block { grid-column: span 7; }
+    .block-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .block-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text); }
+    .funnel-viz { display: flex; flex-direction: column; gap: 8px; padding: 8px 0; }
+    .funnel-stage { display: flex; align-items: center; gap: 12px; }
+    .funnel-label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; width: 110px; flex-shrink: 0; text-align: right; }
+    .funnel-bar-wrap { flex: 1; position: relative; height: 36px; display: flex; align-items: center; }
+    .funnel-bar { height: 100%; display: flex; align-items: center; padding-left: 12px; font-size: 13px; font-weight: 700; color: #fff; transition: width 0.6s ease; min-width: 60px; }
+    .funnel-bar.ga4 { background: #2563eb; }
+    .funnel-bar.mp { background: var(--accent); }
+    .funnel-bar.mp-active { background: var(--green); }
+    .funnel-dropoff { font-size: 11px; color: var(--text-muted); margin-left: 8px; font-weight: 500; white-space: nowrap; }
+    .funnel-source-tag { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 2px 6px; background: var(--background); color: var(--text-muted); border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
+
+    /* Insights */
+    .insights-block { grid-column: span 5; }
+    .insight { padding: 14px 16px; border-left: 3px solid var(--accent); background: #fffbf7; margin-bottom: 12px; font-size: 13px; line-height: 1.6; color: var(--text); }
+    .insight:last-child { margin-bottom: 0; }
+    .insight-icon { margin-right: 6px; }
+    .insight strong { color: var(--primary); }
+
+    /* Tables */
+    .table-block { grid-column: span 7; }
+    .plans-block { grid-column: span 5; }
+    .full-block { grid-column: span 12; }
+    .half-block { grid-column: span 6; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .data-table thead th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); padding: 12px 16px; border-bottom: 2px solid var(--border); white-space: nowrap; }
+    .data-table thead th.right { text-align: right; }
+    .data-table tbody td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .data-table tbody td.right { text-align: right; font-variant-numeric: tabular-nums; }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover { background: #f9fafb; }
+    .source-name { font-weight: 600; color: var(--primary); }
+    .source-badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 2px 6px; margin-left: 8px; }
+    .badge-paid { background: #eef2ff; color: #4338ca; }
+    .badge-organic { background: #f0fdf4; color: #16a34a; }
+    .badge-email { background: #fff7ed; color: #c2410c; }
+    .badge-direct { background: #f8fafc; color: #64748b; }
+    .badge-referral { background: #fdf4ff; color: #9333ea; }
+    .badge-social { background: #eff6ff; color: #2563eb; }
+    .conv-bar { display: flex; align-items: center; gap: 8px; }
+    .conv-fill { height: 6px; background: var(--accent); min-width: 4px; }
+    .conv-value { font-weight: 600; font-size: 14px; white-space: nowrap; }
+    .data-table tbody tr.summary-row td { font-weight: 700; border-top: 2px solid var(--primary); border-bottom: none; background: #f8fafc; }
+
+    .source-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+    .dot-ga4 { background: #2563eb; }
+    .dot-mp { background: var(--accent); }
+    .dot-active { background: var(--green); }
+
+    /* Status pills */
+    .status-pill { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .status-active { background: var(--green-bg); color: var(--green); }
+    .status-cancelled { background: var(--red-bg); color: var(--red); }
+    .status-pending { background: var(--yellow-bg); color: var(--yellow); }
+    .status-suspended { background: #f3f4f6; color: #6b7280; }
+
+    /* Charts (CSS bar charts) */
+    .bar-chart-wrap { overflow: hidden; }
+    .bar-chart { display: flex; align-items: flex-end; gap: 3px; height: 160px; }
+    .bar-col { flex: 1; min-width: 4px; border-radius: 2px 2px 0 0; transition: height 0.4s ease; cursor: default; }
+    .bar-col:hover { opacity: 0.8; }
+    .bar-signups { background: var(--accent); }
+    .bar-sessions { background: var(--blue); }
+    .bar-chart-labels { display: flex; gap: 3px; margin-top: 6px; }
+    .bar-label-col { flex: 1; min-width: 4px; display: flex; justify-content: center; overflow: visible; }
+    .bar-label { font-size: 9px; color: var(--text-muted); white-space: nowrap; transform: rotate(-45deg); transform-origin: top center; display: block; }
+    .bar-label-hidden { visibility: hidden; }
+    .chart-legend { display: flex; gap: 16px; font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+    .legend-dot { display: inline-block; width: 10px; height: 10px; margin-right: 4px; vertical-align: middle; }
+
+    /* Stat cards */
+    .stat-row { display: flex; gap: 16px; margin-bottom: 16px; }
+    .stat-item { flex: 1; padding: 16px; background: var(--background); border: 1px solid var(--border); }
+    .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 4px; }
+    .stat-value { font-size: 24px; font-weight: 700; color: var(--primary); }
+    .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .loading { text-align: center; padding: 60px; color: var(--text-muted); font-size: 14px; }
+
+    .portal-footer { margin-top: 32px; padding: 24px 0; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
+    .footer-brand { font-weight: 600; color: var(--primary); }
+    .data-sources { display: flex; gap: 16px; align-items: center; }
+    .data-source-tag { font-size: 11px; font-weight: 600; padding: 3px 8px; border: 1px solid var(--border); color: var(--text-muted); }
+
+    /* Tab content visibility */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    @media (max-width: 1024px) {
+      .kpi-card { grid-column: span 4; }
+      .funnel-block, .insights-block, .table-block, .plans-block, .half-block { grid-column: span 12; }
+    }
+    @media (max-width: 768px) {
+      .kpi-card { grid-column: span 6; }
+      .header { padding: 14px 16px; gap: 10px; }
+      .header-left { gap: 10px; }
+      .header-right { width: 100%; justify-content: space-between; }
+      .nav { gap: 16px; }
+      .updated { font-size: 12px; }
+      .logo { font-size: 18px; }
+      .container { padding: 12px 16px; }
+      .title-bar { flex-direction: column; gap: 10px; align-items: flex-start; margin-bottom: 16px; }
+      .bento-grid { gap: 10px; }
+      .block { padding: 16px; }
+      .funnel-label { font-size: 10px; width: 80px; }
+      .funnel-bar { font-size: 11px; min-width: 40px; }
+      .funnel-source-tag { display: none; }
+      .source-badge { display: none; }
+      .table-block, .plans-block { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .data-table { font-size: 12px; min-width: 400px; }
+      .data-table thead th, .data-table tbody td { padding: 10px 8px; }
+      .portal-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
+      .stat-row { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .kpi-card { grid-column: span 6; }
+      .kpi-value { font-size: 22px; }
+      .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .block { padding: 14px; }
+      .insight { font-size: 12px; padding: 10px 12px; }
+      .page-title { font-size: 17px; }
+      .nav { gap: 12px; }
+    }
+    @media (max-width: 360px) {
+      .kpi-card { grid-column: span 12; }
+      .kpi-value { font-size: 26px; }
+    }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { background: white; font-size: 10px; }
+      .header { background: var(--primary) !important; padding: 12px 20px; }
+      .logo { font-size: 16px; }
+      .nav, .date-range { display: none; }
+      .bento-grid { gap: 8px; grid-template-columns: repeat(6, 1fr) !important; }
+      .block { break-inside: avoid; padding: 10px 12px; border-width: 1px; }
+      .kpi-card { grid-column: span 1 !important; }
+      .kpi-value { font-size: 16px; }
+      .funnel-block { grid-column: span 4 !important; }
+      .insights-block { grid-column: span 2 !important; }
+      .table-block, .plans-block { grid-column: span 3 !important; }
+      .data-table { font-size: 10px; }
+      .portal-footer { margin-top: 12px; padding: 10px 0; font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">Lucy Walker <span class="logo-accent">Jewelry</span></div>
+      <span class="badge">Client Portal</span>
+    </div>
+    <div class="header-right">
+      <nav class="nav" id="main-nav">
+        <a class="active" data-tab="overview">Overview</a>
+        <a data-tab="memberships">Memberships</a>
+        <a data-tab="analytics">Analytics</a>
+      </nav>
+      <div class="updated" id="last-updated">Loading...</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="title-bar">
+      <h1 class="page-title" id="page-title">Membership &amp; Traffic Overview</h1>
+      <div class="date-range" id="date-range">
+        <button class="date-btn" data-period="7d">7 Days</button>
+        <button class="date-btn active" data-period="30d">30 Days</button>
+        <button class="date-btn" data-period="90d">90 Days</button>
+        <button class="date-btn" data-period="ytd">YTD</button>
+      </div>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div class="tab-content active" id="tab-overview">
+      <div class="bento-grid" id="overview-grid">
+        <div class="loading" style="grid-column: span 12;">Loading dashboard data...</div>
+      </div>
+    </div>
+
+    <!-- MEMBERSHIPS TAB -->
+    <div class="tab-content" id="tab-memberships">
+      <div class="bento-grid" id="memberships-grid">
+        <div class="loading" style="grid-column: span 12;">Loading membership data...</div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS TAB -->
+    <div class="tab-content" id="tab-analytics">
+      <div class="bento-grid" id="analytics-grid">
+        <div class="loading" style="grid-column: span 12;">Loading analytics data...</div>
+      </div>
+    </div>
+
+    <footer class="portal-footer">
+      <div><span class="footer-brand">Lucy Walker Jewelry</span> &mdash; Client Portal</div>
+      <div class="data-sources">
+        <span class="data-source-tag">&#9679; MemberPress</span>
+        <span class="data-source-tag">&#9679; GA4</span>
+        <span>Data refreshed daily &bull; Powered by 8020agent</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ── STATE ──
+    let DATA = null;
+    let currentPeriod = '30d';
+    let currentTab = 'overview';
+
+    // ── FORMATTERS ──
+    function fmt$(n) {
+      if (n >= 1000) return '$' + Math.round(n).toLocaleString();
+      return '$' + n.toFixed(2);
+    }
+    function fmtNum(n) { return Math.round(n).toLocaleString(); }
+    function fmtPct(n) { return n.toFixed(1) + '%'; }
+
+    function changeHtml(pct, invert) {
+      if (pct === 0) return '<span class="kpi-change neutral">&#8212; no change</span>';
+      const positive = invert ? pct < 0 : pct > 0;
+      const cls = positive ? 'positive' : 'negative';
+      const arrow = pct > 0 ? '&#9650;' : '&#9660;';
+      return `<span class="kpi-change ${cls}">${arrow} ${Math.abs(pct).toFixed(1)}% vs prev. period</span>`;
+    }
+
+    function sourceBadgeClass(source) {
+      if (source.includes('Paid')) return 'badge-paid';
+      if (source.includes('Organic')) return 'badge-organic';
+      if (source.includes('Email')) return 'badge-email';
+      if (source.includes('Social')) return 'badge-social';
+      if (source.includes('Referral')) return 'badge-referral';
+      return 'badge-direct';
+    }
+
+    function fmtDay(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    function periodLabel(key) {
+      return { '7d': '7 Days', '30d': '30 Days', '90d': '90 Days', 'ytd': 'Year to Date' }[key] || key;
+    }
+
+    // ── OVERVIEW TAB ──
+    function renderOverview() {
+      const period = DATA.periods[currentPeriod];
+      const global = DATA.globalState;
+      const { kpis, funnel, trafficSources, subscriptionBreakdown } = period;
+
+      // KPI Cards
+      const kpiCards = `
+        <div class="block kpi-card green">
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">Active Subscriptions</div>
+          <div class="kpi-value">${fmtNum(kpis.totalActiveSubs)}</div>
+          ${changeHtml(kpis.activeSubsChange, false)}
+        </div>
+        <div class="block kpi-card accent">
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">Monthly Recurring</div>
+          <div class="kpi-value">${fmt$(kpis.totalMrr)}</div>
+          <div class="kpi-sub">${global.monthlySubs} monthly &bull; ${global.annualSubs} annual</div>
+        </div>
+        <div class="block kpi-card primary">
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">New Signups</div>
+          <div class="kpi-value">${fmtNum(kpis.newSignups)}</div>
+          ${changeHtml(kpis.signupsChange, false)}
+        </div>
+        <div class="block kpi-card green">
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">Retention Rate</div>
+          <div class="kpi-value">${fmtPct(kpis.retentionRate)}</div>
+          ${changeHtml(kpis.retentionChange, false)}
+        </div>
+        <div class="block kpi-card primary">
+          <div class="kpi-source">GA4</div>
+          <div class="kpi-label">Website Sessions</div>
+          <div class="kpi-value">${fmtNum(kpis.websiteSessions)}</div>
+          ${changeHtml(kpis.sessionsChange, false)}
+        </div>
+        <div class="block kpi-card accent">
+          <div class="kpi-source">Calculated</div>
+          <div class="kpi-label">Session &rarr; Signup</div>
+          <div class="kpi-value">${fmtPct(kpis.conversionRate)}</div>
+          <div class="kpi-sub">${fmtNum(kpis.churned)} cancelled this period</div>
+        </div>`;
+
+      // Funnel
+      const maxFunnelValue = Math.max(...funnel.map(f => f.value), 1);
+      const funnelColors = ['ga4', 'mp', 'mp-active'];
+      const funnelTags = ['GA4', 'MemberPress', 'MemberPress'];
+      const funnelStages = funnel.map((stage, i) => {
+        const pct = Math.max(8, Math.round((stage.value / maxFunnelValue) * 100));
+        const prev = funnel[i - 1];
+        const dropoff = prev ? Math.round((1 - stage.value / prev.value) * 100) : null;
+        const dropoffHtml = dropoff !== null && dropoff > 0
+          ? `<span class="funnel-dropoff">&#9660; ${dropoff}% drop-off</span>` : '';
+        return `
+          <div class="funnel-stage">
+            <div class="funnel-label">${stage.stage}</div>
+            <div class="funnel-bar-wrap">
+              <div class="funnel-bar ${funnelColors[i]}" style="width: ${pct}%;">${fmtNum(stage.value)}</div>
+              ${dropoffHtml}
+            </div>
+            <div class="funnel-source-tag">${funnelTags[i]}</div>
+          </div>`;
+      }).join('');
+
+      const funnelBlock = `
+        <div class="block funnel-block">
+          <div class="block-header">
+            <div class="block-title">Conversion Funnel</div>
+            <div style="display:flex;gap:12px;font-size:12px;color:var(--text-muted);">
+              <span><span class="source-dot dot-ga4"></span>GA4</span>
+              <span><span class="source-dot dot-mp"></span>Signups</span>
+              <span><span class="source-dot dot-active"></span>Active</span>
+            </div>
+          </div>
+          <div class="funnel-viz">${funnelStages}</div>
+        </div>`;
+
+      // Insights
+      const insightLines = [
+        `<div class="insight">
+          <span class="insight-icon">&#128200;</span>
+          <strong>${fmtPct(kpis.retentionRate)} of new signups remain active</strong> &mdash; ${subscriptionBreakdown.newActive} active out of ${kpis.newSignups} new signups.
+          ${kpis.retentionRate >= 80
+            ? 'Strong retention. The onboarding and value delivery is working well.'
+            : 'Below 80% &mdash; review onboarding emails and first-week experience to reduce early churn.'}
+        </div>`,
+        `<div class="insight">
+          <span class="insight-icon">&#128161;</span>
+          <strong>${fmtPct(kpis.conversionRate)} of website visitors become members</strong> &mdash; ${fmtNum(kpis.newSignups)} signups from ${fmtNum(kpis.websiteSessions)} sessions.
+          ${kpis.conversionRate >= 2
+            ? 'Above the 2% benchmark for membership sites. Landing pages and CTAs are converting well.'
+            : 'Below 2% &mdash; test pricing page copy, add testimonials, or improve the signup flow.'}
+        </div>`,
+        kpis.churned > 0 ? `<div class="insight">
+          <span class="insight-icon">&#9888;</span>
+          <strong>${fmtNum(kpis.churned)} cancellations this period</strong> &mdash; ${kpis.churnChange > 0 ? 'up' : 'down'} ${Math.abs(kpis.churnChange).toFixed(1)}% vs previous period.
+          ${kpis.churned > kpis.newSignups * 0.15
+            ? 'Cancellations are high relative to new signups. Consider a win-back email sequence or exit survey.'
+            : 'Cancellation rate is manageable. Continue monitoring.'}
+        </div>` : '',
+        `<div class="insight">
+          <span class="insight-icon">&#127919;</span>
+          <strong>${fmtNum(kpis.totalActiveSubs)} active members generating ${fmt$(kpis.totalMrr)}</strong> in subscription value.
+          The $47/month plan is the primary driver with ${global.monthlySubs} monthly and ${global.annualSubs} annual subscribers.
+        </div>`,
+      ].filter(Boolean).join('');
+
+      const insightsBlock = `
+        <div class="block insights-block">
+          <div class="block-header"><div class="block-title">AI Insights</div></div>
+          ${insightLines}
+        </div>`;
+
+      // Traffic Sources Table
+      const totalSessions = trafficSources.reduce((s, r) => s + r.sessions, 0);
+      const tableRows = trafficSources.map(row => {
+        const pctOfTotal = totalSessions > 0 ? (row.sessions / totalSessions * 100) : 0;
+        const barWidth = Math.round(pctOfTotal * 1.5);
+        return `
+          <tr>
+            <td><span class="source-name">${row.source}</span><span class="source-badge ${sourceBadgeClass(row.source)}">${row.source.split(' ')[0]}</span></td>
+            <td class="right">${fmtNum(row.sessions)}</td>
+            <td><div class="conv-bar"><div class="conv-fill" style="width: ${barWidth}px;"></div><span class="conv-value">${fmtPct(pctOfTotal)}</span></div></td>
+          </tr>`;
+      }).join('');
+
+      const tableBlock = `
+        <div class="block table-block">
+          <div class="block-header"><div class="block-title">Traffic Sources (GA4)</div></div>
+          <table class="data-table">
+            <thead><tr><th>Source</th><th class="right">Sessions</th><th>% of Total</th></tr></thead>
+            <tbody>
+              ${tableRows}
+              <tr class="summary-row">
+                <td><span class="source-name">All Sources</span></td>
+                <td class="right">${fmtNum(totalSessions)}</td>
+                <td><span class="conv-value">100%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`;
+
+      // Plans Table
+      const planRows = global.plans.map(p => {
+        const label = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
+        return `
+          <tr>
+            <td><span class="source-name">${label}</span></td>
+            <td class="right">${fmtNum(p.activeCount)}</td>
+            <td class="right">${fmt$(p.mrr)}</td>
+          </tr>`;
+      }).join('');
+
+      const plansBlock = `
+        <div class="block plans-block">
+          <div class="block-header"><div class="block-title">Active Plans</div></div>
+          <table class="data-table">
+            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Value</th></tr></thead>
+            <tbody>${planRows}</tbody>
+          </table>
+        </div>`;
+
+      document.getElementById('overview-grid').innerHTML =
+        kpiCards + funnelBlock + insightsBlock + tableBlock + plansBlock;
+    }
+
+    // ── MEMBERSHIPS TAB ──
+    function renderMemberships() {
+      const period = DATA.periods[currentPeriod];
+      const global = DATA.globalState;
+      const { kpis, subscriptionBreakdown, dailySignups } = period;
+
+      // Summary stats
+      const statsHtml = `
+        <div class="block full-block">
+          <div class="block-header"><div class="block-title">Membership Summary &mdash; ${periodLabel(currentPeriod)}</div></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-label">Total Active</div>
+              <div class="stat-value">${fmtNum(global.totalActive)}</div>
+              <div class="stat-sub">${fmtNum(global.monthlySubs)} monthly &bull; ${fmtNum(global.annualSubs)} annual</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Total MRR</div>
+              <div class="stat-value">${fmt$(global.totalMrr)}</div>
+              <div class="stat-sub">Across all active plans</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">New Signups</div>
+              <div class="stat-value">${fmtNum(kpis.newSignups)}</div>
+              ${changeHtml(kpis.signupsChange, false)}
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Retention Rate</div>
+              <div class="stat-value">${fmtPct(kpis.retentionRate)}</div>
+              ${changeHtml(kpis.retentionChange, false)}
+            </div>
+          </div>
+        </div>`;
+
+      // Daily signups chart
+      const maxSignups = Math.max(...dailySignups.map(d => d.newSubs), 1);
+      const skipEvery = dailySignups.length > 20 ? 7 : dailySignups.length > 10 ? 5 : 2;
+      const signupBars = dailySignups.map(d => {
+        const h = Math.max(2, Math.round((d.newSubs / maxSignups) * 160));
+        return `<div class="bar-col bar-signups" style="height: ${h}px;" title="${d.newSubs} signups on ${fmtDay(d.day)}"></div>`;
+      }).join('');
+      const signupLabels = dailySignups.map((d, i) => {
+        const show = i === 0 || i === dailySignups.length - 1 || i % skipEvery === 0;
+        return `<div class="bar-label-col"><span class="bar-label${show ? '' : ' bar-label-hidden'}">${fmtDay(d.day)}</span></div>`;
+      }).join('');
+
+      const signupChartBlock = `
+        <div class="block half-block">
+          <div class="block-header">
+            <div class="block-title">Daily New Signups</div>
+          </div>
+          <div class="bar-chart-wrap">
+            <div class="bar-chart">${signupBars}</div>
+            <div class="bar-chart-labels">${signupLabels}</div>
+          </div>
+          <div class="chart-legend">
+            <span><span class="legend-dot" style="background:var(--accent);display:inline-block;border-radius:2px;"></span>New Signups</span>
+          </div>
+        </div>`;
+
+      // Status breakdown
+      const statusColors = { active: 'status-active', cancelled: 'status-cancelled', pending: 'status-pending', suspended: 'status-suspended' };
+      const statusRows = global.allStatuses.map(s => `
+        <tr>
+          <td><span class="status-pill ${statusColors[s.status] || ''}">${s.status}</span></td>
+          <td class="right">${fmtNum(s.count)}</td>
+          <td class="right">${fmtPct(s.count / global.allStatuses.reduce((t, x) => t + x.count, 0) * 100)}</td>
+        </tr>`).join('');
+
+      const periodBreakdown = `
+        <div class="block half-block">
+          <div class="block-header"><div class="block-title">Period Activity (${periodLabel(currentPeriod)})</div></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-label">New Active</div>
+              <div class="stat-value" style="color:var(--green);">${fmtNum(subscriptionBreakdown.newActive)}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Cancelled</div>
+              <div class="stat-value" style="color:var(--red);">${fmtNum(subscriptionBreakdown.newCancelled)}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Pending</div>
+              <div class="stat-value" style="color:var(--yellow);">${fmtNum(subscriptionBreakdown.newPending)}</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Suspended</div>
+              <div class="stat-value" style="color:var(--text-muted);">${fmtNum(subscriptionBreakdown.newSuspended)}</div>
+            </div>
+          </div>
+          <div class="block-header" style="margin-top:16px;"><div class="block-title">All-Time Status Breakdown</div></div>
+          <table class="data-table">
+            <thead><tr><th>Status</th><th class="right">Count</th><th class="right">% of Total</th></tr></thead>
+            <tbody>${statusRows}</tbody>
+          </table>
+        </div>`;
+
+      // Plans table (detailed)
+      const planRows = global.plans.map(p => {
+        const label = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
+        const pctOfActive = global.totalActive > 0 ? (p.activeCount / global.totalActive * 100) : 0;
+        return `
+          <tr>
+            <td><span class="source-name">${label}</span></td>
+            <td class="right">${fmtNum(p.activeCount)}</td>
+            <td><div class="conv-bar"><div class="conv-fill" style="width: ${Math.round(pctOfActive * 1.5)}px;"></div><span class="conv-value">${fmtPct(pctOfActive)}</span></div></td>
+            <td class="right">${fmt$(p.mrr)}</td>
+          </tr>`;
+      }).join('');
+
+      const plansBlock = `
+        <div class="block full-block">
+          <div class="block-header"><div class="block-title">Active Plans Breakdown</div></div>
+          <table class="data-table">
+            <thead><tr><th>Plan</th><th class="right">Members</th><th>% of Active</th><th class="right">Value</th></tr></thead>
+            <tbody>
+              ${planRows}
+              <tr class="summary-row">
+                <td><span class="source-name">All Plans</span></td>
+                <td class="right">${fmtNum(global.totalActive)}</td>
+                <td><span class="conv-value">100%</span></td>
+                <td class="right">${fmt$(global.totalMrr)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`;
+
+      document.getElementById('memberships-grid').innerHTML =
+        statsHtml + signupChartBlock + periodBreakdown + plansBlock;
+    }
+
+    // ── ANALYTICS TAB ──
+    function renderAnalytics() {
+      const period = DATA.periods[currentPeriod];
+      const { kpis, trafficSources, dailySessions } = period;
+
+      // Summary stats
+      const statsHtml = `
+        <div class="block full-block">
+          <div class="block-header"><div class="block-title">Website Analytics &mdash; ${periodLabel(currentPeriod)}</div></div>
+          <div class="stat-row">
+            <div class="stat-item">
+              <div class="stat-label">Total Sessions</div>
+              <div class="stat-value">${fmtNum(kpis.websiteSessions)}</div>
+              ${changeHtml(kpis.sessionsChange, false)}
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Avg Daily Sessions</div>
+              <div class="stat-value">${dailySessions.length > 0 ? fmtNum(Math.round(kpis.websiteSessions / dailySessions.length)) : '0'}</div>
+              <div class="stat-sub">Over ${dailySessions.length} days</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Conversion Rate</div>
+              <div class="stat-value">${fmtPct(kpis.conversionRate)}</div>
+              <div class="stat-sub">${fmtNum(kpis.newSignups)} signups from sessions</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Top Source</div>
+              <div class="stat-value" style="font-size:20px;">${trafficSources.length > 0 ? trafficSources.sort((a,b) => b.sessions - a.sessions)[0].source : 'N/A'}</div>
+              <div class="stat-sub">${trafficSources.length > 0 ? fmtNum(trafficSources.sort((a,b) => b.sessions - a.sessions)[0].sessions) + ' sessions' : ''}</div>
+            </div>
+          </div>
+        </div>`;
+
+      // Daily sessions chart
+      const maxSessions = Math.max(...dailySessions.map(d => d.sessions), 1);
+      const skipEveryS = dailySessions.length > 20 ? 7 : dailySessions.length > 10 ? 5 : 2;
+      const sessionBars = dailySessions.map(d => {
+        const h = Math.max(2, Math.round((d.sessions / maxSessions) * 160));
+        return `<div class="bar-col bar-sessions" style="height: ${h}px;" title="${d.sessions} sessions on ${fmtDay(d.day)}"></div>`;
+      }).join('');
+      const sessionLabels = dailySessions.map((d, i) => {
+        const show = i === 0 || i === dailySessions.length - 1 || i % skipEveryS === 0;
+        return `<div class="bar-label-col"><span class="bar-label${show ? '' : ' bar-label-hidden'}">${fmtDay(d.day)}</span></div>`;
+      }).join('');
+
+      const sessionsChartBlock = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">Daily Sessions</div>
+          </div>
+          <div class="bar-chart-wrap">
+            <div class="bar-chart">${sessionBars}</div>
+            <div class="bar-chart-labels">${sessionLabels}</div>
+          </div>
+          <div class="chart-legend">
+            <span><span class="legend-dot" style="background:var(--blue);display:inline-block;border-radius:2px;"></span>Sessions (GA4)</span>
+          </div>
+        </div>`;
+
+      // Traffic sources detailed table
+      const totalSessions = trafficSources.reduce((s, r) => s + r.sessions, 0);
+      const sourceRows = trafficSources
+        .sort((a, b) => b.sessions - a.sessions)
+        .map(row => {
+          const pctOfTotal = totalSessions > 0 ? (row.sessions / totalSessions * 100) : 0;
+          const barWidth = Math.round(pctOfTotal * 2);
+          return `
+            <tr>
+              <td><span class="source-name">${row.source}</span><span class="source-badge ${sourceBadgeClass(row.source)}">${row.source.split(' ')[0]}</span></td>
+              <td class="right">${fmtNum(row.sessions)}</td>
+              <td><div class="conv-bar"><div class="conv-fill" style="width: ${barWidth}px;"></div><span class="conv-value">${fmtPct(pctOfTotal)}</span></div></td>
+            </tr>`;
+        }).join('');
+
+      const sourceTableBlock = `
+        <div class="block full-block">
+          <div class="block-header"><div class="block-title">Traffic Sources Breakdown</div></div>
+          <table class="data-table">
+            <thead><tr><th>Source / Medium</th><th class="right">Sessions</th><th>Share of Total</th></tr></thead>
+            <tbody>
+              ${sourceRows}
+              <tr class="summary-row">
+                <td><span class="source-name">All Sources</span></td>
+                <td class="right">${fmtNum(totalSessions)}</td>
+                <td><span class="conv-value">100%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`;
+
+      document.getElementById('analytics-grid').innerHTML =
+        statsHtml + sessionsChartBlock + sourceTableBlock;
+    }
+
+    // ── RENDER ALL ──
+    function renderAll() {
+      if (!DATA) return;
+
+      const updatedDate = new Date(DATA.meta.generatedAt).toLocaleDateString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric'
+      });
+      document.getElementById('last-updated').textContent = 'Updated: ' + updatedDate;
+
+      renderOverview();
+      renderMemberships();
+      renderAnalytics();
+    }
+
+    // ── DATE RANGE BUTTONS ──
+    document.getElementById('date-range').addEventListener('click', function(e) {
+      const btn = e.target.closest('.date-btn');
+      if (!btn) return;
+      document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentPeriod = btn.dataset.period;
+      renderAll();
+    });
+
+    // ── NAV TABS ──
+    document.getElementById('main-nav').addEventListener('click', function(e) {
+      const link = e.target.closest('[data-tab]');
+      if (!link) return;
+      e.preventDefault();
+
+      document.querySelectorAll('#main-nav a').forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+
+      currentTab = link.dataset.tab;
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-' + currentTab).classList.add('active');
+
+      const titles = {
+        overview: 'Membership & Traffic Overview',
+        memberships: 'Membership Details',
+        analytics: 'Website Analytics',
+      };
+      document.getElementById('page-title').innerHTML = titles[currentTab] || '';
+    });
+
+    // ── LOAD DATA ──
+    fetch('data.json')
+      .then(r => { if (!r.ok) throw new Error('data.json not found'); return r.json(); })
+      .then(data => {
+        DATA = data;
+        renderAll();
+      })
+      .catch(err => {
+        document.querySelectorAll('.bento-grid').forEach(grid => {
+          grid.innerHTML = `
+            <div class="loading" style="grid-column: span 12; color: #dc2626;">
+              <strong>Could not load data.json</strong><br><br>
+              Run <code>node fetch-data.js</code> to fetch live data from BigQuery.<br><br>
+              <small style="color: #6b7280;">${err.message}</small>
+            </div>`;
+        });
+      });
+  </script>
+</body>
+</html>

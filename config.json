@@ -1,0 +1,25 @@
+{
+  "clientName": "Lucy Walker Jewelry",
+  "paradigm": "bento",
+  "brand": {
+    "primaryColor": "#1B3A52",
+    "accentColor": "#D64C00",
+    "logo": null
+  },
+  "dashboards": ["executive"],
+  "dataSources": {
+    "bigquery": {
+      "projectId": "lwj-data-storage",
+      "location": "US",
+      "datasets": {
+        "googleAds": "google_ads_data",
+        "ga4": "analytics_301113294",
+        "memberPress": "LWJ"
+      },
+      "googleAdsCustomerId": "6901694517"
+    }
+  },
+  "dateRange": {
+    "defaultDays": 30
+  }
+}

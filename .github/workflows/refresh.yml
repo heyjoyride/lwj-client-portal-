@@ -1,0 +1,54 @@
+name: Refresh Dashboard Data
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # 9am UTC daily (10am CET / 11am CEST)
+  workflow_dispatch:        # allows manual trigger from GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Write service account key
+        run: |
+          mkdir -p keys
+          echo '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}' > keys/service-account.json
+
+      - name: Fetch data from BigQuery
+        run: GOOGLE_APPLICATION_CREDENTIALS=./keys/service-account.json node fetch-data.js
+
+      - name: Build self-contained HTML
+        run: node build.js
+
+      - name: Encrypt with StaticCrypt
+        run: |
+          npx staticrypt dist/index.html \
+            --password '${{ secrets.DASHBOARD_PASSWORD }}' \
+            --output dist/index.html \
+            --short \
+            --template-title "Lucy Walker Jewelry – Client Portal" \
+            --template-instructions "Enter your portal password to continue."
+
+      - name: Clean up secrets
+        run: rm -f keys/service-account.json
+
+      - name: Commit and push updated dashboard
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add dist/index.html data.json
+          git diff --cached --quiet && echo "No changes to commit" || \
+            git commit -m "chore: refresh dashboard data $(date +%Y-%m-%d)"
+          git push

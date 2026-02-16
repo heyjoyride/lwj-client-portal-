@@ -1,0 +1,1301 @@
+{
+  "meta": {
+    "generatedAt": "2026-02-16T09:58:15.360Z",
+    "sources": [
+      "memberpress",
+      "ga4"
+    ]
+  },
+  "globalState": {
+    "totalActive": 2538,
+    "totalMrr": 448434,
+    "monthlySubs": 1418,
+    "annualSubs": 1101,
+    "plans": [
+      {
+        "price": 47,
+        "periodType": "months",
+        "activeCount": 877,
+        "mrr": 41219
+      },
+      {
+        "price": 282,
+        "periodType": "years",
+        "activeCount": 561,
+        "mrr": 158202
+      },
+      {
+        "price": 470,
+        "periodType": "years",
+        "activeCount": 317,
+        "mrr": 148990
+      },
+      {
+        "price": 28.2,
+        "periodType": "months",
+        "activeCount": 170,
+        "mrr": 4794
+      },
+      {
+        "price": 423,
+        "periodType": "years",
+        "activeCount": 128,
+        "mrr": 54144
+      },
+      {
+        "price": 376,
+        "periodType": "years",
+        "activeCount": 95,
+        "mrr": 35720
+      },
+      {
+        "price": 37.6,
+        "periodType": "months",
+        "activeCount": 67,
+        "mrr": 2519.2
+      },
+      {
+        "price": 1,
+        "periodType": "months",
+        "activeCount": 24,
+        "mrr": 24
+      }
+    ],
+    "allStatuses": [
+      {
+        "status": "cancelled",
+        "count": 10766
+      },
+      {
+        "status": "active",
+        "count": 2538
+      },
+      {
+        "status": "pending",
+        "count": 1836
+      },
+      {
+        "status": "suspended",
+        "count": 355
+      }
+    ]
+  },
+  "periods": {
+    "7d": {
+      "kpis": {
+        "totalActiveSubs": 2538,
+        "activeSubsChange": -0.6,
+        "totalMrr": 448434,
+        "newSignups": 9,
+        "signupsChange": -71.9,
+        "retentionRate": 88.9,
+        "retentionChange": 18.5,
+        "websiteSessions": 5152,
+        "sessionsChange": -40.8,
+        "conversionRate": 0.17,
+        "churned": 1,
+        "churnChange": -83.3
+      },
+      "funnel": [
+        {
+          "stage": "Sessions",
+          "value": 5152,
+          "source": "ga4"
+        },
+        {
+          "stage": "New Signups",
+          "value": 9,
+          "source": "memberpress"
+        },
+        {
+          "stage": "Active Members",
+          "value": 8,
+          "source": "memberpress"
+        }
+      ],
+      "trafficSources": [
+        {
+          "source": "Organic Search",
+          "sessions": 876
+        },
+        {
+          "source": "Direct",
+          "sessions": 1740
+        },
+        {
+          "source": "Referral",
+          "sessions": 1135
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 824
+        },
+        {
+          "source": "Email",
+          "sessions": 576
+        },
+        {
+          "source": "Social",
+          "sessions": 1
+        }
+      ],
+      "dailySignups": [
+        {
+          "day": "2026-02-09",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-10",
+          "newSubs": 4,
+          "stillActive": 4
+        }
+      ],
+      "dailySessions": [
+        {
+          "day": "2026-02-09",
+          "sessions": 717
+        },
+        {
+          "day": "2026-02-10",
+          "sessions": 777
+        },
+        {
+          "day": "2026-02-11",
+          "sessions": 821
+        },
+        {
+          "day": "2026-02-12",
+          "sessions": 859
+        },
+        {
+          "day": "2026-02-13",
+          "sessions": 732
+        },
+        {
+          "day": "2026-02-14",
+          "sessions": 641
+        },
+        {
+          "day": "2026-02-15",
+          "sessions": 605
+        }
+      ],
+      "subscriptionBreakdown": {
+        "monthly": 1418,
+        "annual": 1101,
+        "newActive": 8,
+        "newCancelled": 1,
+        "newPending": 0,
+        "newSuspended": 0
+      }
+    },
+    "30d": {
+      "kpis": {
+        "totalActiveSubs": 2538,
+        "activeSubsChange": -2.8,
+        "totalMrr": 448434,
+        "newSignups": 193,
+        "signupsChange": -38.5,
+        "retentionRate": 83.9,
+        "retentionChange": 12.6,
+        "websiteSessions": 8700,
+        "sessionsChange": 0,
+        "conversionRate": 2.22,
+        "churned": 19,
+        "churnChange": -69.4
+      },
+      "funnel": [
+        {
+          "stage": "Sessions",
+          "value": 8700,
+          "source": "ga4"
+        },
+        {
+          "stage": "New Signups",
+          "value": 193,
+          "source": "memberpress"
+        },
+        {
+          "stage": "Active Members",
+          "value": 162,
+          "source": "memberpress"
+        }
+      ],
+      "trafficSources": [
+        {
+          "source": "Organic Search",
+          "sessions": 1604
+        },
+        {
+          "source": "Direct",
+          "sessions": 2962
+        },
+        {
+          "source": "Referral",
+          "sessions": 1825
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1407
+        },
+        {
+          "source": "Email",
+          "sessions": 898
+        },
+        {
+          "source": "Social",
+          "sessions": 4
+        }
+      ],
+      "dailySignups": [
+        {
+          "day": "2026-01-17",
+          "newSubs": 13,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-18",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-19",
+          "newSubs": 7,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-20",
+          "newSubs": 9,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-21",
+          "newSubs": 18,
+          "stillActive": 16
+        },
+        {
+          "day": "2026-01-22",
+          "newSubs": 16,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-23",
+          "newSubs": 29,
+          "stillActive": 25
+        },
+        {
+          "day": "2026-01-24",
+          "newSubs": 22,
+          "stillActive": 20
+        },
+        {
+          "day": "2026-01-25",
+          "newSubs": 14,
+          "stillActive": 12
+        },
+        {
+          "day": "2026-01-26",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-27",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-01-28",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-29",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-30",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-31",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-01",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-02",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-03",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-04",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-05",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-06",
+          "newSubs": 7,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-07",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-08",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-09",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-10",
+          "newSubs": 4,
+          "stillActive": 4
+        }
+      ],
+      "dailySessions": [
+        {
+          "day": "2026-02-04",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-05",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-06",
+          "sessions": 753
+        },
+        {
+          "day": "2026-02-07",
+          "sessions": 692
+        },
+        {
+          "day": "2026-02-08",
+          "sessions": 720
+        },
+        {
+          "day": "2026-02-09",
+          "sessions": 717
+        },
+        {
+          "day": "2026-02-10",
+          "sessions": 777
+        },
+        {
+          "day": "2026-02-11",
+          "sessions": 821
+        },
+        {
+          "day": "2026-02-12",
+          "sessions": 859
+        },
+        {
+          "day": "2026-02-13",
+          "sessions": 732
+        },
+        {
+          "day": "2026-02-14",
+          "sessions": 641
+        },
+        {
+          "day": "2026-02-15",
+          "sessions": 605
+        }
+      ],
+      "subscriptionBreakdown": {
+        "monthly": 1418,
+        "annual": 1101,
+        "newActive": 162,
+        "newCancelled": 19,
+        "newPending": 11,
+        "newSuspended": 1
+      }
+    },
+    "90d": {
+      "kpis": {
+        "totalActiveSubs": 2538,
+        "activeSubsChange": -6.1,
+        "totalMrr": 448434,
+        "newSignups": 934,
+        "signupsChange": -31.1,
+        "retentionRate": 52.1,
+        "retentionChange": 8.3,
+        "websiteSessions": 8700,
+        "sessionsChange": 0,
+        "conversionRate": 10.74,
+        "churned": 396,
+        "churnChange": -34.2
+      },
+      "funnel": [
+        {
+          "stage": "Sessions",
+          "value": 8700,
+          "source": "ga4"
+        },
+        {
+          "stage": "New Signups",
+          "value": 934,
+          "source": "memberpress"
+        },
+        {
+          "stage": "Active Members",
+          "value": 487,
+          "source": "memberpress"
+        }
+      ],
+      "trafficSources": [
+        {
+          "source": "Organic Search",
+          "sessions": 1604
+        },
+        {
+          "source": "Direct",
+          "sessions": 2962
+        },
+        {
+          "source": "Referral",
+          "sessions": 1825
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1407
+        },
+        {
+          "source": "Email",
+          "sessions": 898
+        },
+        {
+          "source": "Social",
+          "sessions": 4
+        }
+      ],
+      "dailySignups": [
+        {
+          "day": "2025-11-18",
+          "newSubs": 8,
+          "stillActive": 6
+        },
+        {
+          "day": "2025-11-19",
+          "newSubs": 7,
+          "stillActive": 4
+        },
+        {
+          "day": "2025-11-20",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2025-11-21",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-11-22",
+          "newSubs": 2,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-11-23",
+          "newSubs": 7,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-11-24",
+          "newSubs": 32,
+          "stillActive": 11
+        },
+        {
+          "day": "2025-11-25",
+          "newSubs": 32,
+          "stillActive": 21
+        },
+        {
+          "day": "2025-11-26",
+          "newSubs": 49,
+          "stillActive": 20
+        },
+        {
+          "day": "2025-11-27",
+          "newSubs": 34,
+          "stillActive": 11
+        },
+        {
+          "day": "2025-11-28",
+          "newSubs": 39,
+          "stillActive": 20
+        },
+        {
+          "day": "2025-11-29",
+          "newSubs": 64,
+          "stillActive": 30
+        },
+        {
+          "day": "2025-11-30",
+          "newSubs": 52,
+          "stillActive": 29
+        },
+        {
+          "day": "2025-12-01",
+          "newSubs": 47,
+          "stillActive": 26
+        },
+        {
+          "day": "2025-12-02",
+          "newSubs": 67,
+          "stillActive": 31
+        },
+        {
+          "day": "2025-12-03",
+          "newSubs": 41,
+          "stillActive": 10
+        },
+        {
+          "day": "2025-12-04",
+          "newSubs": 69,
+          "stillActive": 10
+        },
+        {
+          "day": "2025-12-05",
+          "newSubs": 35,
+          "stillActive": 11
+        },
+        {
+          "day": "2025-12-06",
+          "newSubs": 3,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-07",
+          "newSubs": 2,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-08",
+          "newSubs": 3,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-09",
+          "newSubs": 4,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-11",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-12",
+          "newSubs": 4,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-13",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-14",
+          "newSubs": 5,
+          "stillActive": 2
+        },
+        {
+          "day": "2025-12-15",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2025-12-16",
+          "newSubs": 2,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-17",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-18",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-19",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2025-12-20",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-22",
+          "newSubs": 7,
+          "stillActive": 3
+        },
+        {
+          "day": "2025-12-23",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2025-12-24",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-25",
+          "newSubs": 6,
+          "stillActive": 3
+        },
+        {
+          "day": "2025-12-26",
+          "newSubs": 5,
+          "stillActive": 2
+        },
+        {
+          "day": "2025-12-27",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2025-12-28",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2025-12-29",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2025-12-30",
+          "newSubs": 5,
+          "stillActive": 1
+        },
+        {
+          "day": "2025-12-31",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-01",
+          "newSubs": 7,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-02",
+          "newSubs": 12,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-03",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-04",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-05",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-06",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-07",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-08",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-09",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-01-10",
+          "newSubs": 2,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-01-11",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-12",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-13",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-14",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-15",
+          "newSubs": 11,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-16",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-17",
+          "newSubs": 13,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-18",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-19",
+          "newSubs": 7,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-20",
+          "newSubs": 9,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-21",
+          "newSubs": 18,
+          "stillActive": 16
+        },
+        {
+          "day": "2026-01-22",
+          "newSubs": 16,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-23",
+          "newSubs": 29,
+          "stillActive": 25
+        },
+        {
+          "day": "2026-01-24",
+          "newSubs": 22,
+          "stillActive": 20
+        },
+        {
+          "day": "2026-01-25",
+          "newSubs": 14,
+          "stillActive": 12
+        },
+        {
+          "day": "2026-01-26",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-27",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-01-28",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-29",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-30",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-31",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-01",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-02",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-03",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-04",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-05",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-06",
+          "newSubs": 7,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-07",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-08",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-09",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-10",
+          "newSubs": 4,
+          "stillActive": 4
+        }
+      ],
+      "dailySessions": [
+        {
+          "day": "2026-02-04",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-05",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-06",
+          "sessions": 753
+        },
+        {
+          "day": "2026-02-07",
+          "sessions": 692
+        },
+        {
+          "day": "2026-02-08",
+          "sessions": 720
+        },
+        {
+          "day": "2026-02-09",
+          "sessions": 717
+        },
+        {
+          "day": "2026-02-10",
+          "sessions": 777
+        },
+        {
+          "day": "2026-02-11",
+          "sessions": 821
+        },
+        {
+          "day": "2026-02-12",
+          "sessions": 859
+        },
+        {
+          "day": "2026-02-13",
+          "sessions": 732
+        },
+        {
+          "day": "2026-02-14",
+          "sessions": 641
+        },
+        {
+          "day": "2026-02-15",
+          "sessions": 605
+        }
+      ],
+      "subscriptionBreakdown": {
+        "monthly": 1418,
+        "annual": 1101,
+        "newActive": 487,
+        "newCancelled": 396,
+        "newPending": 19,
+        "newSuspended": 32
+      }
+    },
+    "ytd": {
+      "kpis": {
+        "totalActiveSubs": 2538,
+        "activeSubsChange": -10.9,
+        "totalMrr": 448434,
+        "newSignups": 267,
+        "signupsChange": -72.5,
+        "retentionRate": 79.8,
+        "retentionChange": 48.3,
+        "websiteSessions": 8700,
+        "sessionsChange": 0,
+        "conversionRate": 3.07,
+        "churned": 41,
+        "churnChange": -89.7
+      },
+      "funnel": [
+        {
+          "stage": "Sessions",
+          "value": 8700,
+          "source": "ga4"
+        },
+        {
+          "stage": "New Signups",
+          "value": 267,
+          "source": "memberpress"
+        },
+        {
+          "stage": "Active Members",
+          "value": 213,
+          "source": "memberpress"
+        }
+      ],
+      "trafficSources": [
+        {
+          "source": "Organic Search",
+          "sessions": 1604
+        },
+        {
+          "source": "Direct",
+          "sessions": 2962
+        },
+        {
+          "source": "Referral",
+          "sessions": 1825
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1407
+        },
+        {
+          "source": "Email",
+          "sessions": 898
+        },
+        {
+          "source": "Social",
+          "sessions": 4
+        }
+      ],
+      "dailySignups": [
+        {
+          "day": "2025-12-31",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-01",
+          "newSubs": 7,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-02",
+          "newSubs": 12,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-03",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-04",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-05",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-06",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-07",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-08",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-09",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-01-10",
+          "newSubs": 2,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-01-11",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-12",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-01-13",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-14",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-15",
+          "newSubs": 11,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-16",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-17",
+          "newSubs": 13,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-18",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-19",
+          "newSubs": 7,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-20",
+          "newSubs": 9,
+          "stillActive": 7
+        },
+        {
+          "day": "2026-01-21",
+          "newSubs": 18,
+          "stillActive": 16
+        },
+        {
+          "day": "2026-01-22",
+          "newSubs": 16,
+          "stillActive": 11
+        },
+        {
+          "day": "2026-01-23",
+          "newSubs": 29,
+          "stillActive": 25
+        },
+        {
+          "day": "2026-01-24",
+          "newSubs": 22,
+          "stillActive": 20
+        },
+        {
+          "day": "2026-01-25",
+          "newSubs": 14,
+          "stillActive": 12
+        },
+        {
+          "day": "2026-01-26",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-27",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-01-28",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-01-29",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-01-30",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-01-31",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-01",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-02",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-03",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-04",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-05",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-06",
+          "newSubs": 7,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-07",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-08",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-09",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-10",
+          "newSubs": 4,
+          "stillActive": 4
+        }
+      ],
+      "dailySessions": [
+        {
+          "day": "2026-02-04",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-05",
+          "sessions": 691
+        },
+        {
+          "day": "2026-02-06",
+          "sessions": 753
+        },
+        {
+          "day": "2026-02-07",
+          "sessions": 692
+        },
+        {
+          "day": "2026-02-08",
+          "sessions": 720
+        },
+        {
+          "day": "2026-02-09",
+          "sessions": 717
+        },
+        {
+          "day": "2026-02-10",
+          "sessions": 777
+        },
+        {
+          "day": "2026-02-11",
+          "sessions": 821
+        },
+        {
+          "day": "2026-02-12",
+          "sessions": 859
+        },
+        {
+          "day": "2026-02-13",
+          "sessions": 732
+        },
+        {
+          "day": "2026-02-14",
+          "sessions": 641
+        },
+        {
+          "day": "2026-02-15",
+          "sessions": 605
+        }
+      ],
+      "subscriptionBreakdown": {
+        "monthly": 1418,
+        "annual": 1101,
+        "newActive": 213,
+        "newCancelled": 41,
+        "newPending": 11,
+        "newSuspended": 2
+      }
+    }
+  }
+}
