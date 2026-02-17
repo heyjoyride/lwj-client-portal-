@@ -1,9 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-02-17T08:40:11.299Z",
+    "generatedAt": "2026-02-17T08:47:21.374Z",
     "sources": [
       "memberpress",
-      "ga4"
+      "ga4",
+      "facebook_ads"
     ]
   },
   "globalState": {
@@ -79,6 +80,22 @@
         "count": 355
       }
     ]
+  },
+  "trialRoi": {
+    "adSpend": 0,
+    "adSpendSource": "none",
+    "campaignStartDate": "2026-01-01",
+    "trialsStarted": 0,
+    "trialsConverted": 0,
+    "trialsCancelled": 0,
+    "trialsInTrial": 0,
+    "costPerTrial": 0,
+    "conversionRate": 0,
+    "avgPaidPriceAUD": 47,
+    "avgMonthsRetained": 3,
+    "projectedLtv": 0,
+    "roiStatus": "unknown",
+    "cohorts": []
   },
   "periods": {
     "7d": {
