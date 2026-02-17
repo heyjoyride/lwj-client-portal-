@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-17T10:20:09.768Z",
+    "generatedAt": "2026-02-17T10:42:10.339Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -82,20 +82,70 @@
     ]
   },
   "trialRoi": {
-    "adSpend": 9099.96,
+    "adSpend": 9102.68,
     "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
-    "trialsStarted": 0,
-    "trialsConverted": 0,
-    "trialsCancelled": 0,
-    "trialsInTrial": 0,
-    "costPerTrial": 0,
-    "conversionRate": 0,
-    "avgPaidPriceUSD": 30,
+    "trialsStarted": 86,
+    "trialsConverted": 30,
+    "trialsCancelled": 23,
+    "trialsInTrial": 32,
+    "costPerTrial": 105.85,
+    "conversionRate": 56.6,
+    "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
-    "projectedLtv": 0,
-    "roiStatus": "unknown",
-    "cohorts": [],
+    "projectedLtv": 79.81,
+    "roiStatus": "negative",
+    "cohorts": [
+      {
+        "week": "2025-12-29",
+        "started": 25,
+        "converted": 14,
+        "cancelled": 10,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-01-05",
+        "started": 11,
+        "converted": 8,
+        "cancelled": 3,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-01-12",
+        "started": 11,
+        "converted": 8,
+        "cancelled": 3,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-01-19",
+        "started": 12,
+        "converted": 0,
+        "cancelled": 2,
+        "inTrial": 10
+      },
+      {
+        "week": "2026-01-26",
+        "started": 13,
+        "converted": 0,
+        "cancelled": 1,
+        "inTrial": 12
+      },
+      {
+        "week": "2026-02-02",
+        "started": 11,
+        "converted": 0,
+        "cancelled": 4,
+        "inTrial": 7
+      },
+      {
+        "week": "2026-02-09",
+        "started": 3,
+        "converted": 0,
+        "cancelled": 0,
+        "inTrial": 3
+      }
+    ],
     "campaigns": [
       {
         "name": "HJR - Lucy's Letter - RE -14/01/26",
@@ -105,21 +155,21 @@
       },
       {
         "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 1654.4,
-        "impressions": 57243,
-        "clicks": 3509
+        "spend": 1655.43,
+        "impressions": 57273,
+        "clicks": 3513
       },
       {
         "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 167.16,
-        "impressions": 2898,
-        "clicks": 89
+        "spend": 168.41,
+        "impressions": 2920,
+        "clicks": 90
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 155.35,
-        "impressions": 4780,
-        "clicks": 173
+        "spend": 155.79,
+        "impressions": 4804,
+        "clicks": 174
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
