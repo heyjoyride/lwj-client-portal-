@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-17T10:54:07.799Z",
+    "generatedAt": "2026-02-17T11:14:10.548Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -9,55 +9,88 @@
   },
   "globalState": {
     "totalActive": 2538,
-    "totalMrr": 448434,
-    "monthlySubs": 1418,
+    "totalMrr": 80674,
     "annualSubs": 1101,
+    "monthlySubs": 1362,
+    "inTrialSubs": 118,
     "plans": [
       {
         "price": 47,
         "periodType": "months",
+        "period": 1,
+        "monthlyPrice": 47,
         "activeCount": 877,
         "mrr": 41219
       },
       {
         "price": 282,
         "periodType": "years",
+        "period": 1,
+        "monthlyPrice": 23.5,
         "activeCount": 561,
-        "mrr": 158202
+        "mrr": 13184
       },
       {
         "price": 470,
         "periodType": "years",
+        "period": 1,
+        "monthlyPrice": 39.17,
         "activeCount": 317,
-        "mrr": 148990
+        "mrr": 12416
       },
       {
         "price": 28.2,
         "periodType": "months",
+        "period": 1,
+        "monthlyPrice": 28.2,
         "activeCount": 170,
         "mrr": 4794
       },
       {
         "price": 423,
         "periodType": "years",
+        "period": 1,
+        "monthlyPrice": 35.25,
         "activeCount": 128,
-        "mrr": 54144
+        "mrr": 4512
       },
       {
         "price": 376,
         "periodType": "years",
+        "period": 1,
+        "monthlyPrice": 31.33,
         "activeCount": 95,
-        "mrr": 35720
+        "mrr": 2977
       },
       {
         "price": 37.6,
         "periodType": "months",
+        "period": 1,
+        "monthlyPrice": 37.6,
         "activeCount": 67,
-        "mrr": 2519.2
+        "mrr": 2519
+      },
+      {
+        "price": 125,
+        "periodType": "months",
+        "period": 3,
+        "monthlyPrice": 41.67,
+        "activeCount": 18,
+        "mrr": 750
+      },
+      {
+        "price": 112.8,
+        "periodType": "months",
+        "period": 3,
+        "monthlyPrice": 37.6,
+        "activeCount": 1,
+        "mrr": 38
       },
       {
         "price": 1,
         "periodType": "months",
+        "period": 1,
+        "monthlyPrice": 1,
         "activeCount": 24,
         "mrr": 24
       }
@@ -82,14 +115,14 @@
     ]
   },
   "trialRoi": {
-    "adSpend": 9105.06,
+    "adSpend": 9109.6,
     "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
     "trialsStarted": 86,
     "trialsConverted": 30,
     "trialsCancelled": 23,
     "trialsInTrial": 32,
-    "costPerTrial": 105.87,
+    "costPerTrial": 105.93,
     "conversionRate": 56.6,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
@@ -156,20 +189,20 @@
       },
       {
         "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 1656,
-        "impressions": 57295,
-        "clicks": 3513
+        "spend": 1656.9,
+        "impressions": 57326,
+        "clicks": 3517
       },
       {
         "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 169.75,
-        "impressions": 2935,
-        "clicks": 90
+        "spend": 172.12,
+        "impressions": 2965,
+        "clicks": 92
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 156.26,
-        "impressions": 4820,
+        "spend": 157.53,
+        "impressions": 4847,
         "clicks": 178
       },
       {
@@ -191,7 +224,7 @@
       "kpis": {
         "totalActiveSubs": 2538,
         "activeSubsChange": -0.7,
-        "totalMrr": 448434,
+        "totalMrr": 80674,
         "newSignups": 4,
         "signupsChange": -87.1,
         "retentionRate": 100,
@@ -283,7 +316,7 @@
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1418,
+        "monthly": 1362,
         "annual": 1101,
         "newActive": 4,
         "newCancelled": 0,
@@ -295,7 +328,7 @@
       "kpis": {
         "totalActiveSubs": 2538,
         "activeSubsChange": -3.1,
-        "totalMrr": 448434,
+        "totalMrr": 80674,
         "newSignups": 180,
         "signupsChange": -41.9,
         "retentionRate": 83.9,
@@ -526,7 +559,7 @@
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1418,
+        "monthly": 1362,
         "annual": 1101,
         "newActive": 151,
         "newCancelled": 17,
@@ -538,7 +571,7 @@
       "kpis": {
         "totalActiveSubs": 2538,
         "activeSubsChange": -6,
-        "totalMrr": 448434,
+        "totalMrr": 80674,
         "newSignups": 926,
         "signupsChange": -29.7,
         "retentionRate": 51.9,
@@ -1059,7 +1092,7 @@
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1418,
+        "monthly": 1362,
         "annual": 1101,
         "newActive": 481,
         "newCancelled": 394,
@@ -1071,7 +1104,7 @@
       "kpis": {
         "totalActiveSubs": 2538,
         "activeSubsChange": -10.9,
-        "totalMrr": 448434,
+        "totalMrr": 80674,
         "newSignups": 264,
         "signupsChange": -72.8,
         "retentionRate": 79.9,
@@ -1387,7 +1420,7 @@
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1418,
+        "monthly": 1362,
         "annual": 1101,
         "newActive": 211,
         "newCancelled": 40,
