@@ -776,7 +776,7 @@
           <div class="kpi-source">Facebook Ads</div>
           <div class="kpi-label">Total Ad Spend</div>
           <div class="kpi-value">${fmt$(roi.adSpend)}</div>
-          <div class="kpi-sub">AUD since ${roi.campaignStartDate}${roi.adSpendSource === 'manual' ? ' (manual)' : roi.adSpendSource === 'none' ? ' (not configured)' : ''}</div>
+          <div class="kpi-sub">USD since ${roi.campaignStartDate}${roi.adSpendSource === 'manual' ? ' (manual)' : roi.adSpendSource === 'none' ? ' (not configured)' : ''}</div>
         </div>
         <div class="block kpi-card primary">
           <div class="kpi-source">MemberPress</div>
@@ -800,7 +800,7 @@
           <div class="kpi-source">Projected</div>
           <div class="kpi-label">LTV per Trial</div>
           <div class="kpi-value">${fmt$(roi.projectedLtv)}</div>
-          <div class="kpi-sub">${fmtPct(roi.conversionRate)} &times; ${fmt$(roi.avgPaidPriceAUD)} &times; ${roi.avgMonthsRetained} mo</div>
+          <div class="kpi-sub">${fmtPct(roi.conversionRate)} &times; ${fmt$(roi.avgPaidPriceUSD)} &times; ${roi.avgMonthsRetained} mo</div>
         </div>
         <div class="block kpi-card ${roi.roiStatus === 'positive' ? 'green' : roi.roiStatus === 'neutral' ? 'primary' : 'accent'}">
           <div class="kpi-source">ROI</div>
@@ -911,7 +911,7 @@
             return `
               <tr>
                 <td><span class="source-name">${c.name}</span></td>
-                <td class="right">${fmt$(c.spendAUD)}</td>
+                <td class="right">${fmt$(c.spend)}</td>
                 <td class="right">${fmtNum(c.impressions)}</td>
                 <td class="right">${fmtNum(c.clicks)}</td>
                 <td class="right">${ctr}%</td>
@@ -919,7 +919,7 @@
           }).join('')
         : '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No campaign data. Add FB_ACCESS_TOKEN and FB_AD_ACCOUNT_ID to GitHub Secrets.</td></tr>';
 
-      const totalCampaignSpend = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.spendAUD, 0) : 0;
+      const totalCampaignSpend = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.spend, 0) : 0;
       const totalImpressions = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.impressions, 0) : 0;
       const totalClicks = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.clicks, 0) : 0;
       const totalCtr = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : '0.00';
@@ -928,7 +928,7 @@
         <div class="block full-block">
           <div class="block-header">
             <div class="block-title">Campaign Breakdown (Facebook Ads)</div>
-            <div style="font-size:12px;color:var(--text-muted);">Since ${roi.campaignStartDate} &bull; AUD</div>
+            <div style="font-size:12px;color:var(--text-muted);">Since ${roi.campaignStartDate} &bull; USD</div>
           </div>
           <table class="data-table">
             <thead>

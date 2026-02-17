@@ -246,11 +246,11 @@ async function fetchFacebookAdSpend(startDate, trialConfig) {
   if (!fbToken || !fbAccountId || fbAccountId === 'act_XXXXXXX') {
     const manualAUD = trialConfig.manualAdSpendAUD;
     if (manualAUD !== null && manualAUD !== undefined) {
-      console.log(`  Facebook Ads: manual spend override $${manualAUD} AUD`);
-      return { totalSpendAUD: manualAUD, totalSpendUSD: null, source: 'manual' };
+      console.log(`  Facebook Ads: manual spend override $${manualAUD} USD`);
+      return { totalSpendUSD: manualAUD, campaigns: [], source: 'manual' };
     }
     console.log('  Facebook Ads: no token/account configured, spend = $0');
-    return { totalSpendAUD: 0, totalSpendUSD: null, source: 'none' };
+    return { totalSpendUSD: 0, campaigns: [], source: 'none' };
   }
 
   try {
@@ -266,21 +266,19 @@ async function fetchFacebookAdSpend(startDate, trialConfig) {
 
     const campaigns = (json.data || []).map(c => ({
       name: c.campaign_name,
-      spendUSD: parseFloat(c.spend || 0),
-      spendAUD: Math.round(parseFloat(c.spend || 0) * rate * 100) / 100,
+      spend: parseFloat(c.spend || 0),
       impressions: parseInt(c.impressions || 0),
       clicks: parseInt(c.clicks || 0),
-    })).sort((a, b) => b.spendUSD - a.spendUSD);
+    })).sort((a, b) => b.spend - a.spend);
 
-    const totalSpendUSD = campaigns.reduce((s, c) => s + c.spendUSD, 0);
-    const totalSpendAUD = Math.round(totalSpendUSD * rate * 100) / 100;
+    const totalSpendUSD = Math.round(campaigns.reduce((s, c) => s + c.spend, 0) * 100) / 100;
 
-    console.log(`  Facebook Ads: $${totalSpendUSD.toFixed(2)} USD → $${totalSpendAUD} AUD across ${campaigns.length} campaigns`);
-    return { totalSpendAUD, totalSpendUSD, campaigns, source: 'facebook_api' };
+    console.log(`  Facebook Ads: $${totalSpendUSD} USD across ${campaigns.length} campaigns`);
+    return { totalSpendUSD, campaigns, source: 'facebook_api' };
   } catch (err) {
     console.error('  Facebook Ads API error:', err.message);
     const manualAUD = trialConfig.manualAdSpendAUD;
-    return { totalSpendAUD: manualAUD || 0, totalSpendUSD: null, campaigns: [], source: 'fallback' };
+    return { totalSpendUSD: manualAUD || 0, campaigns: [], source: 'fallback' };
   }
 }
 
@@ -351,14 +349,14 @@ async function main() {
   const trialConfig = portalConfig.trialCampaign;
   console.log(`  Fetching trial metrics since ${trialConfig.startDate}...`);
   const [trialMetrics, fbSpend] = await Promise.all([
-    fetchTrialMetrics(trialConfig.startDate, trialConfig.trialPriceAUD),
+    fetchTrialMetrics(trialConfig.startDate, trialConfig.trialPriceUSD),
     fetchFacebookAdSpend(trialConfig.startDate, trialConfig),
   ]);
 
   const costPerTrial = trialMetrics.trialsStarted > 0
-    ? Math.round((fbSpend.totalSpendAUD / trialMetrics.trialsStarted) * 100) / 100 : 0;
+    ? Math.round(((fbSpend.totalSpendUSD || 0) / trialMetrics.trialsStarted) * 100) / 100 : 0;
   const projectedLtv = Math.round(
-    (trialMetrics.conversionRate / 100) * trialConfig.avgPaidPriceAUD * trialConfig.avgMonthsRetained * 100
+    (trialMetrics.conversionRate / 100) * trialConfig.avgPaidPriceUSD * trialConfig.avgMonthsRetained * 100
   ) / 100;
   const roiRatio = costPerTrial > 0 ? (projectedLtv - costPerTrial) / costPerTrial : null;
   const roiStatus = roiRatio === null ? 'unknown'
@@ -394,7 +392,7 @@ async function main() {
       allStatuses: globalState.allStatuses,
     },
     trialRoi: {
-      adSpend: fbSpend.totalSpendAUD,
+      adSpend: fbSpend.totalSpendUSD || 0,
       adSpendSource: fbSpend.source,
       campaignStartDate: trialConfig.startDate,
       trialsStarted: trialMetrics.trialsStarted,
@@ -403,7 +401,7 @@ async function main() {
       trialsInTrial: trialMetrics.trialsInTrial,
       costPerTrial,
       conversionRate: trialMetrics.conversionRate,
-      avgPaidPriceAUD: trialConfig.avgPaidPriceAUD,
+      avgPaidPriceUSD: trialConfig.avgPaidPriceUSD,
       avgMonthsRetained: trialConfig.avgMonthsRetained,
       projectedLtv,
       roiStatus,
