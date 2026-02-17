@@ -53,7 +53,14 @@ async function fetchSubscriptionMetrics(startDate, endDate) {
         COUNTIF(status = 'cancelled') AS new_cancelled,
         COUNTIF(status = 'pending') AS new_pending,
         COUNTIF(status = 'suspended') AS new_suspended,
-        SUM(CASE WHEN status = 'active' THEN total ELSE 0 END) AS new_mrr
+        SUM(CASE WHEN status = 'active' THEN
+          CASE
+            WHEN period_type = 'lifetime' THEN 0
+            WHEN period_type = 'years' THEN total / 12.0
+            WHEN period_type = 'months' AND period > 1 THEN total / CAST(period AS FLOAT64)
+            ELSE total
+          END
+        ELSE 0 END) AS new_mrr
       FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
       WHERE created_at BETWEEN TIMESTAMP('${startDate}') AND TIMESTAMP('${endDate}')
     ` }),
@@ -91,21 +98,55 @@ async function fetchSubscriptionMetrics(startDate, endDate) {
   };
 }
 
+// Normalize a subscription's price to monthly equivalent
+// Accounts for: annual (÷12), quarterly (÷period), trial (use trial_amount), lifetime (0)
+const MRR_EXPR = `
+  CASE
+    WHEN period_type = 'lifetime' THEN 0
+    WHEN trial = 1 AND DATE_ADD(DATE(created_at), INTERVAL trial_days DAY) > CURRENT_DATE()
+      THEN CASE
+        WHEN period_type = 'years' THEN CAST(trial_amount AS FLOAT64) / 12.0
+        ELSE CAST(trial_amount AS FLOAT64) / CAST(period AS FLOAT64)
+      END
+    WHEN period_type = 'years' THEN total / 12.0
+    WHEN period_type = 'months' AND period > 1 THEN total / CAST(period AS FLOAT64)
+    ELSE total
+  END`;
+
 // Global subscription state (doesn't change with period)
 async function fetchGlobalSubState() {
   const ds = CONFIG.memberPress.dataset;
   const [[activeRow], [plansRows], [statusRows]] = await Promise.all([
     bq.query({ query: `
-      SELECT COUNT(*) AS total_active, SUM(total) AS total_mrr,
-        COUNTIF(period_type = 'months') AS monthly_subs,
-        COUNTIF(period_type = 'years') AS annual_subs
+      SELECT
+        COUNT(*) AS total_active,
+        SUM(${MRR_EXPR}) AS total_mrr,
+        COUNTIF(period_type = 'years') AS annual_subs,
+        COUNTIF(period_type = 'months' AND period = 1
+          AND NOT (trial = 1 AND DATE_ADD(DATE(created_at), INTERVAL trial_days DAY) > CURRENT_DATE())
+        ) AS monthly_subs,
+        COUNTIF(trial = 1 AND DATE_ADD(DATE(created_at), INTERVAL trial_days DAY) > CURRENT_DATE()) AS in_trial_subs
       FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\` WHERE status = 'active'
     ` }),
     bq.query({ query: `
-      SELECT total AS price, period_type, COUNT(*) AS active_count, SUM(total) AS plan_mrr
+      SELECT
+        total AS price, period_type, period,
+        CASE
+          WHEN period_type = 'years' THEN total / 12.0
+          WHEN period_type = 'months' AND period > 1 THEN total / CAST(period AS FLOAT64)
+          ELSE total
+        END AS monthly_price,
+        COUNT(*) AS active_count,
+        CASE
+          WHEN period_type = 'lifetime' THEN 0
+          WHEN period_type = 'years' THEN COUNT(*) * total / 12.0
+          WHEN period_type = 'months' AND period > 1 THEN COUNT(*) * total / CAST(period AS FLOAT64)
+          ELSE COUNT(*) * total
+        END AS plan_mrr
       FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
       WHERE status = 'active' AND total > 0
-      GROUP BY total, period_type ORDER BY active_count DESC LIMIT 8
+      GROUP BY total, period_type, period
+      ORDER BY plan_mrr DESC LIMIT 12
     ` }),
     bq.query({ query: `
       SELECT status, COUNT(*) AS cnt
@@ -117,14 +158,17 @@ async function fetchGlobalSubState() {
   const ac = activeRow[0] || {};
   return {
     totalActive: Number(ac.total_active || 0),
-    totalMrr: Math.round(Number(ac.total_mrr || 0) * 100) / 100,
-    monthlySubs: Number(ac.monthly_subs || 0),
+    totalMrr: Math.round(Number(ac.total_mrr || 0)),
     annualSubs: Number(ac.annual_subs || 0),
-    plans: plansRows.map(p => ({
+    monthlySubs: Number(ac.monthly_subs || 0),
+    inTrialSubs: Number(ac.in_trial_subs || 0),
+    plans: plansRows.filter(p => p.period_type !== 'lifetime').map(p => ({
       price: Number(p.price),
       periodType: p.period_type,
+      period: Number(p.period),
+      monthlyPrice: Math.round(Number(p.monthly_price) * 100) / 100,
       activeCount: Number(p.active_count),
-      mrr: Math.round(Number(p.plan_mrr) * 100) / 100,
+      mrr: Math.round(Number(p.plan_mrr)),
     })),
     allStatuses: statusRows.map(s => ({ status: s.status, count: Number(s.cnt) })),
   };
@@ -440,8 +484,9 @@ async function main() {
     globalState: {
       totalActive: globalState.totalActive,
       totalMrr: globalState.totalMrr,
-      monthlySubs: globalState.monthlySubs,
       annualSubs: globalState.annualSubs,
+      monthlySubs: globalState.monthlySubs,
+      inTrialSubs: globalState.inTrialSubs,
       plans: globalState.plans,
       allStatuses: globalState.allStatuses,
     },

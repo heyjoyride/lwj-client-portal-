@@ -418,9 +418,9 @@
         </div>
         <div class="block kpi-card accent">
           <div class="kpi-source">MemberPress</div>
-          <div class="kpi-label">Monthly Recurring</div>
-          <div class="kpi-value">${fmt$(kpis.totalMrr)}</div>
-          <div class="kpi-sub">${global.monthlySubs} monthly &bull; ${global.annualSubs} annual</div>
+          <div class="kpi-label">MRR</div>
+          <div class="kpi-value">${fmt$(global.totalMrr)}</div>
+          <div class="kpi-sub">${fmtNum(global.monthlySubs)} monthly &bull; ${fmtNum(global.annualSubs)} annual &bull; ${fmtNum(global.inTrialSubs)} in trial</div>
         </div>
         <div class="block kpi-card primary">
           <div class="kpi-source">MemberPress</div>
@@ -506,8 +506,8 @@
         </div>` : '',
         `<div class="insight">
           <span class="insight-icon">&#127919;</span>
-          <strong>${fmtNum(kpis.totalActiveSubs)} active members generating ${fmt$(kpis.totalMrr)}</strong> in subscription value.
-          The $47/month plan is the primary driver with ${global.monthlySubs} monthly and ${global.annualSubs} annual subscribers.
+          <strong>${fmtNum(kpis.totalActiveSubs)} active members generating ${fmt$(global.totalMrr)}/mo</strong> in MRR.
+          ${global.monthlySubs} monthly, ${global.annualSubs} annual, and ${global.inTrialSubs} currently in trial.
         </div>`,
       ].filter(Boolean).join('');
 
@@ -547,11 +547,12 @@
 
       // Plans Table
       const planRows = global.plans.map(p => {
-        const label = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
+        const billingLabel = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
         return `
           <tr>
-            <td><span class="source-name">${label}</span></td>
+            <td><span class="source-name">${billingLabel}</span></td>
             <td class="right">${fmtNum(p.activeCount)}</td>
+            <td class="right">${fmt$(p.monthlyPrice)}/mo</td>
             <td class="right">${fmt$(p.mrr)}</td>
           </tr>`;
       }).join('');
@@ -560,7 +561,7 @@
         <div class="block plans-block">
           <div class="block-header"><div class="block-title">Active Plans</div></div>
           <table class="data-table">
-            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Value</th></tr></thead>
+            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Per Member/mo</th><th class="right">MRR</th></tr></thead>
             <tbody>${planRows}</tbody>
           </table>
         </div>`;
@@ -583,7 +584,7 @@
             <div class="stat-item">
               <div class="stat-label">Total Active</div>
               <div class="stat-value">${fmtNum(global.totalActive)}</div>
-              <div class="stat-sub">${fmtNum(global.monthlySubs)} monthly &bull; ${fmtNum(global.annualSubs)} annual</div>
+              <div class="stat-sub">${fmtNum(global.monthlySubs)} monthly &bull; ${fmtNum(global.annualSubs)} annual &bull; ${fmtNum(global.inTrialSubs)} in trial</div>
             </div>
             <div class="stat-item">
               <div class="stat-label">Total MRR</div>
@@ -666,14 +667,19 @@
           </table>
         </div>`;
 
-      // Plans table (3 columns — fits all screen sizes)
+      // Plans table — 4 columns: Plan billing, Members, Per Member/mo MRR, Total MRR
       const planRows = global.plans.map(p => {
-        const label = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
+        const billingLabel = p.periodType === 'months' ? fmt$(p.price) + '/mo' : fmt$(p.price) + '/yr';
+        const billingType = p.periodType === 'months' ? 'Monthly' : 'Annual';
         const pctOfActive = global.totalActive > 0 ? (p.activeCount / global.totalActive * 100) : 0;
         return `
           <tr>
-            <td><span class="source-name">${label}</span><br><small style="color:var(--text-muted);font-size:11px;">${fmtPct(pctOfActive)} of members</small></td>
+            <td>
+              <span class="source-name">${billingLabel}</span>
+              <small style="color:var(--text-muted);font-size:11px;display:block;">${billingType} &bull; ${fmtPct(pctOfActive)} of members</small>
+            </td>
             <td class="right">${fmtNum(p.activeCount)}</td>
+            <td class="right">${fmt$(p.monthlyPrice)}/mo</td>
             <td class="right">${fmt$(p.mrr)}</td>
           </tr>`;
       }).join('');
@@ -682,12 +688,13 @@
         <div class="block full-block">
           <div class="block-header"><div class="block-title">Active Plans Breakdown</div></div>
           <table class="data-table">
-            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Value</th></tr></thead>
+            <thead><tr><th>Plan</th><th class="right">Members</th><th class="right">Per Member/mo</th><th class="right">MRR</th></tr></thead>
             <tbody>
               ${planRows}
               <tr class="summary-row">
                 <td><span class="source-name">All Plans</span></td>
                 <td class="right">${fmtNum(global.totalActive)}</td>
+                <td class="right"></td>
                 <td class="right">${fmt$(global.totalMrr)}</td>
               </tr>
             </tbody>
