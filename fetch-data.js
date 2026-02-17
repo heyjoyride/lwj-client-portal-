@@ -185,7 +185,7 @@ function classifyTrafficSource(source, medium) {
 }
 
 // ─── TRIAL ROI QUERIES ─────────────────────────────────────────────────────────
-async function fetchTrialMetrics(campaignStartDate, trialPrice) {
+async function fetchTrialMetrics(campaignStartDate) {
   const ds = CONFIG.memberPress.dataset;
 
   const [[summaryRow], [cohortRows]] = await Promise.all([
@@ -198,7 +198,7 @@ async function fetchTrialMetrics(campaignStartDate, trialPrice) {
         COUNTIF(status = 'active' AND DATE(created_at) <= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS trials_converted,
         COUNTIF(status = 'active' AND DATE(created_at) > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS trials_in_trial
       FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
-      WHERE total = ${trialPrice}
+      WHERE trial_amount = 2 AND trial_days = 30
         AND created_at >= TIMESTAMP('${campaignStartDate}')
     ` }),
     bq.query({ query: `
@@ -209,7 +209,7 @@ async function fetchTrialMetrics(campaignStartDate, trialPrice) {
         COUNTIF(status = 'cancelled') AS cancelled,
         COUNTIF(status = 'active' AND DATE(created_at) > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS in_trial
       FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
-      WHERE total = ${trialPrice}
+      WHERE trial_amount = 2 AND trial_days = 30
         AND created_at >= TIMESTAMP('${campaignStartDate}')
       GROUP BY week_start
       ORDER BY week_start
@@ -349,7 +349,7 @@ async function main() {
   const trialConfig = portalConfig.trialCampaign;
   console.log(`  Fetching trial metrics since ${trialConfig.startDate}...`);
   const [trialMetrics, fbSpend] = await Promise.all([
-    fetchTrialMetrics(trialConfig.startDate, trialConfig.trialPriceUSD),
+    fetchTrialMetrics(trialConfig.startDate),
     fetchFacebookAdSpend(trialConfig.startDate, trialConfig),
   ]);
 

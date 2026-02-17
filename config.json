@@ -25,9 +25,11 @@
   "trialCampaign": {
     "startDate": "2026-01-01",
     "trialPriceUSD": 2,
+    "trialDays": 30,
+    "fullPriceUSD": 47,
     "expectedRetentionRate": 0.50,
     "avgMonthsRetained": 3,
-    "avgPaidPriceUSD": 30,
+    "avgPaidPriceUSD": 47,
     "facebookAdsAccountId": "act_XXXXXXX",
     "manualAdSpendUSD": null
   }
