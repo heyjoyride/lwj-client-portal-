@@ -240,7 +240,8 @@ async function fetchTrialMetrics(campaignStartDate, trialPrice) {
 
 async function fetchFacebookAdSpend(startDate, trialConfig) {
   const fbToken = process.env.FB_ACCESS_TOKEN;
-  const fbAccountId = process.env.FB_AD_ACCOUNT_ID || trialConfig.facebookAdsAccountId;
+  const rawAccountId = process.env.FB_AD_ACCOUNT_ID || trialConfig.facebookAdsAccountId;
+  const fbAccountId = rawAccountId && !rawAccountId.startsWith('act_') ? `act_${rawAccountId}` : rawAccountId;
 
   if (!fbToken || !fbAccountId || fbAccountId === 'act_XXXXXXX') {
     const manualAUD = trialConfig.manualAdSpendAUD;
