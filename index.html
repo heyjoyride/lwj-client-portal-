@@ -189,6 +189,36 @@
     .cohort-cancelled { color: var(--red); font-weight: 700; }
     .cohort-in-trial { color: var(--blue); font-weight: 700; }
 
+    /* Trial ROI — Status Banner */
+    .roi-status-banner { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .roi-status-banner.negative { background: var(--red-bg); border-color: var(--red); }
+    .roi-status-banner.positive { background: var(--green-bg); border-color: var(--green); }
+    .roi-status-banner.neutral { background: var(--yellow-bg); border-color: var(--yellow); }
+    .roi-status-main { font-size: 15px; font-weight: 700; }
+    .roi-status-detail { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+
+    /* Trial ROI — Pipeline Funnel */
+    .pipeline-stages { display: flex; align-items: stretch; margin-top: 12px; }
+    .pipeline-step { flex: 1; padding: 16px 12px; background: var(--background); border: 2px solid var(--border); min-width: 0; }
+    .pipeline-step-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 8px; }
+    .pipeline-step-value { font-size: 22px; font-weight: 700; line-height: 1.1; margin-bottom: 4px; }
+    .pipeline-step-sub { font-size: 11px; color: var(--text-muted); }
+    .pipeline-conv { font-size: 11px; font-weight: 600; margin-top: 6px; padding: 2px 6px; display: inline-block; }
+    .pipeline-conv.good { color: var(--green); background: var(--green-bg); }
+    .pipeline-conv.poor { color: var(--red); background: var(--red-bg); }
+    .pipeline-conv.neutral { color: var(--blue); background: #eff6ff; }
+    .pipeline-arrow { display: flex; align-items: center; justify-content: center; width: 28px; flex-shrink: 0; font-size: 16px; color: var(--border); }
+    .pipeline-offer-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Trial ROI — AI Insights */
+    .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .insight.good { border-left-color: var(--green); background: var(--green-bg); }
+    .insight.warn { border-left-color: var(--red); background: var(--red-bg); }
+    .insight.info { border-left-color: var(--blue); background: #eff6ff; }
+    .insight-title { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+    .insight-body { font-size: 12px; color: var(--text); line-height: 1.55; }
+    .insight-action { font-size: 12px; font-style: italic; color: var(--text-muted); margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.07); line-height: 1.55; }
+
     .portal-footer { margin-top: 32px; padding: 24px 0; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
     .footer-brand { font-weight: 600; color: var(--primary); }
     .data-sources { display: flex; gap: 16px; align-items: center; }
@@ -762,119 +792,291 @@
     }
 
     // ── TRIAL ROI TAB ──
+    function generateInsights(roi, totalImpressions, totalClicks) {
+      const insights = [];
+      const netPerTrial = roi.projectedLtv - roi.costPerTrial;
+      const breakEvenMonths = roi.costPerTrial > 0 && roi.conversionRate > 0
+        ? (roi.costPerTrial / ((roi.conversionRate / 100) * roi.avgPaidPriceUSD)).toFixed(1) : null;
+      const expectedConversions = Math.round(roi.trialsInTrial * roi.conversionRate / 100);
+      const incomingLtv = expectedConversions * roi.avgPaidPriceUSD * roi.avgMonthsRetained;
+      const clickToTrial = totalClicks > 0 ? (roi.trialsStarted / totalClicks * 100) : 0;
+
+      // 1. ROI status + lever
+      if (roi.roiStatus === 'negative' && breakEvenMonths) {
+        insights.push({ level: 'warn', icon: '⚠️', title: 'Reduce CPT or extend retention to break even',
+          body: `Cost per trial (${fmt$(roi.costPerTrial)}) exceeds projected LTV (${fmt$(roi.projectedLtv)}) by ${fmt$(Math.abs(netPerTrial))}/trial on a ${roi.avgMonthsRetained}-month retention assumption.`,
+          action: `Break-even at ${breakEvenMonths} months avg retention. Or reduce CPT below ${fmt$(roi.projectedLtv)} — a ${Math.round((1 - roi.projectedLtv / roi.costPerTrial) * 100)}% reduction. Focus: lower CPM through better audience targeting.` });
+      } else if (roi.roiStatus === 'positive') {
+        insights.push({ level: 'good', icon: '✅', title: `Campaign is ROI positive — scale it`,
+          body: `Projected LTV (${fmt$(roi.projectedLtv)}) exceeds cost per trial (${fmt$(roi.costPerTrial)}) by ${fmt$(netPerTrial)}/trial.`,
+          action: `Each trial generates ${fmt$(netPerTrial)} projected profit. Increase budget on the best-performing campaign to accelerate growth.` });
+      } else if (roi.roiStatus === 'neutral') {
+        insights.push({ level: 'info', icon: '〜', title: 'Near break-even — small improvements tip it positive',
+          body: `Cost per trial (${fmt$(roi.costPerTrial)}) is close to projected LTV (${fmt$(roi.projectedLtv)}).`,
+          action: `A 10–15% CPT reduction or one additional month of avg retention would make this ROI positive. Prioritise month-2 retention emails.` });
+      }
+
+      // 2. Conversion strength
+      if (roi.conversionRate >= 50) {
+        insights.push({ level: 'good', icon: '🏆', title: `${roi.conversionRate}% trial conversion — world class`,
+          body: `Industry benchmark for paid trials is 15–20%. Your conversion rate means the product experience and onboarding are working exceptionally well.`,
+          action: `Conversion is not the bottleneck. Don't optimise what's working — focus energy on reducing cost per trial (CPT) instead.` });
+      } else if (roi.conversionRate >= 30) {
+        insights.push({ level: 'info', icon: '📈', title: `${roi.conversionRate}% conversion — above average`,
+          body: `Above industry benchmarks (15–20%). Review month-1 onboarding touchpoints to push conversion above 50%.`,
+          action: `A targeted "end of trial" email sequence 3–5 days before trial expiry is typically the highest-leverage conversion lever.` });
+      }
+
+      // 3. Pending pipeline
+      if (roi.trialsInTrial > 0) {
+        insights.push({ level: 'info', icon: '⏳', title: `${roi.trialsInTrial} trials active — ~${expectedConversions} conversions incoming`,
+          body: `At ${roi.conversionRate}% historical conversion, expect ~${expectedConversions} of the ${roi.trialsInTrial} active trial members to convert to paid membership.`,
+          action: `Projected incoming LTV: ~${fmt$(incomingLtv)} (${expectedConversions} × ${fmt$(roi.avgPaidPriceUSD)}/mo × ${roi.avgMonthsRetained} mo). Send a personalised check-in email before their trial expires.` });
+      }
+
+      // 4. Click-to-trial / offer acceptance
+      if (roi.offeredCount && roi.offeredCount > 0) {
+        const takeRate = (roi.trialsStarted / roi.offeredCount * 100).toFixed(1);
+        const improvementTrials = Math.round(roi.offeredCount * 0.25) - roi.trialsStarted;
+        insights.push({ level: parseFloat(takeRate) < 20 ? 'warn' : 'good', icon: '📧',
+          title: `${takeRate}% of contacts who received the offer signed up`,
+          body: `${fmtNum(roi.offeredCount)} contacts were sent the $2 trial offer via email. ${roi.trialsStarted} signed up.`,
+          action: improvementTrials > 0
+            ? `Improving offer acceptance to 25% would add ~${improvementTrials} more trials at zero additional ad spend. A/B test the email subject line and offer framing.`
+            : `Offer acceptance is strong. Maintain the current email sequence.` });
+      } else if (clickToTrial > 0) {
+        insights.push({ level: clickToTrial >= 1 ? 'good' : 'warn', icon: '🎯',
+          title: `${clickToTrial.toFixed(2)}% of ad clicks start a trial`,
+          body: `${fmtNum(totalClicks)} clicks produced ${roi.trialsStarted} trial sign-ups.`,
+          action: clickToTrial < 1
+            ? `Click-to-trial rate is below 1%. A/B test the trial landing page — headline, offer clarity, and friction reduction are highest leverage.`
+            : `Landing page is converting well. Focus on improving ad targeting to drive cheaper clicks.` });
+      }
+
+      // 5. Dominant campaign
+      if (roi.campaigns && roi.campaigns.length > 0 && roi.adSpend > 0) {
+        const top = [...roi.campaigns].sort((a, b) => b.spend - a.spend)[0];
+        const topPct = Math.round(top.spend / roi.adSpend * 100);
+        if (topPct >= 60) {
+          const topCtr = top.impressions > 0 ? (top.clicks / top.impressions * 100).toFixed(2) : '0';
+          insights.push({ level: 'info', icon: '📊',
+            title: `"${top.name.replace(/^HJR[\s\-–|]+/,'')}" is ${topPct}% of spend`,
+            body: `${fmt$(top.spend)} of ${fmt$(roi.adSpend)} total. CTR: ${topCtr}% across ${fmtNum(top.impressions)} impressions.`,
+            action: `Add UTM parameters to each campaign's trial link so MemberPress can attribute which campaign drives the most sign-ups. Currently attribution is blind.` });
+        }
+      }
+
+      return insights;
+    }
+
     function renderTrialRoi() {
       const roi = DATA.trialRoi;
       if (!roi) {
         document.getElementById('trial-roi-grid').innerHTML =
-          '<div class="loading" style="grid-column: span 12; color: var(--text-muted);">No trial ROI data available. Check config.json trialCampaign settings.</div>';
+          '<div class="loading" style="grid-column:span 12;color:var(--text-muted);">No trial ROI data available. Check config.json trialCampaign settings.</div>';
         return;
       }
 
-      // ROI Scorecard — 4 KPI cards
-      const scorecardHtml = `
-        <div class="block kpi-card accent">
+      // ── Computed values ──
+      const totalImpressions = (roi.campaigns||[]).reduce((s,c) => s+c.impressions, 0);
+      const totalClicks      = (roi.campaigns||[]).reduce((s,c) => s+c.clicks, 0);
+      const ctr              = totalImpressions > 0 ? (totalClicks/totalImpressions*100) : 0;
+      const clickToTrial     = totalClicks > 0 ? (roi.trialsStarted/totalClicks*100) : 0;
+      const netPerTrial      = roi.projectedLtv - roi.costPerTrial;
+      const totalLtvToDate   = roi.trialsConverted * roi.avgPaidPriceUSD * roi.avgMonthsRetained;
+      const expectedConv     = Math.round(roi.trialsInTrial * roi.conversionRate / 100);
+      const statusClass      = roi.roiStatus === 'positive' ? 'positive' : roi.roiStatus === 'neutral' ? 'neutral' : 'negative';
+
+      // ── 1. STATUS BANNER ──
+      const statusMessages = {
+        positive: { icon: '✓', main: `ROI Positive — LTV exceeds acquisition cost by ${fmt$(netPerTrial)}/trial`, badge: 'ROI Positive' },
+        neutral:  { icon: '〜', main: `Near Break-even — LTV and cost are within 10%`, badge: 'Near Break-even' },
+        negative: { icon: '!', main: `ROI Negative — cost per trial exceeds LTV by ${fmt$(Math.abs(netPerTrial))}/trial`, badge: 'Below Break-even' },
+        unknown:  { icon: '?', main: `Insufficient data — configure Facebook Ads API`, badge: 'Unknown' },
+      };
+      const sm = statusMessages[roi.roiStatus] || statusMessages.unknown;
+      const breakEvenMonths = roi.costPerTrial > 0 && roi.conversionRate > 0
+        ? (roi.costPerTrial / ((roi.conversionRate/100) * roi.avgPaidPriceUSD)).toFixed(1) : null;
+      const bannerDetail = roi.roiStatus === 'negative' && breakEvenMonths
+        ? `Break-even requires ~${breakEvenMonths} months avg retention (currently assuming ${roi.avgMonthsRetained}). Revenue from ${roi.trialsConverted} conversions to date: ${fmt$(totalLtvToDate)} projected.`
+        : `${roi.trialsConverted} trials converted. Projected LTV earned: ${fmt$(totalLtvToDate)}.`;
+
+      const bannerHtml = `
+        <div class="block roi-status-banner ${statusClass}" style="grid-column:span 12">
+          <div>
+            <div class="roi-status-main">${sm.icon} ${sm.main}</div>
+            <div class="roi-status-detail">${bannerDetail}</div>
+          </div>
+          <span class="roi-badge ${statusClass}" style="white-space:nowrap;flex-shrink:0">${sm.badge}</span>
+        </div>`;
+
+      // ── 2. FUNNEL PIPELINE ──
+      const funnelSteps = [
+        { label: 'Impressions', value: fmtNum(totalImpressions), sub: 'Facebook reach', color: 'var(--blue)', conv: null },
+        { label: 'Clicks', value: fmtNum(totalClicks), sub: `${ctr.toFixed(1)}% CTR`, color: 'var(--blue)',
+          conv: `${ctr.toFixed(1)}% CTR`, convClass: ctr >= 5 ? 'good' : 'poor' },
+        { label: 'Trials Started', value: fmtNum(roi.trialsStarted), sub: `${clickToTrial.toFixed(2)}% of clicks`,
+          color: 'var(--accent)', conv: `${clickToTrial.toFixed(2)}% to trial`, convClass: 'neutral' },
+        { label: 'Converted', value: fmtNum(roi.trialsConverted), sub: `${roi.conversionRate}% conversion`,
+          color: 'var(--green)', conv: `${roi.conversionRate}% converted`, convClass: 'good' },
+        { label: 'Projected LTV', value: fmt$(totalLtvToDate), sub: `${roi.trialsConverted} × ${fmt$(roi.avgPaidPriceUSD)} × ${roi.avgMonthsRetained}mo`,
+          color: 'var(--green)', conv: null },
+      ];
+
+      const offerNote = roi.offeredCount
+        ? `<div class="pipeline-offer-note">
+            <strong style="color:var(--primary)">${fmtNum(roi.offeredCount)}</strong> email contacts received the $2 trial offer (ActiveCampaign) →
+            <strong>${roi.trialsStarted}</strong> signed up =
+            <strong style="color:var(--accent)">${(roi.trialsStarted/roi.offeredCount*100).toFixed(1)}% offer acceptance rate</strong>
+            &mdash; this step sits between Clicks and Trials Started above.
+          </div>` : '';
+
+      const funnelHtml = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">Campaign Funnel</div>
+            <div style="font-size:12px;color:var(--text-muted)">Facebook Ads → MemberPress since ${roi.campaignStartDate}</div>
+          </div>
+          <div class="pipeline-stages">
+            ${funnelSteps.map((step, i) => `
+              <div class="pipeline-step">
+                <div class="pipeline-step-label">${step.label}</div>
+                <div class="pipeline-step-value" style="color:${step.color}">${step.value}</div>
+                <div class="pipeline-step-sub">${step.sub}</div>
+                ${step.conv ? `<div class="pipeline-conv ${step.convClass}">${step.conv}</div>` : ''}
+              </div>
+              ${i < funnelSteps.length - 1 ? '<div class="pipeline-arrow">→</div>' : ''}
+            `).join('')}
+          </div>
+          ${offerNote}
+        </div>`;
+
+      // ── 3. KPI CARDS ──
+      const kpiHtml = `
+        <div class="block kpi-card accent" style="grid-column:span 2">
           <div class="kpi-source">Facebook Ads</div>
           <div class="kpi-label">Total Ad Spend</div>
           <div class="kpi-value">${fmt$(roi.adSpend)}</div>
-          <div class="kpi-sub">USD since ${roi.campaignStartDate}${roi.adSpendSource === 'manual' ? ' (manual)' : roi.adSpendSource === 'none' ? ' (not configured)' : ''}</div>
+          <div class="kpi-sub">USD since ${roi.campaignStartDate}</div>
         </div>
-        <div class="block kpi-card primary">
-          <div class="kpi-source">MemberPress</div>
-          <div class="kpi-label">Trials Started</div>
-          <div class="kpi-value">${fmtNum(roi.trialsStarted)}</div>
-          <div class="kpi-sub">${fmtNum(roi.trialsInTrial)} in trial &bull; ${fmtNum(roi.trialsConverted)} converted &bull; ${fmtNum(roi.trialsCancelled)} cancelled</div>
-        </div>
-        <div class="block kpi-card ${roi.costPerTrial > roi.projectedLtv ? 'accent' : 'green'}">
+        <div class="block kpi-card ${roi.costPerTrial > roi.projectedLtv ? 'accent' : 'green'}" style="grid-column:span 2">
           <div class="kpi-source">Calculated</div>
           <div class="kpi-label">Cost Per Trial</div>
           <div class="kpi-value">${fmt$(roi.costPerTrial)}</div>
-          <div class="kpi-sub">Ad spend &#247; trials started</div>
+          <div class="kpi-sub">Target: ≤ ${fmt$(roi.projectedLtv)}</div>
         </div>
-        <div class="block kpi-card ${roi.conversionRate >= 50 ? 'green' : roi.conversionRate >= 25 ? 'primary' : 'accent'}">
-          <div class="kpi-source">Calculated</div>
+        <div class="block kpi-card ${roi.conversionRate >= 50 ? 'green' : 'primary'}" style="grid-column:span 2">
+          <div class="kpi-source">MemberPress</div>
           <div class="kpi-label">Conversion Rate</div>
           <div class="kpi-value">${fmtPct(roi.conversionRate)}</div>
-          <div class="kpi-sub">Completed trials: converted vs cancelled</div>
+          <div class="kpi-sub">Trial → Paid (completed trials)</div>
         </div>
-        <div class="block kpi-card green">
+        <div class="block kpi-card green" style="grid-column:span 2">
           <div class="kpi-source">Projected</div>
           <div class="kpi-label">LTV per Trial</div>
           <div class="kpi-value">${fmt$(roi.projectedLtv)}</div>
-          <div class="kpi-sub">${fmtPct(roi.conversionRate)} &times; ${fmt$(roi.avgPaidPriceUSD)} &times; ${roi.avgMonthsRetained} mo</div>
+          <div class="kpi-sub">${fmtPct(roi.conversionRate)} × ${fmt$(roi.avgPaidPriceUSD)} × ${roi.avgMonthsRetained}mo</div>
         </div>
-        <div class="block kpi-card ${roi.roiStatus === 'positive' ? 'green' : roi.roiStatus === 'neutral' ? 'primary' : 'accent'}">
+        <div class="block kpi-card ${netPerTrial >= 0 ? 'green' : 'accent'}" style="grid-column:span 2">
           <div class="kpi-source">ROI</div>
           <div class="kpi-label">Net per Trial</div>
-          <div class="kpi-value">${roi.costPerTrial > 0 ? (roi.projectedLtv >= roi.costPerTrial ? '+' : '') + fmt$(roi.projectedLtv - roi.costPerTrial) : '—'}</div>
+          <div class="kpi-value" style="color:${netPerTrial >= 0 ? 'var(--green)' : 'var(--red)'}">${netPerTrial >= 0 ? '+' : ''}${fmt$(netPerTrial)}</div>
           <div class="kpi-sub">LTV minus cost per trial</div>
+        </div>
+        <div class="block kpi-card primary" style="grid-column:span 2">
+          <div class="kpi-source">Forecast</div>
+          <div class="kpi-label">Pending Conversions</div>
+          <div class="kpi-value">${fmtNum(expectedConv)}</div>
+          <div class="kpi-sub">${roi.trialsInTrial} in trial × ${roi.conversionRate}% rate</div>
         </div>`;
 
-      // Break-even meter
-      const maxVal = Math.max(roi.costPerTrial, roi.projectedLtv, 1) * 1.3;
-      const ltvPct = Math.round((roi.projectedLtv / maxVal) * 100);
-      const breakEvenPct = roi.costPerTrial > 0 ? Math.round((roi.costPerTrial / maxVal) * 100) : 0;
-      const roiStatusClass = roi.roiStatus === 'positive' ? 'roi-positive'
-        : roi.roiStatus === 'neutral' ? 'roi-neutral'
-        : roi.roiStatus === 'negative' ? 'roi-negative'
-        : 'roi-unknown';
-      const roiBadgeClass = roi.roiStatus === 'positive' ? 'positive'
-        : roi.roiStatus === 'neutral' ? 'neutral'
-        : roi.roiStatus === 'negative' ? 'negative'
-        : 'unknown';
-      const roiStatusLabel = roi.roiStatus === 'positive' ? '&#128994; ROI Positive'
-        : roi.roiStatus === 'neutral' ? '&#128993; Near Break-even'
-        : roi.roiStatus === 'negative' ? '&#128308; Below Break-even'
-        : '&#9898; Insufficient data';
-      const roiNote = roi.roiStatus === 'positive'
-        ? `Projected LTV (${fmt$(roi.projectedLtv)}) exceeds cost per trial (${fmt$(roi.costPerTrial)}). Campaign is ROI positive.`
-        : roi.roiStatus === 'neutral'
-        ? `Projected LTV (${fmt$(roi.projectedLtv)}) is close to cost per trial (${fmt$(roi.costPerTrial)}). More data needed.`
-        : roi.roiStatus === 'negative'
-        ? `Cost per trial (${fmt$(roi.costPerTrial)}) exceeds projected LTV (${fmt$(roi.projectedLtv)}). Review targeting or improve conversion.`
-        : `Not enough data to calculate ROI. Set ad spend in config.json or connect Facebook Ads API.`;
-
-      const meterBlock = `
-        <div class="block meter-block">
-          <div class="block-header"><div class="block-title">Break-Even Analysis</div></div>
-          <div class="meter-wrap">
-            <div class="meter-label-row">
-              <span>$0</span>
-              <span>Break-even: ${fmt$(roi.costPerTrial)}</span>
-              <span>${fmt$(Math.round(maxVal))}</span>
-            </div>
-            <div class="meter-track">
-              <div class="meter-fill ${roiStatusClass}" style="width: ${ltvPct}%;">${ltvPct > 15 ? fmt$(roi.projectedLtv) + ' LTV' : ''}</div>
-              ${roi.costPerTrial > 0 ? `<div class="meter-breakeven" style="left: ${breakEvenPct}%;"><div class="meter-breakeven-label">Break-even</div></div>` : ''}
-            </div>
-            <div class="meter-status-row">
-              <span class="roi-badge ${roiBadgeClass}">${roiStatusLabel}</span>
-              <span class="roi-note">${roiNote}</span>
-            </div>
+      // ── 4. AI INSIGHTS ──
+      const insights = generateInsights(roi, totalImpressions, totalClicks);
+      const insightsHtml = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">AI Insights &amp; Recommendations</div>
+            <div style="font-size:12px;color:var(--text-muted)">Auto-generated from live data</div>
+          </div>
+          <div class="insights-grid">
+            ${insights.map(ins => `
+              <div class="insight ${ins.level}">
+                <div class="insight-title">${ins.icon} ${ins.title}</div>
+                <div class="insight-body">${ins.body}</div>
+                <div class="insight-action">${ins.action}</div>
+              </div>`).join('')}
           </div>
         </div>`;
 
-      // Cohort table
+      // ── 5. CAMPAIGN TABLE ──
+      const campaignRows = roi.campaigns && roi.campaigns.length > 0
+        ? roi.campaigns.map(c => {
+            const ctrC = c.impressions > 0 ? (c.clicks/c.impressions*100).toFixed(2) : '0.00';
+            return `<tr>
+              <td><span class="source-name">${c.name}</span></td>
+              <td class="right">${fmt$(c.spend)}</td>
+              <td class="right">${fmtNum(c.impressions)}</td>
+              <td class="right">${fmtNum(c.clicks)}</td>
+              <td class="right">${ctrC}%</td>
+            </tr>`;
+          }).join('')
+        : '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No campaign data. Add FB_ACCESS_TOKEN and FB_AD_ACCOUNT_ID to GitHub Secrets.</td></tr>';
+
+      const totalSpend = (roi.campaigns||[]).reduce((s,c)=>s+c.spend,0);
+      const totalImp   = (roi.campaigns||[]).reduce((s,c)=>s+c.impressions,0);
+      const totalClk   = (roi.campaigns||[]).reduce((s,c)=>s+c.clicks,0);
+      const totalCtr   = totalImp > 0 ? (totalClk/totalImp*100).toFixed(2) : '0.00';
+
+      const campaignBlock = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">Campaign Breakdown (Facebook Ads)</div>
+            <div style="font-size:12px;color:var(--text-muted)">Since ${roi.campaignStartDate} &bull; USD</div>
+          </div>
+          <table class="data-table">
+            <thead><tr>
+              <th>Campaign</th><th class="right">Spend (USD)</th>
+              <th class="right">Impressions</th><th class="right">Clicks</th><th class="right">CTR</th>
+            </tr></thead>
+            <tbody>
+              ${campaignRows}
+              ${roi.campaigns && roi.campaigns.length > 0 ? `
+              <tr class="summary-row">
+                <td><span class="source-name">All Campaigns</span></td>
+                <td class="right">${fmt$(totalSpend)}</td>
+                <td class="right">${fmtNum(totalImp)}</td>
+                <td class="right">${fmtNum(totalClk)}</td>
+                <td class="right">${totalCtr}%</td>
+              </tr>` : ''}
+            </tbody>
+          </table>
+        </div>`;
+
+      // ── 6. COHORT TABLE ──
       function fmtWeekRange(isoDate) {
         const start = new Date(isoDate + 'T00:00:00');
-        const end = new Date(start);
-        end.setDate(end.getDate() + 6);
-        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        if (start.getMonth() === end.getMonth()) {
-          return `${months[start.getMonth()]} ${start.getDate()}–${end.getDate()}`;
-        }
-        return `${months[start.getMonth()]} ${start.getDate()} – ${months[end.getMonth()]} ${end.getDate()}`;
+        const end = new Date(start); end.setDate(end.getDate() + 6);
+        const m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        return start.getMonth() === end.getMonth()
+          ? `${m[start.getMonth()]} ${start.getDate()}–${end.getDate()}`
+          : `${m[start.getMonth()]} ${start.getDate()} – ${m[end.getMonth()]} ${end.getDate()}`;
       }
 
       const cohortRows = roi.cohorts.length > 0
-        ? roi.cohorts.map(c => `
-          <tr>
-            <td><span class="cohort-week">${fmtWeekRange(c.week)}</span></td>
-            <td class="right">${fmtNum(c.started)}</td>
-            <td class="right">${c.converted > 0 ? `<span class="cohort-converted">${fmtNum(c.converted)}</span>` : '<span class="cohort-dash">—</span>'}</td>
-            <td class="right">${c.cancelled > 0 ? `<span class="cohort-cancelled">${fmtNum(c.cancelled)}</span>` : '<span class="cohort-dash">—</span>'}</td>
-            <td class="right">${c.inTrial > 0 ? `<span class="cohort-in-trial">${fmtNum(c.inTrial)}</span>` : '<span class="cohort-dash">—</span>'}</td>
-          </tr>`).join('')
-        : '<tr><td colspan="5" style="text-align:center; color: var(--text-muted); padding: 24px;">No trial sign-ups found since campaign start date. Check trialPriceAUD and startDate in config.json.</td></tr>';
+        ? roi.cohorts.map(c => {
+            const completed = c.converted + c.cancelled;
+            const rate = completed > 0 ? Math.round(c.converted / completed * 100) : null;
+            const expConv = c.inTrial > 0 ? Math.round(c.inTrial * roi.conversionRate / 100) : null;
+            return `<tr>
+              <td><span class="cohort-week">${fmtWeekRange(c.week)}</span></td>
+              <td class="right">${fmtNum(c.started)}</td>
+              <td class="right">${c.converted > 0 ? `<span class="cohort-converted">${fmtNum(c.converted)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+              <td class="right">${c.cancelled > 0 ? `<span class="cohort-cancelled">${fmtNum(c.cancelled)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+              <td class="right">${c.inTrial > 0 ? `<span class="cohort-in-trial">${fmtNum(c.inTrial)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+              <td class="right">${rate !== null ? `<span style="font-weight:600;color:${rate>=50?'var(--green)':rate>=30?'var(--yellow)':'var(--red)'}">${rate}%</span>` : expConv !== null ? `<span style="color:var(--blue);font-size:12px">~${expConv} exp.</span>` : '<span class="cohort-dash">—</span>'}</td>
+            </tr>`;
+          }).join('')
+        : '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:24px;">No trial sign-ups found since campaign start date.</td></tr>';
 
       const cohortBlock = `
         <div class="block full-block">
@@ -887,75 +1089,22 @@
             </div>
           </div>
           <table class="data-table">
-            <thead>
-              <tr>
-                <th>Week</th>
-                <th class="right">Trials</th>
-                <th class="right">Converted</th>
-                <th class="right">Cancelled</th>
-                <th class="right">In Trial</th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th>Week</th><th class="right">Started</th>
+              <th class="right">Converted</th><th class="right">Cancelled</th>
+              <th class="right">In Trial</th><th class="right">Conv Rate</th>
+            </tr></thead>
             <tbody>${cohortRows}</tbody>
           </table>
           <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">
-            <strong>Converted</strong> = active trials older than 30 days (presumed retained) &bull;
-            <strong>In Trial</strong> = active trials less than 30 days old
+            <strong>Converted</strong> = active, trial &gt; 30 days old (presumed retained) &bull;
+            <strong>In Trial</strong> = active, &lt; 30 days &bull;
+            <strong style="color:var(--blue)">~exp.</strong> = expected conversions at ${roi.conversionRate}% rate
           </div>
-        </div>`;
-
-      // Campaign breakdown table
-      const campaignRows = roi.campaigns && roi.campaigns.length > 0
-        ? roi.campaigns.map(c => {
-            const ctr = c.impressions > 0 ? ((c.clicks / c.impressions) * 100).toFixed(2) : '0.00';
-            return `
-              <tr>
-                <td><span class="source-name">${c.name}</span></td>
-                <td class="right">${fmt$(c.spend)}</td>
-                <td class="right">${fmtNum(c.impressions)}</td>
-                <td class="right">${fmtNum(c.clicks)}</td>
-                <td class="right">${ctr}%</td>
-              </tr>`;
-          }).join('')
-        : '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No campaign data. Add FB_ACCESS_TOKEN and FB_AD_ACCOUNT_ID to GitHub Secrets.</td></tr>';
-
-      const totalCampaignSpend = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.spend, 0) : 0;
-      const totalImpressions = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.impressions, 0) : 0;
-      const totalClicks = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.clicks, 0) : 0;
-      const totalCtr = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : '0.00';
-
-      const campaignBlock = `
-        <div class="block full-block">
-          <div class="block-header">
-            <div class="block-title">Campaign Breakdown (Facebook Ads)</div>
-            <div style="font-size:12px;color:var(--text-muted);">Since ${roi.campaignStartDate} &bull; USD</div>
-          </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Campaign</th>
-                <th class="right">Spend (AUD)</th>
-                <th class="right">Impressions</th>
-                <th class="right">Clicks</th>
-                <th class="right">CTR</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${campaignRows}
-              ${roi.campaigns && roi.campaigns.length > 0 ? `
-              <tr class="summary-row">
-                <td><span class="source-name">All Campaigns</span></td>
-                <td class="right">${fmt$(totalCampaignSpend)}</td>
-                <td class="right">${fmtNum(totalImpressions)}</td>
-                <td class="right">${fmtNum(totalClicks)}</td>
-                <td class="right">${totalCtr}%</td>
-              </tr>` : ''}
-            </tbody>
-          </table>
         </div>`;
 
       document.getElementById('trial-roi-grid').innerHTML =
-        scorecardHtml + meterBlock + campaignBlock + cohortBlock;
+        bannerHtml + funnelHtml + kpiHtml + insightsHtml + campaignBlock + cohortBlock;
     }
 
     // ── RENDER ALL ──

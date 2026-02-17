@@ -31,6 +31,7 @@
     "avgMonthsRetained": 3,
     "avgPaidPriceUSD": 47,
     "facebookAdsAccountId": "act_XXXXXXX",
-    "manualAdSpendUSD": null
+    "manualAdSpendUSD": null,
+    "acTrialOfferTagId": 365
   }
 }

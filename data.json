@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-17T10:42:10.339Z",
+    "generatedAt": "2026-02-17T10:51:37.621Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -82,19 +82,20 @@
     ]
   },
   "trialRoi": {
-    "adSpend": 9102.68,
-    "adSpendSource": "facebook_api",
+    "adSpend": 0,
+    "adSpendSource": "none",
     "campaignStartDate": "2026-01-01",
     "trialsStarted": 86,
     "trialsConverted": 30,
     "trialsCancelled": 23,
     "trialsInTrial": 32,
-    "costPerTrial": 105.85,
+    "costPerTrial": 0,
     "conversionRate": 56.6,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
     "projectedLtv": 79.81,
-    "roiStatus": "negative",
+    "roiStatus": "unknown",
+    "offeredCount": 484,
     "cohorts": [
       {
         "week": "2025-12-29",
@@ -146,44 +147,7 @@
         "inTrial": 3
       }
     ],
-    "campaigns": [
-      {
-        "name": "HJR - Lucy's Letter - RE -14/01/26",
-        "spend": 7075.75,
-        "impressions": 74776,
-        "clicks": 9302
-      },
-      {
-        "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 1655.43,
-        "impressions": 57273,
-        "clicks": 3513
-      },
-      {
-        "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 168.41,
-        "impressions": 2920,
-        "clicks": 90
-      },
-      {
-        "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 155.79,
-        "impressions": 4804,
-        "clicks": 174
-      },
-      {
-        "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 40.45,
-        "impressions": 1327,
-        "clicks": 59
-      },
-      {
-        "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 6.85,
-        "impressions": 189,
-        "clicks": 2
-      }
-    ]
+    "campaigns": []
   },
   "periods": {
     "7d": {
@@ -1071,15 +1035,15 @@
         "totalActiveSubs": 2538,
         "activeSubsChange": -10.9,
         "totalMrr": 448434,
-        "newSignups": 264,
-        "signupsChange": -72.8,
-        "retentionRate": 79.9,
-        "retentionChange": 48.2,
+        "newSignups": 267,
+        "signupsChange": -72.5,
+        "retentionRate": 79.8,
+        "retentionChange": 48.1,
         "websiteSessions": 9386,
         "sessionsChange": 0,
-        "conversionRate": 2.81,
-        "churned": 40,
-        "churnChange": -89.9
+        "conversionRate": 2.84,
+        "churned": 41,
+        "churnChange": -89.7
       },
       "funnel": [
         {
@@ -1089,12 +1053,12 @@
         },
         {
           "stage": "New Signups",
-          "value": 264,
+          "value": 267,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 211,
+          "value": 213,
           "source": "memberpress"
         }
       ],
@@ -1125,6 +1089,11 @@
         }
       ],
       "dailySignups": [
+        {
+          "day": "2025-12-31",
+          "newSubs": 3,
+          "stillActive": 2
+        },
         {
           "day": "2026-01-01",
           "newSubs": 7,
@@ -1388,8 +1357,8 @@
       "subscriptionBreakdown": {
         "monthly": 1418,
         "annual": 1101,
-        "newActive": 211,
-        "newCancelled": 40,
+        "newActive": 213,
+        "newCancelled": 41,
         "newPending": 11,
         "newSuspended": 2
       }

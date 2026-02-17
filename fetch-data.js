@@ -337,6 +337,59 @@ async function buildPeriod(startDate, endDate, prevStart, prevEnd, globalState) 
   };
 }
 
+// ─── ACTIVECAMPAIGN — OFFER COUNT ─────────────────────────────────────────────
+async function fetchACOfferedCount(tagId) {
+  if (!tagId) return { offeredCount: null };
+  try {
+    const { GoogleAuth } = require('google-auth-library');
+    const https = require('https');
+    const auth = new GoogleAuth({ scopes: ['https://www.googleapis.com/auth/cloud-platform'] });
+    const client = await auth.getClient();
+    const token = await client.getAccessToken();
+
+    async function getSecret(name) {
+      return new Promise((resolve, reject) => {
+        https.get({
+          hostname: 'secretmanager.googleapis.com',
+          path: `/v1/projects/${CONFIG.projectId}/secrets/${name}/versions/latest:access`,
+          headers: { 'Authorization': 'Bearer ' + token.token },
+        }, res => {
+          let data = '';
+          res.on('data', d => data += d);
+          res.on('end', () => {
+            const parsed = JSON.parse(data);
+            if (parsed.payload?.data) resolve(Buffer.from(parsed.payload.data, 'base64').toString('utf8').trim());
+            else reject(new Error('Secret not found: ' + name));
+          });
+        }).on('error', reject);
+      });
+    }
+
+    async function httpsGet(url, headers) {
+      return new Promise((resolve, reject) => {
+        const u = new URL(url);
+        https.get({ hostname: u.hostname, path: u.pathname + u.search, headers }, res => {
+          let data = '';
+          res.on('data', d => data += d);
+          res.on('end', () => resolve(JSON.parse(data)));
+        }).on('error', reject);
+      });
+    }
+
+    const [apiUrl, apiKey] = await Promise.all([
+      getSecret('activecampaign-api-url'),
+      getSecret('activecampaign-api-key'),
+    ]);
+    const tagData = await httpsGet(`${apiUrl}/api/3/tags/${tagId}`, { 'Api-Token': apiKey });
+    const count = parseInt(tagData.tag?.subscriber_count || '0', 10);
+    console.log(`  AC trial offer tag [${tagId}]: ${count} contacts offered`);
+    return { offeredCount: count };
+  } catch (e) {
+    console.warn(`  AC offered count unavailable: ${e.message}`);
+    return { offeredCount: null };
+  }
+}
+
 // ─── MAIN ──────────────────────────────────────────────────────────────────────
 async function main() {
   console.log('Fetching data from BigQuery...\n');
@@ -348,9 +401,10 @@ async function main() {
   // Trial ROI
   const trialConfig = portalConfig.trialCampaign;
   console.log(`  Fetching trial metrics since ${trialConfig.startDate}...`);
-  const [trialMetrics, fbSpend] = await Promise.all([
+  const [trialMetrics, fbSpend, acOffer] = await Promise.all([
     fetchTrialMetrics(trialConfig.startDate),
     fetchFacebookAdSpend(trialConfig.startDate, trialConfig),
+    fetchACOfferedCount(trialConfig.acTrialOfferTagId),
   ]);
 
   const costPerTrial = trialMetrics.trialsStarted > 0
@@ -364,7 +418,7 @@ async function main() {
     : roiRatio > -0.1 ? 'neutral'
     : 'negative';
 
-  console.log(`  Trials: ${trialMetrics.trialsStarted} started | ${trialMetrics.trialsConverted} converted | Ad spend: $${fbSpend.totalSpendAUD} AUD`);
+  console.log(`  Trials: ${trialMetrics.trialsStarted} started | ${trialMetrics.trialsConverted} converted | Ad spend: $${fbSpend.totalSpendUSD || 0} USD`);
 
   // Define periods with their comparison ranges
   const periods = {
@@ -405,6 +459,7 @@ async function main() {
       avgMonthsRetained: trialConfig.avgMonthsRetained,
       projectedLtv,
       roiStatus,
+      offeredCount: acOffer.offeredCount,
       cohorts: trialMetrics.cohortsByWeek,
       campaigns: fbSpend.campaigns || [],
     },
