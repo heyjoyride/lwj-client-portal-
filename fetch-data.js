@@ -21,6 +21,8 @@ const CONFIG = {
   outputPath: path.join(__dirname, 'data.json'),
 };
 
+const portalConfig = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json'), 'utf8'));
+
 const bq = new BigQuery({ projectId: CONFIG.projectId, location: CONFIG.location });
 
 // ─── DATE HELPERS ──────────────────────────────────────────────────────────────
@@ -182,6 +184,95 @@ function classifyTrafficSource(source, medium) {
   return 'Direct';
 }
 
+// ─── TRIAL ROI QUERIES ─────────────────────────────────────────────────────────
+async function fetchTrialMetrics(campaignStartDate, trialPrice) {
+  const ds = CONFIG.memberPress.dataset;
+
+  const [[summaryRow], [cohortRows]] = await Promise.all([
+    bq.query({ query: `
+      SELECT
+        COUNT(*) AS trials_started,
+        COUNTIF(status = 'active') AS trials_active,
+        COUNTIF(status = 'cancelled') AS trials_cancelled,
+        COUNTIF(status = 'pending') AS trials_pending,
+        COUNTIF(status = 'active' AND DATE(created_at) <= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS trials_converted,
+        COUNTIF(status = 'active' AND DATE(created_at) > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS trials_in_trial
+      FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
+      WHERE total = ${trialPrice}
+        AND created_at >= TIMESTAMP('${campaignStartDate}')
+    ` }),
+    bq.query({ query: `
+      SELECT
+        DATE_TRUNC(DATE(created_at), WEEK(MONDAY)) AS week_start,
+        COUNT(*) AS started,
+        COUNTIF(status = 'active' AND DATE(created_at) <= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS converted,
+        COUNTIF(status = 'cancelled') AS cancelled,
+        COUNTIF(status = 'active' AND DATE(created_at) > DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)) AS in_trial
+      FROM \`${CONFIG.projectId}.${ds}.Mepr_Subscriptions\`
+      WHERE total = ${trialPrice}
+        AND created_at >= TIMESTAMP('${campaignStartDate}')
+      GROUP BY week_start
+      ORDER BY week_start
+    ` }),
+  ]);
+
+  const s = summaryRow[0] || {};
+  const completedTrials = Number(s.trials_converted || 0) + Number(s.trials_cancelled || 0);
+
+  return {
+    trialsStarted: Number(s.trials_started || 0),
+    trialsActive: Number(s.trials_active || 0),
+    trialsCancelled: Number(s.trials_cancelled || 0),
+    trialsPending: Number(s.trials_pending || 0),
+    trialsConverted: Number(s.trials_converted || 0),
+    trialsInTrial: Number(s.trials_in_trial || 0),
+    conversionRate: completedTrials > 0
+      ? Math.round((Number(s.trials_converted || 0) / completedTrials) * 1000) / 10 : 0,
+    cohortsByWeek: cohortRows.map(r => ({
+      week: r.week_start.value,
+      started: Number(r.started),
+      converted: Number(r.converted),
+      cancelled: Number(r.cancelled),
+      inTrial: Number(r.in_trial),
+    })),
+  };
+}
+
+async function fetchFacebookAdSpend(startDate, trialConfig) {
+  const fbToken = process.env.FB_ACCESS_TOKEN;
+  const fbAccountId = process.env.FB_AD_ACCOUNT_ID || trialConfig.facebookAdsAccountId;
+
+  if (!fbToken || !fbAccountId || fbAccountId === 'act_XXXXXXX') {
+    const manualAUD = trialConfig.manualAdSpendAUD;
+    if (manualAUD !== null && manualAUD !== undefined) {
+      console.log(`  Facebook Ads: manual spend override $${manualAUD} AUD`);
+      return { totalSpendAUD: manualAUD, totalSpendUSD: null, source: 'manual' };
+    }
+    console.log('  Facebook Ads: no token/account configured, spend = $0');
+    return { totalSpendAUD: 0, totalSpendUSD: null, source: 'none' };
+  }
+
+  try {
+    const today = fmt(new Date());
+    const url = `https://graph.facebook.com/v21.0/${fbAccountId}/insights?fields=spend&time_range={"since":"${startDate}","until":"${today}"}&level=account&access_token=${fbToken}`;
+    const response = await fetch(url);
+    const json = await response.json();
+
+    if (json.error) throw new Error(json.error.message);
+
+    const spendUSD = json.data && json.data[0] ? parseFloat(json.data[0].spend || 0) : 0;
+    const rate = trialConfig.usdToAudRate || 1.57;
+    const spendAUD = Math.round(spendUSD * rate * 100) / 100;
+
+    console.log(`  Facebook Ads: $${spendUSD} USD → $${spendAUD} AUD (rate: ${rate})`);
+    return { totalSpendAUD: spendAUD, totalSpendUSD: spendUSD, source: 'facebook_api' };
+  } catch (err) {
+    console.error('  Facebook Ads API error:', err.message);
+    const manualAUD = trialConfig.manualAdSpendAUD;
+    return { totalSpendAUD: manualAUD || 0, totalSpendUSD: null, source: 'fallback' };
+  }
+}
+
 // ─── BUILD PERIOD DATA ─────────────────────────────────────────────────────────
 function pctChange(current, previous) {
   if (!previous) return 0;
@@ -245,6 +336,27 @@ async function main() {
   const globalState = await fetchGlobalSubState();
   console.log(`  Active subs: ${globalState.totalActive} | MRR: $${globalState.totalMrr.toLocaleString()}`);
 
+  // Trial ROI
+  const trialConfig = portalConfig.trialCampaign;
+  console.log(`  Fetching trial metrics since ${trialConfig.startDate}...`);
+  const [trialMetrics, fbSpend] = await Promise.all([
+    fetchTrialMetrics(trialConfig.startDate, trialConfig.trialPriceAUD),
+    fetchFacebookAdSpend(trialConfig.startDate, trialConfig),
+  ]);
+
+  const costPerTrial = trialMetrics.trialsStarted > 0
+    ? Math.round((fbSpend.totalSpendAUD / trialMetrics.trialsStarted) * 100) / 100 : 0;
+  const projectedLtv = Math.round(
+    (trialMetrics.conversionRate / 100) * trialConfig.avgPaidPriceAUD * trialConfig.avgMonthsRetained * 100
+  ) / 100;
+  const roiRatio = costPerTrial > 0 ? (projectedLtv - costPerTrial) / costPerTrial : null;
+  const roiStatus = roiRatio === null ? 'unknown'
+    : roiRatio > 0.2 ? 'positive'
+    : roiRatio > -0.1 ? 'neutral'
+    : 'negative';
+
+  console.log(`  Trials: ${trialMetrics.trialsStarted} started | ${trialMetrics.trialsConverted} converted | Ad spend: $${fbSpend.totalSpendAUD} AUD`);
+
   // Define periods with their comparison ranges
   const periods = {
     '7d':  { ...getDateRange(7),  prev: getDateRange(14) },
@@ -260,7 +372,7 @@ async function main() {
   const output = {
     meta: {
       generatedAt: new Date().toISOString(),
-      sources: ['memberpress', 'ga4'],
+      sources: ['memberpress', 'ga4', 'facebook_ads'],
     },
     globalState: {
       totalActive: globalState.totalActive,
@@ -269,6 +381,22 @@ async function main() {
       annualSubs: globalState.annualSubs,
       plans: globalState.plans,
       allStatuses: globalState.allStatuses,
+    },
+    trialRoi: {
+      adSpend: fbSpend.totalSpendAUD,
+      adSpendSource: fbSpend.source,
+      campaignStartDate: trialConfig.startDate,
+      trialsStarted: trialMetrics.trialsStarted,
+      trialsConverted: trialMetrics.trialsConverted,
+      trialsCancelled: trialMetrics.trialsCancelled,
+      trialsInTrial: trialMetrics.trialsInTrial,
+      costPerTrial,
+      conversionRate: trialMetrics.conversionRate,
+      avgPaidPriceAUD: trialConfig.avgPaidPriceAUD,
+      avgMonthsRetained: trialConfig.avgMonthsRetained,
+      projectedLtv,
+      roiStatus,
+      cohorts: trialMetrics.cohortsByWeek,
     },
     periods: {},
   };

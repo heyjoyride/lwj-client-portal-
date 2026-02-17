@@ -162,6 +162,33 @@
 
     .loading { text-align: center; padding: 60px; color: var(--text-muted); font-size: 14px; }
 
+    /* Break-even meter */
+    .meter-block { grid-column: span 12; }
+    .meter-wrap { margin-top: 8px; }
+    .meter-label-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+    .meter-track { position: relative; height: 28px; background: #f3f4f6; border: 1px solid var(--border); overflow: visible; }
+    .meter-fill { height: 100%; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: #fff; transition: width 0.6s ease; min-width: 60px; }
+    .meter-fill.roi-positive { background: var(--green); }
+    .meter-fill.roi-neutral { background: var(--yellow); }
+    .meter-fill.roi-negative { background: var(--red); }
+    .meter-fill.roi-unknown { background: var(--text-muted); }
+    .meter-breakeven { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--primary); }
+    .meter-breakeven-label { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 600; color: var(--primary); white-space: nowrap; }
+    .meter-status-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+    .roi-badge { display: inline-block; padding: 4px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .roi-badge.positive { background: var(--green-bg); color: var(--green); }
+    .roi-badge.neutral { background: var(--yellow-bg); color: var(--yellow); }
+    .roi-badge.negative { background: var(--red-bg); color: var(--red); }
+    .roi-badge.unknown { background: #f3f4f6; color: var(--text-muted); }
+    .roi-note { font-size: 12px; color: var(--text-muted); }
+
+    /* Cohort table */
+    .cohort-week { font-size: 13px; font-weight: 600; color: var(--primary); }
+    .cohort-dash { color: var(--text-muted); font-size: 13px; }
+    .cohort-converted { color: var(--green); font-weight: 700; }
+    .cohort-cancelled { color: var(--red); font-weight: 700; }
+    .cohort-in-trial { color: var(--blue); font-weight: 700; }
+
     .portal-footer { margin-top: 32px; padding: 24px 0; border-top: 2px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
     .footer-brand { font-weight: 600; color: var(--primary); }
     .data-sources { display: flex; gap: 16px; align-items: center; }
@@ -249,6 +276,7 @@
         <a class="active" data-tab="overview">Overview</a>
         <a data-tab="memberships">Memberships</a>
         <a data-tab="analytics">Analytics</a>
+        <a data-tab="trial-roi">Trial ROI</a>
       </nav>
       <div class="updated" id="last-updated">Loading...</div>
     </div>
@@ -286,11 +314,19 @@
       </div>
     </div>
 
+    <!-- TRIAL ROI TAB -->
+    <div class="tab-content" id="tab-trial-roi">
+      <div class="bento-grid" id="trial-roi-grid">
+        <div class="loading" style="grid-column: span 12;">Loading trial ROI data...</div>
+      </div>
+    </div>
+
     <footer class="portal-footer">
       <div><span class="footer-brand">Lucy Walker Jewelry</span> &mdash; Client Portal</div>
       <div class="data-sources">
         <span class="data-source-tag">&#9679; MemberPress</span>
         <span class="data-source-tag">&#9679; GA4</span>
+        <span class="data-source-tag">&#9679; Facebook Ads</span>
         <span>Data refreshed daily &bull; Powered by 8020agent</span>
       </div>
     </footer>
@@ -725,6 +761,153 @@
         statsHtml + sessionsChartBlock + sourceTableBlock;
     }
 
+    // ── TRIAL ROI TAB ──
+    function renderTrialRoi() {
+      const roi = DATA.trialRoi;
+      if (!roi) {
+        document.getElementById('trial-roi-grid').innerHTML =
+          '<div class="loading" style="grid-column: span 12; color: var(--text-muted);">No trial ROI data available. Check config.json trialCampaign settings.</div>';
+        return;
+      }
+
+      // ROI Scorecard — 4 KPI cards
+      const scorecardHtml = `
+        <div class="block kpi-card accent">
+          <div class="kpi-source">Facebook Ads</div>
+          <div class="kpi-label">Total Ad Spend</div>
+          <div class="kpi-value">${fmt$(roi.adSpend)}</div>
+          <div class="kpi-sub">AUD since ${roi.campaignStartDate}${roi.adSpendSource === 'manual' ? ' (manual)' : roi.adSpendSource === 'none' ? ' (not configured)' : ''}</div>
+        </div>
+        <div class="block kpi-card primary">
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">Trials Started</div>
+          <div class="kpi-value">${fmtNum(roi.trialsStarted)}</div>
+          <div class="kpi-sub">${fmtNum(roi.trialsInTrial)} in trial &bull; ${fmtNum(roi.trialsConverted)} converted &bull; ${fmtNum(roi.trialsCancelled)} cancelled</div>
+        </div>
+        <div class="block kpi-card ${roi.costPerTrial > roi.projectedLtv ? 'accent' : 'green'}">
+          <div class="kpi-source">Calculated</div>
+          <div class="kpi-label">Cost Per Trial</div>
+          <div class="kpi-value">${fmt$(roi.costPerTrial)}</div>
+          <div class="kpi-sub">Ad spend &#247; trials started</div>
+        </div>
+        <div class="block kpi-card ${roi.conversionRate >= 50 ? 'green' : roi.conversionRate >= 25 ? 'primary' : 'accent'}">
+          <div class="kpi-source">Calculated</div>
+          <div class="kpi-label">Conversion Rate</div>
+          <div class="kpi-value">${fmtPct(roi.conversionRate)}</div>
+          <div class="kpi-sub">Completed trials: converted vs cancelled</div>
+        </div>
+        <div class="block kpi-card green">
+          <div class="kpi-source">Projected</div>
+          <div class="kpi-label">LTV per Trial</div>
+          <div class="kpi-value">${fmt$(roi.projectedLtv)}</div>
+          <div class="kpi-sub">${fmtPct(roi.conversionRate)} &times; ${fmt$(roi.avgPaidPriceAUD)} &times; ${roi.avgMonthsRetained} mo</div>
+        </div>
+        <div class="block kpi-card ${roi.roiStatus === 'positive' ? 'green' : roi.roiStatus === 'neutral' ? 'primary' : 'accent'}">
+          <div class="kpi-source">ROI</div>
+          <div class="kpi-label">Net per Trial</div>
+          <div class="kpi-value">${roi.costPerTrial > 0 ? (roi.projectedLtv >= roi.costPerTrial ? '+' : '') + fmt$(roi.projectedLtv - roi.costPerTrial) : '—'}</div>
+          <div class="kpi-sub">LTV minus cost per trial</div>
+        </div>`;
+
+      // Break-even meter
+      const maxVal = Math.max(roi.costPerTrial, roi.projectedLtv, 1) * 1.3;
+      const ltvPct = Math.round((roi.projectedLtv / maxVal) * 100);
+      const breakEvenPct = roi.costPerTrial > 0 ? Math.round((roi.costPerTrial / maxVal) * 100) : 0;
+      const roiStatusClass = roi.roiStatus === 'positive' ? 'roi-positive'
+        : roi.roiStatus === 'neutral' ? 'roi-neutral'
+        : roi.roiStatus === 'negative' ? 'roi-negative'
+        : 'roi-unknown';
+      const roiBadgeClass = roi.roiStatus === 'positive' ? 'positive'
+        : roi.roiStatus === 'neutral' ? 'neutral'
+        : roi.roiStatus === 'negative' ? 'negative'
+        : 'unknown';
+      const roiStatusLabel = roi.roiStatus === 'positive' ? '&#128994; ROI Positive'
+        : roi.roiStatus === 'neutral' ? '&#128993; Near Break-even'
+        : roi.roiStatus === 'negative' ? '&#128308; Below Break-even'
+        : '&#9898; Insufficient data';
+      const roiNote = roi.roiStatus === 'positive'
+        ? `Projected LTV (${fmt$(roi.projectedLtv)}) exceeds cost per trial (${fmt$(roi.costPerTrial)}). Campaign is ROI positive.`
+        : roi.roiStatus === 'neutral'
+        ? `Projected LTV (${fmt$(roi.projectedLtv)}) is close to cost per trial (${fmt$(roi.costPerTrial)}). More data needed.`
+        : roi.roiStatus === 'negative'
+        ? `Cost per trial (${fmt$(roi.costPerTrial)}) exceeds projected LTV (${fmt$(roi.projectedLtv)}). Review targeting or improve conversion.`
+        : `Not enough data to calculate ROI. Set ad spend in config.json or connect Facebook Ads API.`;
+
+      const meterBlock = `
+        <div class="block meter-block">
+          <div class="block-header"><div class="block-title">Break-Even Analysis</div></div>
+          <div class="meter-wrap">
+            <div class="meter-label-row">
+              <span>$0</span>
+              <span>Break-even: ${fmt$(roi.costPerTrial)}</span>
+              <span>${fmt$(Math.round(maxVal))}</span>
+            </div>
+            <div class="meter-track">
+              <div class="meter-fill ${roiStatusClass}" style="width: ${ltvPct}%;">${ltvPct > 15 ? fmt$(roi.projectedLtv) + ' LTV' : ''}</div>
+              ${roi.costPerTrial > 0 ? `<div class="meter-breakeven" style="left: ${breakEvenPct}%;"><div class="meter-breakeven-label">Break-even</div></div>` : ''}
+            </div>
+            <div class="meter-status-row">
+              <span class="roi-badge ${roiBadgeClass}">${roiStatusLabel}</span>
+              <span class="roi-note">${roiNote}</span>
+            </div>
+          </div>
+        </div>`;
+
+      // Cohort table
+      function fmtWeekRange(isoDate) {
+        const start = new Date(isoDate + 'T00:00:00');
+        const end = new Date(start);
+        end.setDate(end.getDate() + 6);
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        if (start.getMonth() === end.getMonth()) {
+          return `${months[start.getMonth()]} ${start.getDate()}–${end.getDate()}`;
+        }
+        return `${months[start.getMonth()]} ${start.getDate()} – ${months[end.getMonth()]} ${end.getDate()}`;
+      }
+
+      const cohortRows = roi.cohorts.length > 0
+        ? roi.cohorts.map(c => `
+          <tr>
+            <td><span class="cohort-week">${fmtWeekRange(c.week)}</span></td>
+            <td class="right">${fmtNum(c.started)}</td>
+            <td class="right">${c.converted > 0 ? `<span class="cohort-converted">${fmtNum(c.converted)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+            <td class="right">${c.cancelled > 0 ? `<span class="cohort-cancelled">${fmtNum(c.cancelled)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+            <td class="right">${c.inTrial > 0 ? `<span class="cohort-in-trial">${fmtNum(c.inTrial)}</span>` : '<span class="cohort-dash">—</span>'}</td>
+          </tr>`).join('')
+        : '<tr><td colspan="5" style="text-align:center; color: var(--text-muted); padding: 24px;">No trial sign-ups found since campaign start date. Check trialPriceAUD and startDate in config.json.</td></tr>';
+
+      const cohortBlock = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">Weekly Cohort Table</div>
+            <div style="display:flex;gap:16px;font-size:12px;">
+              <span style="color:var(--green);font-weight:600;">&#9632; Converted</span>
+              <span style="color:var(--red);font-weight:600;">&#9632; Cancelled</span>
+              <span style="color:var(--blue);font-weight:600;">&#9632; In Trial</span>
+            </div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Week</th>
+                <th class="right">Trials</th>
+                <th class="right">Converted</th>
+                <th class="right">Cancelled</th>
+                <th class="right">In Trial</th>
+              </tr>
+            </thead>
+            <tbody>${cohortRows}</tbody>
+          </table>
+          <div style="margin-top:12px;font-size:12px;color:var(--text-muted);">
+            <strong>Converted</strong> = active trials older than 30 days (presumed retained) &bull;
+            <strong>In Trial</strong> = active trials less than 30 days old
+          </div>
+        </div>`;
+
+      document.getElementById('trial-roi-grid').innerHTML =
+        scorecardHtml + meterBlock + cohortBlock;
+    }
+
     // ── RENDER ALL ──
     function renderAll() {
       if (!DATA) return;
@@ -737,6 +920,7 @@
       renderOverview();
       renderMemberships();
       renderAnalytics();
+      renderTrialRoi();
     }
 
     // ── DATE RANGE BUTTONS ──
@@ -766,6 +950,7 @@
         overview: 'Membership & Traffic Overview',
         memberships: 'Membership Details',
         analytics: 'Website Analytics',
+        'trial-roi': '$2 Trial — Facebook Ads ROI',
       };
       document.getElementById('page-title').innerHTML = titles[currentTab] || '';
     });

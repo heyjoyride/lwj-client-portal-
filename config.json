@@ -21,5 +21,15 @@
   },
   "dateRange": {
     "defaultDays": 30
+  },
+  "trialCampaign": {
+    "startDate": "2026-01-01",
+    "trialPriceAUD": 2,
+    "expectedRetentionRate": 0.50,
+    "avgMonthsRetained": 3,
+    "avgPaidPriceAUD": 47,
+    "facebookAdsAccountId": "act_XXXXXXX",
+    "manualAdSpendAUD": null,
+    "usdToAudRate": 1.57
   }
 }
