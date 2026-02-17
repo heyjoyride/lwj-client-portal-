@@ -254,22 +254,32 @@ async function fetchFacebookAdSpend(startDate, trialConfig) {
 
   try {
     const today = fmt(new Date());
-    const url = `https://graph.facebook.com/v21.0/${fbAccountId}/insights?fields=spend&time_range={"since":"${startDate}","until":"${today}"}&level=account&access_token=${fbToken}`;
-    const response = await fetch(url);
+    const rate = trialConfig.usdToAudRate || 1.57;
+
+    // Fetch campaign-level breakdown
+    const campaignUrl = `https://graph.facebook.com/v21.0/${fbAccountId}/insights?fields=spend,campaign_name,impressions,clicks&level=campaign&time_range={"since":"${startDate}","until":"${today}"}&access_token=${fbToken}`;
+    const response = await fetch(campaignUrl);
     const json = await response.json();
 
     if (json.error) throw new Error(json.error.message);
 
-    const spendUSD = json.data && json.data[0] ? parseFloat(json.data[0].spend || 0) : 0;
-    const rate = trialConfig.usdToAudRate || 1.57;
-    const spendAUD = Math.round(spendUSD * rate * 100) / 100;
+    const campaigns = (json.data || []).map(c => ({
+      name: c.campaign_name,
+      spendUSD: parseFloat(c.spend || 0),
+      spendAUD: Math.round(parseFloat(c.spend || 0) * rate * 100) / 100,
+      impressions: parseInt(c.impressions || 0),
+      clicks: parseInt(c.clicks || 0),
+    })).sort((a, b) => b.spendUSD - a.spendUSD);
 
-    console.log(`  Facebook Ads: $${spendUSD} USD → $${spendAUD} AUD (rate: ${rate})`);
-    return { totalSpendAUD: spendAUD, totalSpendUSD: spendUSD, source: 'facebook_api' };
+    const totalSpendUSD = campaigns.reduce((s, c) => s + c.spendUSD, 0);
+    const totalSpendAUD = Math.round(totalSpendUSD * rate * 100) / 100;
+
+    console.log(`  Facebook Ads: $${totalSpendUSD.toFixed(2)} USD → $${totalSpendAUD} AUD across ${campaigns.length} campaigns`);
+    return { totalSpendAUD, totalSpendUSD, campaigns, source: 'facebook_api' };
   } catch (err) {
     console.error('  Facebook Ads API error:', err.message);
     const manualAUD = trialConfig.manualAdSpendAUD;
-    return { totalSpendAUD: manualAUD || 0, totalSpendUSD: null, source: 'fallback' };
+    return { totalSpendAUD: manualAUD || 0, totalSpendUSD: null, campaigns: [], source: 'fallback' };
   }
 }
 
@@ -397,6 +407,7 @@ async function main() {
       projectedLtv,
       roiStatus,
       cohorts: trialMetrics.cohortsByWeek,
+      campaigns: fbSpend.campaigns || [],
     },
     periods: {},
   };

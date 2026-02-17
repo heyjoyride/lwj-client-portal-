@@ -904,8 +904,58 @@
           </div>
         </div>`;
 
+      // Campaign breakdown table
+      const campaignRows = roi.campaigns && roi.campaigns.length > 0
+        ? roi.campaigns.map(c => {
+            const ctr = c.impressions > 0 ? ((c.clicks / c.impressions) * 100).toFixed(2) : '0.00';
+            return `
+              <tr>
+                <td><span class="source-name">${c.name}</span></td>
+                <td class="right">${fmt$(c.spendAUD)}</td>
+                <td class="right">${fmtNum(c.impressions)}</td>
+                <td class="right">${fmtNum(c.clicks)}</td>
+                <td class="right">${ctr}%</td>
+              </tr>`;
+          }).join('')
+        : '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No campaign data. Add FB_ACCESS_TOKEN and FB_AD_ACCOUNT_ID to GitHub Secrets.</td></tr>';
+
+      const totalCampaignSpend = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.spendAUD, 0) : 0;
+      const totalImpressions = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.impressions, 0) : 0;
+      const totalClicks = roi.campaigns ? roi.campaigns.reduce((s, c) => s + c.clicks, 0) : 0;
+      const totalCtr = totalImpressions > 0 ? ((totalClicks / totalImpressions) * 100).toFixed(2) : '0.00';
+
+      const campaignBlock = `
+        <div class="block full-block">
+          <div class="block-header">
+            <div class="block-title">Campaign Breakdown (Facebook Ads)</div>
+            <div style="font-size:12px;color:var(--text-muted);">Since ${roi.campaignStartDate} &bull; AUD</div>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Campaign</th>
+                <th class="right">Spend (AUD)</th>
+                <th class="right">Impressions</th>
+                <th class="right">Clicks</th>
+                <th class="right">CTR</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${campaignRows}
+              ${roi.campaigns && roi.campaigns.length > 0 ? `
+              <tr class="summary-row">
+                <td><span class="source-name">All Campaigns</span></td>
+                <td class="right">${fmt$(totalCampaignSpend)}</td>
+                <td class="right">${fmtNum(totalImpressions)}</td>
+                <td class="right">${fmtNum(totalClicks)}</td>
+                <td class="right">${totalCtr}%</td>
+              </tr>` : ''}
+            </tbody>
+          </table>
+        </div>`;
+
       document.getElementById('trial-roi-grid').innerHTML =
-        scorecardHtml + meterBlock + cohortBlock;
+        scorecardHtml + meterBlock + campaignBlock + cohortBlock;
     }
 
     // ── RENDER ALL ──
