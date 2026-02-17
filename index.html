@@ -409,6 +409,8 @@
       const { kpis, funnel, trafficSources, subscriptionBreakdown } = period;
 
       // KPI Cards
+      const monthlyMrr = Math.round(global.plans.filter(p => p.periodType === 'months').reduce((s, p) => s + p.mrr, 0));
+      const annualMrr = Math.round(global.plans.filter(p => p.periodType === 'years').reduce((s, p) => s + p.mrr, 0));
       const kpiCards = `
         <div class="block kpi-card green">
           <div class="kpi-source">MemberPress</div>
@@ -418,9 +420,9 @@
         </div>
         <div class="block kpi-card accent">
           <div class="kpi-source">MemberPress</div>
-          <div class="kpi-label">MRR</div>
-          <div class="kpi-value">${fmt$(global.totalMrr)}</div>
-          <div class="kpi-sub">${fmtNum(global.monthlySubs)} monthly &bull; ${fmtNum(global.annualSubs)} annual &bull; ${fmtNum(global.inTrialSubs)} in trial</div>
+          <div class="kpi-label">Monthly Plans MRR</div>
+          <div class="kpi-value">${fmt$(monthlyMrr)}</div>
+          <div class="kpi-sub">${fmtNum(global.monthlySubs)} monthly subscribers</div>
         </div>
         <div class="block kpi-card primary">
           <div class="kpi-source">MemberPress</div>
@@ -441,10 +443,10 @@
           ${changeHtml(kpis.sessionsChange, false)}
         </div>
         <div class="block kpi-card accent">
-          <div class="kpi-source">Calculated</div>
-          <div class="kpi-label">Session &rarr; Signup</div>
-          <div class="kpi-value">${fmtPct(kpis.conversionRate)}</div>
-          <div class="kpi-sub">${fmtNum(kpis.churned)} cancelled this period</div>
+          <div class="kpi-source">MemberPress</div>
+          <div class="kpi-label">Annual Plans MRR/mo</div>
+          <div class="kpi-value">${fmt$(annualMrr)}</div>
+          <div class="kpi-sub">${fmtNum(global.annualSubs)} annual subscribers &bull; billed yearly</div>
         </div>`;
 
       // Funnel
