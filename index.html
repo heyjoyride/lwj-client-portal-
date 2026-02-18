@@ -231,6 +231,8 @@
     @media (max-width: 1024px) {
       .kpi-card { grid-column: span 4; }
       .funnel-block, .insights-block, .table-block, .plans-block, .half-block { grid-column: span 12; }
+      /* Trial ROI — 3 KPI cards per row at tablet */
+      #trial-roi-grid .kpi-card { grid-column: span 4 !important; }
     }
     @media (max-width: 768px) {
       .kpi-card { grid-column: span 6; }
@@ -262,6 +264,23 @@
       .stat-row { flex-wrap: wrap; }
       .stat-item { flex: 1 1 calc(50% - 8px); min-width: 0; }
       .stat-value { font-size: 20px; }
+      /* Trial ROI — 2 KPI cards per row on mobile */
+      #trial-roi-grid .kpi-card { grid-column: span 6 !important; }
+      /* Trial ROI — banner stacks vertically */
+      .roi-status-banner { flex-direction: column; align-items: flex-start; gap: 10px; }
+      /* Trial ROI — pipeline stacks vertically */
+      .pipeline-stages { flex-direction: column; gap: 0; }
+      .pipeline-arrow { display: none; }
+      .pipeline-step { border: 2px solid var(--border); border-top: none; padding: 12px 14px; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+      .pipeline-step:first-child { border-top: 2px solid var(--border); }
+      .pipeline-step-label { font-size: 10px; width: 90px; flex-shrink: 0; margin-bottom: 0; }
+      .pipeline-step-value { font-size: 20px; margin-bottom: 0; }
+      .pipeline-step-sub { font-size: 11px; }
+      .pipeline-conv { margin-top: 0; }
+      /* Trial ROI — insights single column */
+      .insights-grid { grid-template-columns: 1fr; }
+      /* Trial ROI — tables scroll horizontally */
+      #trial-roi-grid .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; table-layout: auto; width: 100%; }
     }
     @media (max-width: 480px) {
       .kpi-card { grid-column: span 6; }
@@ -271,10 +290,14 @@
       .insight { font-size: 12px; padding: 10px 12px; }
       .page-title { font-size: 17px; }
       .nav { gap: 12px; }
+      /* Trial ROI — tighten pipeline on small screens */
+      .pipeline-step-value { font-size: 18px; }
+      .pipeline-step-label { width: 80px; }
     }
     @media (max-width: 360px) {
       .kpi-card { grid-column: span 12; }
       .kpi-value { font-size: 26px; }
+      #trial-roi-grid .kpi-card { grid-column: span 12 !important; }
     }
 
     @media print {
