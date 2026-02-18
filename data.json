@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-18T08:31:26.851Z",
+    "generatedAt": "2026-02-18T09:44:06.307Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -128,7 +128,7 @@
     "avgMonthsRetained": 3,
     "projectedLtv": 82.06,
     "roiStatus": "unknown",
-    "offeredCount": 524,
+    "offeredCount": 525,
     "cohorts": [
       {
         "week": "2025-12-29",
