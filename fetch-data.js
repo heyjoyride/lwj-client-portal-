@@ -187,7 +187,7 @@ async function fetchGA4Sessions(startDate, endDate) {
     FROM \`${CONFIG.projectId}.${CONFIG.ga4.dataset}.events_*\`
     WHERE _TABLE_SUFFIX BETWEEN '${s}' AND '${e}'
       AND event_name = 'session_start'
-      AND (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') LIKE '%lucywalkerjewellery.com%'
+      AND (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') NOT LIKE '%metalsmithacademy.com%'
     GROUP BY source, medium ORDER BY sessions DESC
   ` });
 
@@ -213,7 +213,7 @@ async function fetchGA4DailySessions(startDate, endDate) {
     FROM \`${CONFIG.projectId}.${CONFIG.ga4.dataset}.events_*\`
     WHERE _TABLE_SUFFIX BETWEEN '${s}' AND '${e}'
       AND event_name = 'session_start'
-      AND (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') LIKE '%lucywalkerjewellery.com%'
+      AND (SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'page_location') NOT LIKE '%metalsmithacademy.com%'
     GROUP BY day_str ORDER BY day_str
   ` });
 

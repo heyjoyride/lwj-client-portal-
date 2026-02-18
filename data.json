@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-18T07:52:41.156Z",
+    "generatedAt": "2026-02-18T08:03:41.690Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -128,7 +128,7 @@
     "avgMonthsRetained": 3,
     "projectedLtv": 82.06,
     "roiStatus": "unknown",
-    "offeredCount": 522,
+    "offeredCount": 523,
     "cohorts": [
       {
         "week": "2025-12-29",
@@ -192,8 +192,8 @@
         "signupsChange": -100,
         "retentionRate": 0,
         "retentionChange": -100,
-        "websiteSessions": 55,
-        "sessionsChange": -36.8,
+        "websiteSessions": 2880,
+        "sessionsChange": -47.7,
         "conversionRate": 0,
         "churned": 0,
         "churnChange": -100
@@ -201,7 +201,7 @@
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 55,
+          "value": 2880,
           "source": "ga4"
         },
         {
@@ -217,39 +217,59 @@
       ],
       "trafficSources": [
         {
+          "source": "Organic Search",
+          "sessions": 646
+        },
+        {
           "source": "Direct",
-          "sessions": 55
+          "sessions": 753
+        },
+        {
+          "source": "Referral",
+          "sessions": 412
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 875
+        },
+        {
+          "source": "Email",
+          "sessions": 193
+        },
+        {
+          "source": "Social",
+          "sessions": 1
         }
       ],
       "dailySignups": [],
       "dailySessions": [
         {
           "day": "2026-02-11",
-          "sessions": 6
+          "sessions": 474
         },
         {
           "day": "2026-02-12",
-          "sessions": 11
+          "sessions": 497
         },
         {
           "day": "2026-02-13",
-          "sessions": 7
+          "sessions": 352
         },
         {
           "day": "2026-02-14",
-          "sessions": 7
+          "sessions": 351
         },
         {
           "day": "2026-02-15",
-          "sessions": 6
+          "sessions": 333
         },
         {
           "day": "2026-02-16",
-          "sessions": 7
+          "sessions": 359
         },
         {
           "day": "2026-02-17",
-          "sessions": 11
+          "sessions": 514
         }
       ],
       "subscriptionBreakdown": {
@@ -270,16 +290,16 @@
         "signupsChange": -42.8,
         "retentionRate": 84,
         "retentionChange": 12.3,
-        "websiteSessions": 87,
+        "websiteSessions": 5511,
         "sessionsChange": 0,
-        "conversionRate": 201.15,
+        "conversionRate": 3.18,
         "churned": 17,
         "churnChange": -71.2
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 87,
+          "value": 5511,
           "source": "ga4"
         },
         {
@@ -295,8 +315,28 @@
       ],
       "trafficSources": [
         {
+          "source": "Organic Search",
+          "sessions": 1311
+        },
+        {
           "source": "Direct",
-          "sessions": 87
+          "sessions": 1454
+        },
+        {
+          "source": "Referral",
+          "sessions": 740
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1679
+        },
+        {
+          "source": "Email",
+          "sessions": 323
+        },
+        {
+          "source": "Social",
+          "sessions": 4
         }
       ],
       "dailySignups": [
@@ -419,59 +459,59 @@
       "dailySessions": [
         {
           "day": "2026-02-04",
-          "sessions": 4
+          "sessions": 342
         },
         {
           "day": "2026-02-05",
-          "sessions": 5
+          "sessions": 353
         },
         {
           "day": "2026-02-06",
-          "sessions": 3
+          "sessions": 388
         },
         {
           "day": "2026-02-07",
-          "sessions": 4
+          "sessions": 324
         },
         {
           "day": "2026-02-08",
-          "sessions": 4
+          "sessions": 411
         },
         {
           "day": "2026-02-09",
-          "sessions": 5
+          "sessions": 392
         },
         {
           "day": "2026-02-10",
-          "sessions": 7
+          "sessions": 421
         },
         {
           "day": "2026-02-11",
-          "sessions": 6
+          "sessions": 474
         },
         {
           "day": "2026-02-12",
-          "sessions": 11
+          "sessions": 497
         },
         {
           "day": "2026-02-13",
-          "sessions": 7
+          "sessions": 352
         },
         {
           "day": "2026-02-14",
-          "sessions": 7
+          "sessions": 351
         },
         {
           "day": "2026-02-15",
-          "sessions": 6
+          "sessions": 333
         },
         {
           "day": "2026-02-16",
-          "sessions": 7
+          "sessions": 359
         },
         {
           "day": "2026-02-17",
-          "sessions": 11
+          "sessions": 514
         }
       ],
       "subscriptionBreakdown": {
@@ -492,16 +532,16 @@
         "signupsChange": -30.2,
         "retentionRate": 51.9,
         "retentionChange": 6.1,
-        "websiteSessions": 87,
+        "websiteSessions": 5511,
         "sessionsChange": 0,
-        "conversionRate": 1056.32,
+        "conversionRate": 16.68,
         "churned": 392,
         "churnChange": -31.8
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 87,
+          "value": 5511,
           "source": "ga4"
         },
         {
@@ -517,8 +557,28 @@
       ],
       "trafficSources": [
         {
+          "source": "Organic Search",
+          "sessions": 1311
+        },
+        {
           "source": "Direct",
-          "sessions": 87
+          "sessions": 1454
+        },
+        {
+          "source": "Referral",
+          "sessions": 740
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1679
+        },
+        {
+          "source": "Email",
+          "sessions": 323
+        },
+        {
+          "source": "Social",
+          "sessions": 4
         }
       ],
       "dailySignups": [
@@ -931,59 +991,59 @@
       "dailySessions": [
         {
           "day": "2026-02-04",
-          "sessions": 4
+          "sessions": 342
         },
         {
           "day": "2026-02-05",
-          "sessions": 5
+          "sessions": 353
         },
         {
           "day": "2026-02-06",
-          "sessions": 3
+          "sessions": 388
         },
         {
           "day": "2026-02-07",
-          "sessions": 4
+          "sessions": 324
         },
         {
           "day": "2026-02-08",
-          "sessions": 4
+          "sessions": 411
         },
         {
           "day": "2026-02-09",
-          "sessions": 5
+          "sessions": 392
         },
         {
           "day": "2026-02-10",
-          "sessions": 7
+          "sessions": 421
         },
         {
           "day": "2026-02-11",
-          "sessions": 6
+          "sessions": 474
         },
         {
           "day": "2026-02-12",
-          "sessions": 11
+          "sessions": 497
         },
         {
           "day": "2026-02-13",
-          "sessions": 7
+          "sessions": 352
         },
         {
           "day": "2026-02-14",
-          "sessions": 7
+          "sessions": 351
         },
         {
           "day": "2026-02-15",
-          "sessions": 6
+          "sessions": 333
         },
         {
           "day": "2026-02-16",
-          "sessions": 7
+          "sessions": 359
         },
         {
           "day": "2026-02-17",
-          "sessions": 11
+          "sessions": 514
         }
       ],
       "subscriptionBreakdown": {
@@ -1004,16 +1064,16 @@
         "signupsChange": -72.5,
         "retentionRate": 79.8,
         "retentionChange": 48.3,
-        "websiteSessions": 87,
+        "websiteSessions": 5511,
         "sessionsChange": 0,
-        "conversionRate": 306.9,
+        "conversionRate": 4.84,
         "churned": 41,
         "churnChange": -89.7
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 87,
+          "value": 5511,
           "source": "ga4"
         },
         {
@@ -1029,8 +1089,28 @@
       ],
       "trafficSources": [
         {
+          "source": "Organic Search",
+          "sessions": 1311
+        },
+        {
           "source": "Direct",
-          "sessions": 87
+          "sessions": 1454
+        },
+        {
+          "source": "Referral",
+          "sessions": 740
+        },
+        {
+          "source": "Paid Search",
+          "sessions": 1679
+        },
+        {
+          "source": "Email",
+          "sessions": 323
+        },
+        {
+          "source": "Social",
+          "sessions": 4
         }
       ],
       "dailySignups": [
@@ -1248,59 +1328,59 @@
       "dailySessions": [
         {
           "day": "2026-02-04",
-          "sessions": 4
+          "sessions": 342
         },
         {
           "day": "2026-02-05",
-          "sessions": 5
+          "sessions": 353
         },
         {
           "day": "2026-02-06",
-          "sessions": 3
+          "sessions": 388
         },
         {
           "day": "2026-02-07",
-          "sessions": 4
+          "sessions": 324
         },
         {
           "day": "2026-02-08",
-          "sessions": 4
+          "sessions": 411
         },
         {
           "day": "2026-02-09",
-          "sessions": 5
+          "sessions": 392
         },
         {
           "day": "2026-02-10",
-          "sessions": 7
+          "sessions": 421
         },
         {
           "day": "2026-02-11",
-          "sessions": 6
+          "sessions": 474
         },
         {
           "day": "2026-02-12",
-          "sessions": 11
+          "sessions": 497
         },
         {
           "day": "2026-02-13",
-          "sessions": 7
+          "sessions": 352
         },
         {
           "day": "2026-02-14",
-          "sessions": 7
+          "sessions": 351
         },
         {
           "day": "2026-02-15",
-          "sessions": 6
+          "sessions": 333
         },
         {
           "day": "2026-02-16",
-          "sessions": 7
+          "sessions": 359
         },
         {
           "day": "2026-02-17",
-          "sessions": 11
+          "sessions": 514
         }
       ],
       "subscriptionBreakdown": {
