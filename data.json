@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-18T09:44:06.307Z",
+    "generatedAt": "2026-02-18T16:32:54.152Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -115,20 +115,20 @@
     ]
   },
   "trialRoi": {
-    "adSpend": 0,
-    "adSpendSource": "fallback",
+    "adSpend": 9589.62,
+    "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
     "trialsStarted": 86,
     "trialsConverted": 32,
     "trialsCancelled": 23,
     "trialsInTrial": 30,
-    "costPerTrial": 0,
+    "costPerTrial": 111.51,
     "conversionRate": 58.2,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
     "projectedLtv": 82.06,
-    "roiStatus": "unknown",
-    "offeredCount": 525,
+    "roiStatus": "negative",
+    "offeredCount": 536,
     "cohorts": [
       {
         "week": "2025-12-29",
@@ -180,7 +180,44 @@
         "inTrial": 3
       }
     ],
-    "campaigns": []
+    "campaigns": [
+      {
+        "name": "HJR - Lucy's Letter - RE -14/01/26",
+        "spend": 7075.75,
+        "impressions": 74776,
+        "clicks": 9302
+      },
+      {
+        "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
+        "spend": 1790.8,
+        "impressions": 61977,
+        "clicks": 3798
+      },
+      {
+        "name": "HJR - Soldering Guide - [ABO] - FEB26",
+        "spend": 344.91,
+        "impressions": 11207,
+        "clicks": 355
+      },
+      {
+        "name": "HJR | DS: $19 Purchase | ABO | FEB26",
+        "spend": 330.86,
+        "impressions": 5336,
+        "clicks": 203
+      },
+      {
+        "name": "HJR - Soldering Guide - [ABO] - FEB26",
+        "spend": 40.45,
+        "impressions": 1327,
+        "clicks": 59
+      },
+      {
+        "name": "HJR - Soldering Guide - [ABO] - FEB26",
+        "spend": 6.85,
+        "impressions": 189,
+        "clicks": 2
+      }
+    ]
   },
   "periods": {
     "7d": {
