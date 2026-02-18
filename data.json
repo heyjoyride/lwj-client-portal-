@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-18T08:23:39.303Z",
+    "generatedAt": "2026-02-18T08:25:29.866Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -116,7 +116,7 @@
   },
   "trialRoi": {
     "adSpend": 0,
-    "adSpendSource": "none",
+    "adSpendSource": "fallback",
     "campaignStartDate": "2026-01-01",
     "trialsStarted": 86,
     "trialsConverted": 32,
@@ -128,7 +128,7 @@
     "avgMonthsRetained": 3,
     "projectedLtv": 82.06,
     "roiStatus": "unknown",
-    "offeredCount": 523,
+    "offeredCount": 524,
     "cohorts": [
       {
         "week": "2025-12-29",
@@ -1060,15 +1060,15 @@
         "totalActiveSubs": 2538,
         "activeSubsChange": -10.9,
         "totalMrr": 80811,
-        "newSignups": 267,
-        "signupsChange": -72.5,
-        "retentionRate": 79.8,
-        "retentionChange": 48.3,
+        "newSignups": 264,
+        "signupsChange": -72.8,
+        "retentionRate": 79.9,
+        "retentionChange": 48.5,
         "websiteSessions": 5511,
         "sessionsChange": 0,
-        "conversionRate": 4.84,
-        "churned": 41,
-        "churnChange": -89.7
+        "conversionRate": 4.79,
+        "churned": 40,
+        "churnChange": -89.9
       },
       "funnel": [
         {
@@ -1078,12 +1078,12 @@
         },
         {
           "stage": "New Signups",
-          "value": 267,
+          "value": 264,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 213,
+          "value": 211,
           "source": "memberpress"
         }
       ],
@@ -1114,11 +1114,6 @@
         }
       ],
       "dailySignups": [
-        {
-          "day": "2025-12-31",
-          "newSubs": 3,
-          "stillActive": 2
-        },
         {
           "day": "2026-01-01",
           "newSubs": 7,
@@ -1386,8 +1381,8 @@
       "subscriptionBreakdown": {
         "monthly": 1365,
         "annual": 1101,
-        "newActive": 213,
-        "newCancelled": 41,
+        "newActive": 211,
+        "newCancelled": 40,
         "newPending": 11,
         "newSuspended": 2
       }
