@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-20T09:38:02.858Z",
+    "generatedAt": "2026-02-21T09:27:40.536Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -115,20 +115,20 @@
     ]
   },
   "trialRoi": {
-    "adSpend": 10212.49,
+    "adSpend": 10531.03,
     "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
     "trialsStarted": 86,
     "trialsConverted": 35,
     "trialsCancelled": 23,
     "trialsInTrial": 27,
-    "costPerTrial": 118.75,
+    "costPerTrial": 122.45,
     "conversionRate": 60.3,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
     "projectedLtv": 85.02,
     "roiStatus": "negative",
-    "offeredCount": 608,
+    "offeredCount": 659,
     "cohorts": [
       {
         "week": "2025-12-29",
@@ -189,21 +189,21 @@
       },
       {
         "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 1985.85,
-        "impressions": 68144,
-        "clicks": 4152
+        "spend": 2092.09,
+        "impressions": 71654,
+        "clicks": 4360
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 616.47,
-        "impressions": 17834,
-        "clicks": 614
+        "spend": 728.9,
+        "impressions": 21146,
+        "clicks": 714
       },
       {
         "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 487.12,
-        "impressions": 6818,
-        "clicks": 292
+        "spend": 586.99,
+        "impressions": 7503,
+        "clicks": 356
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
@@ -223,14 +223,14 @@
     "7d": {
       "kpis": {
         "totalActiveSubs": 2538,
-        "activeSubsChange": -0.6,
+        "activeSubsChange": -0.5,
         "totalMrr": 80946,
         "newSignups": 0,
         "signupsChange": -100,
         "retentionRate": 0,
         "retentionChange": -100,
-        "websiteSessions": 2831,
-        "sessionsChange": -50.7,
+        "websiteSessions": 2949,
+        "sessionsChange": -49.3,
         "conversionRate": 0,
         "churned": 0,
         "churnChange": -100
@@ -238,7 +238,7 @@
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 2831,
+          "value": 2949,
           "source": "ga4"
         },
         {
@@ -255,31 +255,31 @@
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 627
+          "sessions": 609
         },
         {
           "source": "Direct",
-          "sessions": 750
+          "sessions": 778
         },
         {
           "source": "Referral",
-          "sessions": 293
+          "sessions": 311
         },
         {
           "source": "Paid Search",
-          "sessions": 1022
+          "sessions": 1146
         },
         {
           "source": "Email",
-          "sessions": 139
+          "sessions": 104
+        },
+        {
+          "source": "Social",
+          "sessions": 1
         }
       ],
       "dailySignups": [],
       "dailySessions": [
-        {
-          "day": "2026-02-13",
-          "sessions": 352
-        },
         {
           "day": "2026-02-14",
           "sessions": 351
@@ -303,6 +303,10 @@
         {
           "day": "2026-02-19",
           "sessions": 461
+        },
+        {
+          "day": "2026-02-20",
+          "sessions": 470
         }
       ],
       "subscriptionBreakdown": {
@@ -317,67 +321,62 @@
     "30d": {
       "kpis": {
         "totalActiveSubs": 2538,
-        "activeSubsChange": -3.6,
+        "activeSubsChange": -4.1,
         "totalMrr": 80946,
-        "newSignups": 159,
-        "signupsChange": -47.9,
-        "retentionRate": 83.6,
-        "retentionChange": 11.3,
-        "websiteSessions": 6433,
+        "newSignups": 141,
+        "signupsChange": -52.7,
+        "retentionRate": 83,
+        "retentionChange": 9.5,
+        "websiteSessions": 6903,
         "sessionsChange": 0,
-        "conversionRate": 2.47,
-        "churned": 16,
-        "churnChange": -72.4
+        "conversionRate": 2.04,
+        "churned": 15,
+        "churnChange": -73.2
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 6433,
+          "value": 6903,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 159,
+          "value": 141,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 133,
+          "value": 117,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1465
+          "sessions": 1537
         },
         {
           "source": "Direct",
-          "sessions": 1701
+          "sessions": 1815
         },
         {
           "source": "Referral",
-          "sessions": 820
+          "sessions": 874
         },
         {
           "source": "Paid Search",
-          "sessions": 2092
+          "sessions": 2305
         },
         {
           "source": "Email",
-          "sessions": 351
+          "sessions": 367
         },
         {
           "source": "Social",
-          "sessions": 4
+          "sessions": 5
         }
       ],
       "dailySignups": [
-        {
-          "day": "2026-01-21",
-          "newSubs": 18,
-          "stillActive": 16
-        },
         {
           "day": "2026-01-22",
           "newSubs": 16,
@@ -543,14 +542,18 @@
         {
           "day": "2026-02-19",
           "sessions": 461
+        },
+        {
+          "day": "2026-02-20",
+          "sessions": 470
         }
       ],
       "subscriptionBreakdown": {
         "monthly": 1368,
         "annual": 1101,
-        "newActive": 133,
-        "newCancelled": 16,
-        "newPending": 10,
+        "newActive": 117,
+        "newCancelled": 15,
+        "newPending": 9,
         "newSuspended": 0
       }
     },
@@ -559,25 +562,25 @@
         "totalActiveSubs": 2538,
         "activeSubsChange": -6.2,
         "totalMrr": 80946,
-        "newSignups": 915,
-        "signupsChange": -29.9,
-        "retentionRate": 51.8,
-        "retentionChange": 5.3,
-        "websiteSessions": 6433,
+        "newSignups": 913,
+        "signupsChange": -30,
+        "retentionRate": 51.9,
+        "retentionChange": 5.5,
+        "websiteSessions": 6903,
         "sessionsChange": 0,
-        "conversionRate": 14.22,
-        "churned": 392,
-        "churnChange": -30.7
+        "conversionRate": 13.23,
+        "churned": 390,
+        "churnChange": -31
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 6433,
+          "value": 6903,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 915,
+          "value": 913,
           "source": "memberpress"
         },
         {
@@ -589,35 +592,30 @@
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1465
+          "sessions": 1537
         },
         {
           "source": "Direct",
-          "sessions": 1701
+          "sessions": 1815
         },
         {
           "source": "Referral",
-          "sessions": 820
+          "sessions": 874
         },
         {
           "source": "Paid Search",
-          "sessions": 2092
+          "sessions": 2305
         },
         {
           "source": "Email",
-          "sessions": 351
+          "sessions": 367
         },
         {
           "source": "Social",
-          "sessions": 4
+          "sessions": 5
         }
       ],
       "dailySignups": [
-        {
-          "day": "2025-11-22",
-          "newSubs": 2,
-          "stillActive": 0
-        },
         {
           "day": "2025-11-23",
           "newSubs": 7,
@@ -1073,13 +1071,17 @@
         {
           "day": "2026-02-19",
           "sessions": 461
+        },
+        {
+          "day": "2026-02-20",
+          "sessions": 470
         }
       ],
       "subscriptionBreakdown": {
         "monthly": 1368,
         "annual": 1101,
         "newActive": 474,
-        "newCancelled": 392,
+        "newCancelled": 390,
         "newPending": 19,
         "newSuspended": 30
       }
@@ -1093,16 +1095,16 @@
         "signupsChange": -72.8,
         "retentionRate": 79.9,
         "retentionChange": 48.5,
-        "websiteSessions": 6433,
+        "websiteSessions": 6903,
         "sessionsChange": 0,
-        "conversionRate": 4.1,
+        "conversionRate": 3.82,
         "churned": 40,
         "churnChange": -89.9
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 6433,
+          "value": 6903,
           "source": "ga4"
         },
         {
@@ -1119,27 +1121,27 @@
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1465
+          "sessions": 1537
         },
         {
           "source": "Direct",
-          "sessions": 1701
+          "sessions": 1815
         },
         {
           "source": "Referral",
-          "sessions": 820
+          "sessions": 874
         },
         {
           "source": "Paid Search",
-          "sessions": 2092
+          "sessions": 2305
         },
         {
           "source": "Email",
-          "sessions": 351
+          "sessions": 367
         },
         {
           "source": "Social",
-          "sessions": 4
+          "sessions": 5
         }
       ],
       "dailySignups": [
@@ -1413,6 +1415,10 @@
         {
           "day": "2026-02-19",
           "sessions": 461
+        },
+        {
+          "day": "2026-02-20",
+          "sessions": 470
         }
       ],
       "subscriptionBreakdown": {
