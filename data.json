@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-23T09:53:04.102Z",
+    "generatedAt": "2026-02-24T09:50:44.610Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -8,19 +8,19 @@
     ]
   },
   "globalState": {
-    "totalActive": 2538,
-    "totalMrr": 80955,
-    "annualSubs": 1101,
-    "monthlySubs": 1369,
-    "inTrialSubs": 111,
+    "totalActive": 2508,
+    "totalMrr": 78832,
+    "annualSubs": 1097,
+    "monthlySubs": 1316,
+    "inTrialSubs": 139,
     "plans": [
       {
         "price": 47,
         "periodType": "months",
         "period": 1,
         "monthlyPrice": 47,
-        "activeCount": 877,
-        "mrr": 41219
+        "activeCount": 858,
+        "mrr": 40326
       },
       {
         "price": 282,
@@ -35,8 +35,8 @@
         "periodType": "years",
         "period": 1,
         "monthlyPrice": 39.17,
-        "activeCount": 317,
-        "mrr": 12416
+        "activeCount": 314,
+        "mrr": 12298
       },
       {
         "price": 28.2,
@@ -59,16 +59,16 @@
         "periodType": "years",
         "period": 1,
         "monthlyPrice": 31.33,
-        "activeCount": 95,
-        "mrr": 2977
+        "activeCount": 94,
+        "mrr": 2945
       },
       {
         "price": 37.6,
         "periodType": "months",
         "period": 1,
         "monthlyPrice": 37.6,
-        "activeCount": 67,
-        "mrr": 2519
+        "activeCount": 66,
+        "mrr": 2482
       },
       {
         "price": 125,
@@ -77,6 +77,14 @@
         "monthlyPrice": 41.67,
         "activeCount": 18,
         "mrr": 750
+      },
+      {
+        "price": 97,
+        "periodType": "months",
+        "period": 1,
+        "monthlyPrice": 97,
+        "activeCount": 1,
+        "mrr": 97
       },
       {
         "price": 112.8,
@@ -98,11 +106,11 @@
     "allStatuses": [
       {
         "status": "cancelled",
-        "count": 10766
+        "count": 10825
       },
       {
         "status": "active",
-        "count": 2538
+        "count": 2508
       },
       {
         "status": "pending",
@@ -110,53 +118,53 @@
       },
       {
         "status": "suspended",
-        "count": 355
+        "count": 371
       }
     ]
   },
   "trialRoi": {
-    "adSpend": 11181.62,
+    "adSpend": 11539.29,
     "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
-    "trialsStarted": 86,
-    "trialsConverted": 35,
-    "trialsCancelled": 23,
-    "trialsInTrial": 27,
-    "costPerTrial": 130.02,
-    "conversionRate": 60.3,
+    "trialsStarted": 114,
+    "trialsConverted": 31,
+    "trialsCancelled": 31,
+    "trialsInTrial": 48,
+    "costPerTrial": 101.22,
+    "conversionRate": 50,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
-    "projectedLtv": 85.02,
+    "projectedLtv": 70.5,
     "roiStatus": "negative",
-    "offeredCount": 753,
+    "offeredCount": 802,
     "cohorts": [
       {
         "week": "2025-12-29",
         "started": 25,
-        "converted": 14,
+        "converted": 13,
         "cancelled": 10,
         "inTrial": 0
       },
       {
         "week": "2026-01-05",
         "started": 11,
-        "converted": 8,
-        "cancelled": 3,
+        "converted": 7,
+        "cancelled": 4,
         "inTrial": 0
       },
       {
         "week": "2026-01-12",
         "started": 11,
-        "converted": 8,
-        "cancelled": 3,
+        "converted": 3,
+        "cancelled": 8,
         "inTrial": 0
       },
       {
         "week": "2026-01-19",
         "started": 12,
-        "converted": 5,
+        "converted": 8,
         "cancelled": 2,
-        "inTrial": 5
+        "inTrial": 0
       },
       {
         "week": "2026-01-26",
@@ -174,9 +182,23 @@
       },
       {
         "week": "2026-02-09",
-        "started": 3,
+        "started": 14,
+        "converted": 0,
+        "cancelled": 1,
+        "inTrial": 13
+      },
+      {
+        "week": "2026-02-16",
+        "started": 13,
         "converted": 0,
         "cancelled": 0,
+        "inTrial": 13
+      },
+      {
+        "week": "2026-02-23",
+        "started": 4,
+        "converted": 0,
+        "cancelled": 1,
         "inTrial": 3
       }
     ],
@@ -189,21 +211,21 @@
       },
       {
         "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 2329.18,
-        "impressions": 79530,
-        "clicks": 4829
+        "spend": 2438.6,
+        "impressions": 82713,
+        "clicks": 5033
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 942.09,
-        "impressions": 27757,
-        "clicks": 943
+        "spend": 1036.7,
+        "impressions": 30562,
+        "clicks": 1057
       },
       {
         "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 787.3,
-        "impressions": 9181,
-        "clicks": 483
+        "spend": 940.94,
+        "impressions": 10142,
+        "clicks": 592
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
@@ -222,52 +244,52 @@
   "periods": {
     "7d": {
       "kpis": {
-        "totalActiveSubs": 2538,
-        "activeSubsChange": -0.3,
-        "totalMrr": 80955,
-        "newSignups": 0,
-        "signupsChange": -100,
-        "retentionRate": 0,
-        "retentionChange": -100,
-        "websiteSessions": 3088,
-        "sessionsChange": -47.7,
-        "conversionRate": 0,
-        "churned": 0,
-        "churnChange": -100
+        "totalActiveSubs": 2508,
+        "activeSubsChange": -0.8,
+        "totalMrr": 78832,
+        "newSignups": 25,
+        "signupsChange": -50,
+        "retentionRate": 88,
+        "retentionChange": 7.3,
+        "websiteSessions": 3219,
+        "sessionsChange": -46.4,
+        "conversionRate": 0.78,
+        "churned": 3,
+        "churnChange": -62.5
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 3088,
+          "value": 3219,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 0,
+          "value": 25,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 0,
+          "value": 22,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 542
+          "sessions": 560
         },
         {
           "source": "Direct",
-          "sessions": 822
+          "sessions": 824
         },
         {
           "source": "Referral",
-          "sessions": 314
+          "sessions": 320
         },
         {
           "source": "Paid Search",
-          "sessions": 1323
+          "sessions": 1427
         },
         {
           "source": "Email",
@@ -275,15 +297,47 @@
         },
         {
           "source": "Social",
-          "sessions": 2
+          "sessions": 3
         }
       ],
-      "dailySignups": [],
-      "dailySessions": [
+      "dailySignups": [
         {
-          "day": "2026-02-16",
-          "sessions": 359
+          "day": "2026-02-17",
+          "newSubs": 3,
+          "stillActive": 2
         },
+        {
+          "day": "2026-02-18",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-19",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-20",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-21",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-22",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-02-23",
+          "newSubs": 6,
+          "stillActive": 5
+        }
+      ],
+      "dailySessions": [
         {
           "day": "2026-02-17",
           "sessions": 514
@@ -307,81 +361,80 @@
         {
           "day": "2026-02-22",
           "sessions": 402
+        },
+        {
+          "day": "2026-02-23",
+          "sessions": 490
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1369,
-        "annual": 1101,
-        "newActive": 0,
-        "newCancelled": 0,
+        "monthly": 1316,
+        "annual": 1097,
+        "newActive": 22,
+        "newCancelled": 3,
         "newPending": 0,
         "newSuspended": 0
       }
     },
     "30d": {
       "kpis": {
-        "totalActiveSubs": 2538,
-        "activeSubsChange": -5.3,
-        "totalMrr": 80955,
-        "newSignups": 96,
-        "signupsChange": -67.2,
-        "retentionRate": 84.4,
-        "retentionChange": 10.9,
-        "websiteSessions": 7726,
+        "totalActiveSubs": 2508,
+        "activeSubsChange": -5.6,
+        "totalMrr": 78832,
+        "newSignups": 119,
+        "signupsChange": -64.2,
+        "retentionRate": 77.3,
+        "retentionChange": 6.5,
+        "websiteSessions": 8216,
         "sessionsChange": 0,
-        "conversionRate": 1.24,
-        "churned": 10,
-        "churnChange": -81.5
+        "conversionRate": 1.45,
+        "churned": 21,
+        "churnChange": -70
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 7726,
+          "value": 8216,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 96,
+          "value": 119,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 81,
+          "value": 92,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1672
+          "sessions": 1786
         },
         {
           "source": "Direct",
-          "sessions": 2031
+          "sessions": 2154
         },
         {
           "source": "Referral",
-          "sessions": 960
+          "sessions": 1004
         },
         {
           "source": "Paid Search",
-          "sessions": 2674
+          "sessions": 2869
         },
         {
           "source": "Email",
-          "sessions": 383
+          "sessions": 396
         },
         {
           "source": "Social",
-          "sessions": 6
+          "sessions": 7
         }
       ],
       "dailySignups": [
-        {
-          "day": "2026-01-24",
-          "newSubs": 22,
-          "stillActive": 20
-        },
         {
           "day": "2026-01-25",
           "newSubs": 14,
@@ -409,13 +462,13 @@
         },
         {
           "day": "2026-01-30",
-          "newSubs": 5,
-          "stillActive": 5
+          "newSubs": 4,
+          "stillActive": 4
         },
         {
           "day": "2026-01-31",
           "newSubs": 6,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-02-01",
@@ -440,7 +493,7 @@
         {
           "day": "2026-02-05",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-06",
@@ -460,12 +513,77 @@
         {
           "day": "2026-02-09",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 1
         },
         {
           "day": "2026-02-10",
           "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-11",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-12",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-13",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-14",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-15",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-16",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-17",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-18",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-19",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-20",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-21",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-22",
+          "newSubs": 5,
           "stillActive": 4
+        },
+        {
+          "day": "2026-02-23",
+          "newSubs": 6,
+          "stillActive": 5
         }
       ],
       "dailySessions": [
@@ -544,85 +662,84 @@
         {
           "day": "2026-02-22",
           "sessions": 402
+        },
+        {
+          "day": "2026-02-23",
+          "sessions": 490
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1369,
-        "annual": 1101,
-        "newActive": 81,
-        "newCancelled": 10,
+        "monthly": 1316,
+        "annual": 1097,
+        "newActive": 92,
+        "newCancelled": 21,
         "newPending": 5,
-        "newSuspended": 0
+        "newSuspended": 1
       }
     },
     "90d": {
       "kpis": {
-        "totalActiveSubs": 2538,
-        "activeSubsChange": -6.6,
-        "totalMrr": 80955,
-        "newSignups": 874,
-        "signupsChange": -32.7,
-        "retentionRate": 52.9,
-        "retentionChange": 7.1,
-        "websiteSessions": 7726,
+        "totalActiveSubs": 2508,
+        "activeSubsChange": -7.2,
+        "totalMrr": 78832,
+        "newSignups": 887,
+        "signupsChange": -33.7,
+        "retentionRate": 49.7,
+        "retentionChange": 4.4,
+        "websiteSessions": 8216,
         "sessionsChange": 0,
-        "conversionRate": 11.31,
-        "churned": 365,
-        "churnChange": -34.9
+        "conversionRate": 10.8,
+        "churned": 391,
+        "churnChange": -34.6
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 7726,
+          "value": 8216,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 874,
+          "value": 887,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 462,
+          "value": 441,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1672
+          "sessions": 1786
         },
         {
           "source": "Direct",
-          "sessions": 2031
+          "sessions": 2154
         },
         {
           "source": "Referral",
-          "sessions": 960
+          "sessions": 1004
         },
         {
           "source": "Paid Search",
-          "sessions": 2674
+          "sessions": 2869
         },
         {
           "source": "Email",
-          "sessions": 383
+          "sessions": 396
         },
         {
           "source": "Social",
-          "sessions": 6
+          "sessions": 7
         }
       ],
       "dailySignups": [
         {
-          "day": "2025-11-25",
-          "newSubs": 32,
-          "stillActive": 21
-        },
-        {
           "day": "2025-11-26",
           "newSubs": 49,
-          "stillActive": 20
+          "stillActive": 18
         },
         {
           "day": "2025-11-27",
@@ -632,42 +749,42 @@
         {
           "day": "2025-11-28",
           "newSubs": 39,
-          "stillActive": 20
+          "stillActive": 19
         },
         {
           "day": "2025-11-29",
           "newSubs": 64,
-          "stillActive": 30
+          "stillActive": 29
         },
         {
           "day": "2025-11-30",
           "newSubs": 52,
-          "stillActive": 29
+          "stillActive": 28
         },
         {
           "day": "2025-12-01",
           "newSubs": 47,
-          "stillActive": 26
+          "stillActive": 25
         },
         {
           "day": "2025-12-02",
           "newSubs": 67,
-          "stillActive": 31
+          "stillActive": 26
         },
         {
           "day": "2025-12-03",
           "newSubs": 41,
-          "stillActive": 10
+          "stillActive": 8
         },
         {
           "day": "2025-12-04",
           "newSubs": 69,
-          "stillActive": 10
+          "stillActive": 8
         },
         {
           "day": "2025-12-05",
           "newSubs": 35,
-          "stillActive": 11
+          "stillActive": 7
         },
         {
           "day": "2025-12-06",
@@ -707,7 +824,7 @@
         {
           "day": "2025-12-14",
           "newSubs": 5,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2025-12-15",
@@ -727,7 +844,7 @@
         {
           "day": "2025-12-18",
           "newSubs": 4,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2025-12-19",
@@ -772,7 +889,7 @@
         {
           "day": "2025-12-28",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2025-12-29",
@@ -802,7 +919,7 @@
         {
           "day": "2026-01-03",
           "newSubs": 6,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-04",
@@ -822,7 +939,7 @@
         {
           "day": "2026-01-07",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-08",
@@ -852,12 +969,12 @@
         {
           "day": "2026-01-13",
           "newSubs": 6,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-14",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-15",
@@ -867,27 +984,27 @@
         {
           "day": "2026-01-16",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-17",
           "newSubs": 13,
-          "stillActive": 11
+          "stillActive": 10
         },
         {
           "day": "2026-01-18",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-19",
           "newSubs": 7,
-          "stillActive": 7
+          "stillActive": 6
         },
         {
           "day": "2026-01-20",
           "newSubs": 9,
-          "stillActive": 7
+          "stillActive": 6
         },
         {
           "day": "2026-01-21",
@@ -936,13 +1053,13 @@
         },
         {
           "day": "2026-01-30",
-          "newSubs": 5,
-          "stillActive": 5
+          "newSubs": 4,
+          "stillActive": 4
         },
         {
           "day": "2026-01-31",
           "newSubs": 6,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-02-01",
@@ -967,7 +1084,7 @@
         {
           "day": "2026-02-05",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-06",
@@ -987,12 +1104,77 @@
         {
           "day": "2026-02-09",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 1
         },
         {
           "day": "2026-02-10",
           "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-11",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-12",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-13",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-14",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-15",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-16",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-17",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-18",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-19",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-20",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-21",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-22",
+          "newSubs": 5,
           "stillActive": 4
+        },
+        {
+          "day": "2026-02-23",
+          "newSubs": 6,
+          "stillActive": 5
         }
       ],
       "dailySessions": [
@@ -1071,73 +1253,77 @@
         {
           "day": "2026-02-22",
           "sessions": 402
+        },
+        {
+          "day": "2026-02-23",
+          "sessions": 490
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1369,
-        "annual": 1101,
-        "newActive": 462,
-        "newCancelled": 365,
+        "monthly": 1316,
+        "annual": 1097,
+        "newActive": 441,
+        "newCancelled": 391,
         "newPending": 19,
-        "newSuspended": 28
+        "newSuspended": 36
       }
     },
     "ytd": {
       "kpis": {
-        "totalActiveSubs": 2538,
-        "activeSubsChange": -10.9,
-        "totalMrr": 80955,
-        "newSignups": 264,
-        "signupsChange": -72.9,
-        "retentionRate": 79.9,
-        "retentionChange": 49.1,
-        "websiteSessions": 7726,
+        "totalActiveSubs": 2508,
+        "activeSubsChange": -10.3,
+        "totalMrr": 78832,
+        "newSignups": 309,
+        "signupsChange": -69.7,
+        "retentionRate": 75.4,
+        "retentionChange": 48.1,
+        "websiteSessions": 8216,
         "sessionsChange": 0,
-        "conversionRate": 3.42,
-        "churned": 40,
-        "churnChange": -90
+        "conversionRate": 3.76,
+        "churned": 59,
+        "churnChange": -86.6
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 7726,
+          "value": 8216,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 264,
+          "value": 309,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 211,
+          "value": 233,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 1672
+          "sessions": 1786
         },
         {
           "source": "Direct",
-          "sessions": 2031
+          "sessions": 2154
         },
         {
           "source": "Referral",
-          "sessions": 960
+          "sessions": 1004
         },
         {
           "source": "Paid Search",
-          "sessions": 2674
+          "sessions": 2869
         },
         {
           "source": "Email",
-          "sessions": 383
+          "sessions": 396
         },
         {
           "source": "Social",
-          "sessions": 6
+          "sessions": 7
         }
       ],
       "dailySignups": [
@@ -1154,7 +1340,7 @@
         {
           "day": "2026-01-03",
           "newSubs": 6,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-04",
@@ -1174,7 +1360,7 @@
         {
           "day": "2026-01-07",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-08",
@@ -1204,12 +1390,12 @@
         {
           "day": "2026-01-13",
           "newSubs": 6,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-14",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-15",
@@ -1219,27 +1405,27 @@
         {
           "day": "2026-01-16",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-17",
           "newSubs": 13,
-          "stillActive": 11
+          "stillActive": 10
         },
         {
           "day": "2026-01-18",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-19",
           "newSubs": 7,
-          "stillActive": 7
+          "stillActive": 6
         },
         {
           "day": "2026-01-20",
           "newSubs": 9,
-          "stillActive": 7
+          "stillActive": 6
         },
         {
           "day": "2026-01-21",
@@ -1288,13 +1474,13 @@
         },
         {
           "day": "2026-01-30",
-          "newSubs": 5,
-          "stillActive": 5
+          "newSubs": 4,
+          "stillActive": 4
         },
         {
           "day": "2026-01-31",
           "newSubs": 6,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-02-01",
@@ -1319,7 +1505,7 @@
         {
           "day": "2026-02-05",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-06",
@@ -1339,12 +1525,77 @@
         {
           "day": "2026-02-09",
           "newSubs": 5,
-          "stillActive": 4
+          "stillActive": 1
         },
         {
           "day": "2026-02-10",
           "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-11",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-12",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-13",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-14",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-15",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-16",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-17",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-18",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-02-19",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-20",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-02-21",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-22",
+          "newSubs": 5,
           "stillActive": 4
+        },
+        {
+          "day": "2026-02-23",
+          "newSubs": 6,
+          "stillActive": 5
         }
       ],
       "dailySessions": [
@@ -1423,15 +1674,19 @@
         {
           "day": "2026-02-22",
           "sessions": 402
+        },
+        {
+          "day": "2026-02-23",
+          "sessions": 490
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1369,
-        "annual": 1101,
-        "newActive": 211,
-        "newCancelled": 40,
+        "monthly": 1316,
+        "annual": 1097,
+        "newActive": 233,
+        "newCancelled": 59,
         "newPending": 11,
-        "newSuspended": 2
+        "newSuspended": 6
       }
     }
   }
