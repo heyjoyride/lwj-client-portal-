@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-02-26T09:46:20.115Z",
+    "generatedAt": "2026-04-20T10:45:43.589Z",
     "sources": [
       "memberpress",
       "ga4",
@@ -8,75 +8,75 @@
     ]
   },
   "globalState": {
-    "totalActive": 2508,
-    "totalMrr": 78969,
-    "annualSubs": 1097,
-    "monthlySubs": 1319,
-    "inTrialSubs": 136,
+    "totalActive": 2373,
+    "totalMrr": 74872,
+    "annualSubs": 1029,
+    "monthlySubs": 1218,
+    "inTrialSubs": 170,
     "plans": [
       {
         "price": 47,
         "periodType": "months",
         "period": 1,
         "monthlyPrice": 47,
-        "activeCount": 858,
-        "mrr": 40326
-      },
-      {
-        "price": 282,
-        "periodType": "years",
-        "period": 1,
-        "monthlyPrice": 23.5,
-        "activeCount": 561,
-        "mrr": 13184
+        "activeCount": 786,
+        "mrr": 36942
       },
       {
         "price": 470,
         "periodType": "years",
         "period": 1,
         "monthlyPrice": 39.17,
-        "activeCount": 314,
-        "mrr": 12298
+        "activeCount": 311,
+        "mrr": 12181
+      },
+      {
+        "price": 282,
+        "periodType": "years",
+        "period": 1,
+        "monthlyPrice": 23.5,
+        "activeCount": 500,
+        "mrr": 11750
       },
       {
         "price": 28.2,
         "periodType": "months",
         "period": 1,
         "monthlyPrice": 28.2,
-        "activeCount": 170,
-        "mrr": 4794
+        "activeCount": 169,
+        "mrr": 4766
       },
       {
         "price": 423,
         "periodType": "years",
         "period": 1,
         "monthlyPrice": 35.25,
-        "activeCount": 128,
-        "mrr": 4512
+        "activeCount": 127,
+        "mrr": 4477
       },
       {
         "price": 376,
         "periodType": "years",
         "period": 1,
         "monthlyPrice": 31.33,
-        "activeCount": 94,
-        "mrr": 2945
+        "activeCount": 91,
+        "mrr": 2851
       },
       {
         "price": 37.6,
         "periodType": "months",
         "period": 1,
         "monthlyPrice": 37.6,
-        "activeCount": 66,
-        "mrr": 2482
+        "activeCount": 63,
+        "mrr": 2369
       },
       {
         "price": 125,
         "periodType": "months",
         "period": 3,
         "monthlyPrice": 41.67,
-        "activeCount": 18,
-        "mrr": 750
+        "activeCount": 16,
+        "mrr": 667
       },
       {
         "price": 97,
@@ -106,103 +106,170 @@
     "allStatuses": [
       {
         "status": "cancelled",
-        "count": 10825
+        "count": 11149
       },
       {
         "status": "active",
-        "count": 2508
+        "count": 2373
       },
       {
         "status": "pending",
-        "count": 1836
+        "count": 1849
       },
       {
         "status": "suspended",
-        "count": 371
+        "count": 425
       }
     ]
   },
   "trialRoi": {
-    "adSpend": 12308.75,
+    "adSpend": 48062.84,
     "adSpendSource": "facebook_api",
     "campaignStartDate": "2026-01-01",
-    "trialsStarted": 114,
-    "trialsConverted": 33,
-    "trialsCancelled": 31,
-    "trialsInTrial": 46,
-    "costPerTrial": 107.97,
-    "conversionRate": 51.6,
+    "trialsStarted": 183,
+    "trialsConverted": 63,
+    "trialsCancelled": 94,
+    "trialsInTrial": 12,
+    "costPerTrial": 262.64,
+    "conversionRate": 40.1,
     "avgPaidPriceUSD": 47,
     "avgMonthsRetained": 3,
-    "projectedLtv": 72.76,
+    "projectedLtv": 56.54,
     "roiStatus": "negative",
-    "offeredCount": 894,
+    "offeredCount": 2766,
     "cohorts": [
       {
         "week": "2025-12-29",
         "started": 25,
-        "converted": 13,
-        "cancelled": 10,
+        "converted": 8,
+        "cancelled": 14,
         "inTrial": 0
       },
       {
         "week": "2026-01-05",
         "started": 11,
-        "converted": 7,
-        "cancelled": 4,
+        "converted": 2,
+        "cancelled": 7,
         "inTrial": 0
       },
       {
         "week": "2026-01-12",
         "started": 11,
-        "converted": 3,
-        "cancelled": 8,
+        "converted": 1,
+        "cancelled": 10,
         "inTrial": 0
       },
       {
         "week": "2026-01-19",
         "started": 12,
-        "converted": 8,
-        "cancelled": 2,
+        "converted": 3,
+        "cancelled": 6,
         "inTrial": 0
       },
       {
         "week": "2026-01-26",
         "started": 13,
-        "converted": 2,
-        "cancelled": 1,
-        "inTrial": 10
+        "converted": 6,
+        "cancelled": 6,
+        "inTrial": 0
       },
       {
         "week": "2026-02-02",
         "started": 11,
-        "converted": 0,
-        "cancelled": 4,
-        "inTrial": 7
+        "converted": 3,
+        "cancelled": 7,
+        "inTrial": 0
       },
       {
         "week": "2026-02-09",
         "started": 14,
-        "converted": 0,
-        "cancelled": 1,
-        "inTrial": 13
+        "converted": 6,
+        "cancelled": 8,
+        "inTrial": 0
       },
       {
         "week": "2026-02-16",
         "started": 13,
-        "converted": 0,
-        "cancelled": 0,
-        "inTrial": 13
+        "converted": 7,
+        "cancelled": 5,
+        "inTrial": 0
       },
       {
         "week": "2026-02-23",
+        "started": 19,
+        "converted": 4,
+        "cancelled": 14,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-03-02",
+        "started": 14,
+        "converted": 9,
+        "cancelled": 4,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-03-09",
+        "started": 17,
+        "converted": 8,
+        "cancelled": 9,
+        "inTrial": 0
+      },
+      {
+        "week": "2026-03-16",
+        "started": 11,
+        "converted": 6,
+        "cancelled": 2,
+        "inTrial": 2
+      },
+      {
+        "week": "2026-03-23",
+        "started": 5,
+        "converted": 0,
+        "cancelled": 2,
+        "inTrial": 3
+      },
+      {
+        "week": "2026-03-30",
+        "started": 2,
+        "converted": 0,
+        "cancelled": 0,
+        "inTrial": 2
+      },
+      {
+        "week": "2026-04-06",
         "started": 4,
         "converted": 0,
-        "cancelled": 1,
-        "inTrial": 3
+        "cancelled": 0,
+        "inTrial": 4
+      },
+      {
+        "week": "2026-04-13",
+        "started": 1,
+        "converted": 0,
+        "cancelled": 0,
+        "inTrial": 1
       }
     ],
     "campaigns": [
+      {
+        "name": "HJR | No Solder Earrings | ABO | MAR26",
+        "spend": 9366.25,
+        "impressions": 91850,
+        "clicks": 5088
+      },
+      {
+        "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
+        "spend": 8625.81,
+        "impressions": 275883,
+        "clicks": 14911
+      },
+      {
+        "name": "HJR | DS: $19 Purchase | ABO | FEB26",
+        "spend": 7558.11,
+        "impressions": 122889,
+        "clicks": 6080
+      },
       {
         "name": "HJR - Lucy's Letter - RE -14/01/26",
         "spend": 7075.75,
@@ -210,22 +277,40 @@
         "clicks": 9302
       },
       {
-        "name": "HJR - Bezel Setting LM - [ABO] - Jan26",
-        "spend": 2659.65,
-        "impressions": 90039,
-        "clicks": 5480
-      },
-      {
-        "name": "HJR | DS: $19 Purchase | ABO | FEB26",
-        "spend": 1300.64,
-        "impressions": 12852,
-        "clicks": 807
-      },
-      {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
-        "spend": 1225.41,
-        "impressions": 36019,
-        "clicks": 1259
+        "spend": 6865.66,
+        "impressions": 208118,
+        "clicks": 7031
+      },
+      {
+        "name": "HJR | Tools Guide <$200 [ABO] MAR26#V3",
+        "spend": 3972.64,
+        "impressions": 57126,
+        "clicks": 2369
+      },
+      {
+        "name": "HJR | NSE: Cold Audience Test - MAR26",
+        "spend": 2641.47,
+        "impressions": 29046,
+        "clicks": 1542
+      },
+      {
+        "name": "HJR | NSE: Sales Page Retarget [ABO] MAR26",
+        "spend": 1506.53,
+        "impressions": 15032,
+        "clicks": 892
+      },
+      {
+        "name": "HJR | Tools Guide <$200 [ABO] MAR26#V2",
+        "spend": 227.33,
+        "impressions": 4790,
+        "clicks": 180
+      },
+      {
+        "name": "HJR | Tools Guide <$200 [ABO] MAR26",
+        "spend": 175.99,
+        "impressions": 5450,
+        "clicks": 102
       },
       {
         "name": "HJR - Soldering Guide - [ABO] - FEB26",
@@ -244,755 +329,552 @@
   "periods": {
     "7d": {
       "kpis": {
-        "totalActiveSubs": 2508,
+        "totalActiveSubs": 2373,
         "activeSubsChange": -0.7,
-        "totalMrr": 78969,
-        "newSignups": 19,
-        "signupsChange": -55.8,
-        "retentionRate": 89.5,
-        "retentionChange": 10,
-        "websiteSessions": 3197,
-        "sessionsChange": -47.3,
+        "totalMrr": 74872,
+        "newSignups": 20,
+        "signupsChange": -51.2,
+        "retentionRate": 75,
+        "retentionChange": -3.8,
+        "websiteSessions": 3392,
+        "sessionsChange": -51.1,
         "conversionRate": 0.59,
-        "churned": 2,
+        "churned": 1,
         "churnChange": -75
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 3197,
+          "value": 3392,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 19,
+          "value": 20,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 17,
+          "value": 15,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 632
+          "sessions": 674
         },
         {
           "source": "Direct",
-          "sessions": 788
+          "sessions": 712
         },
         {
           "source": "Referral",
-          "sessions": 301
+          "sessions": 246
         },
         {
           "source": "Paid Search",
-          "sessions": 1385
+          "sessions": 1404
         },
         {
           "source": "Email",
-          "sessions": 86
+          "sessions": 147
         },
         {
           "source": "Social",
-          "sessions": 5
+          "sessions": 209
         }
       ],
       "dailySignups": [
         {
-          "day": "2026-02-19",
+          "day": "2026-04-13",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-04-14",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-15",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-16",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-17",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-18",
           "newSubs": 1,
           "stillActive": 1
         },
         {
-          "day": "2026-02-20",
-          "newSubs": 5,
-          "stillActive": 5
-        },
-        {
-          "day": "2026-02-21",
-          "newSubs": 2,
+          "day": "2026-04-19",
+          "newSubs": 3,
           "stillActive": 2
-        },
-        {
-          "day": "2026-02-22",
-          "newSubs": 5,
-          "stillActive": 4
-        },
-        {
-          "day": "2026-02-23",
-          "newSubs": 6,
-          "stillActive": 5
         }
       ],
       "dailySessions": [
         {
-          "day": "2026-02-19",
-          "sessions": 461
+          "day": "2026-04-13",
+          "sessions": 486
         },
         {
-          "day": "2026-02-20",
-          "sessions": 470
+          "day": "2026-04-14",
+          "sessions": 456
         },
         {
-          "day": "2026-02-21",
-          "sessions": 421
+          "day": "2026-04-15",
+          "sessions": 473
         },
         {
-          "day": "2026-02-22",
-          "sessions": 402
+          "day": "2026-04-16",
+          "sessions": 507
         },
         {
-          "day": "2026-02-23",
-          "sessions": 490
+          "day": "2026-04-17",
+          "sessions": 457
         },
         {
-          "day": "2026-02-24",
-          "sessions": 485
+          "day": "2026-04-18",
+          "sessions": 484
         },
         {
-          "day": "2026-02-25",
-          "sessions": 468
+          "day": "2026-04-19",
+          "sessions": 529
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1319,
-        "annual": 1097,
-        "newActive": 17,
-        "newCancelled": 2,
-        "newPending": 0,
-        "newSuspended": 0
+        "monthly": 1218,
+        "annual": 1029,
+        "newActive": 15,
+        "newCancelled": 1,
+        "newPending": 3,
+        "newSuspended": 1
       }
     },
     "30d": {
       "kpis": {
-        "totalActiveSubs": 2508,
-        "activeSubsChange": -6.1,
-        "totalMrr": 78969,
-        "newSignups": 101,
-        "signupsChange": -69,
-        "retentionRate": 75.2,
-        "retentionChange": 2.6,
-        "websiteSessions": 9169,
-        "sessionsChange": 0,
-        "conversionRate": 1.1,
-        "churned": 20,
-        "churnChange": -69.7
+        "totalActiveSubs": 2373,
+        "activeSubsChange": -3.2,
+        "totalMrr": 74872,
+        "newSignups": 130,
+        "signupsChange": -52.4,
+        "retentionRate": 80.8,
+        "retentionChange": 19.9,
+        "websiteSessions": 18360,
+        "sessionsChange": -44.1,
+        "conversionRate": 0.71,
+        "churned": 17,
+        "churnChange": -75.7
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 9169,
+          "value": 18360,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 101,
+          "value": 130,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 76,
+          "value": 105,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 2018
+          "sessions": 2882
         },
         {
           "source": "Direct",
-          "sessions": 2354
+          "sessions": 6159
         },
         {
           "source": "Referral",
-          "sessions": 1087
+          "sessions": 1151
         },
         {
           "source": "Paid Search",
-          "sessions": 3279
+          "sessions": 6098
         },
         {
           "source": "Email",
-          "sessions": 422
+          "sessions": 1163
         },
         {
           "source": "Social",
-          "sessions": 9
+          "sessions": 907
         }
       ],
       "dailySignups": [
         {
-          "day": "2026-01-27",
+          "day": "2026-03-21",
           "newSubs": 4,
           "stillActive": 3
         },
         {
-          "day": "2026-01-28",
-          "newSubs": 2,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-01-29",
-          "newSubs": 4,
+          "day": "2026-03-22",
+          "newSubs": 5,
           "stillActive": 4
         },
         {
-          "day": "2026-01-30",
-          "newSubs": 4,
-          "stillActive": 4
+          "day": "2026-03-23",
+          "newSubs": 5,
+          "stillActive": 3
         },
         {
-          "day": "2026-01-31",
+          "day": "2026-03-24",
+          "newSubs": 9,
+          "stillActive": 9
+        },
+        {
+          "day": "2026-03-25",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-03-26",
           "newSubs": 6,
-          "stillActive": 3
+          "stillActive": 6
         },
         {
-          "day": "2026-02-01",
-          "newSubs": 3,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-02",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-02-03",
-          "newSubs": 2,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-02-04",
-          "newSubs": 2,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-02-05",
-          "newSubs": 3,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-02-06",
+          "day": "2026-03-27",
           "newSubs": 7,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-07",
-          "newSubs": 5,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-08",
-          "newSubs": 3,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-02-09",
-          "newSubs": 5,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-02-10",
-          "newSubs": 4,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-11",
-          "newSubs": 3,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-12",
-          "newSubs": 3,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-02-13",
-          "newSubs": 4,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-02-14",
-          "newSubs": 6,
           "stillActive": 5
         },
         {
-          "day": "2026-02-15",
+          "day": "2026-03-28",
+          "newSubs": 6,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-29",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-03-30",
           "newSubs": 2,
           "stillActive": 1
         },
         {
-          "day": "2026-02-16",
-          "newSubs": 3,
-          "stillActive": 3
+          "day": "2026-03-31",
+          "newSubs": 6,
+          "stillActive": 5
         },
         {
-          "day": "2026-02-17",
+          "day": "2026-04-01",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-04-02",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-03",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-04",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-05",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-06",
           "newSubs": 3,
           "stillActive": 2
         },
         {
-          "day": "2026-02-18",
-          "newSubs": 3,
+          "day": "2026-04-07",
+          "newSubs": 4,
           "stillActive": 3
         },
         {
-          "day": "2026-02-19",
+          "day": "2026-04-08",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-09",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-10",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-11",
           "newSubs": 1,
           "stillActive": 1
         },
         {
-          "day": "2026-02-20",
+          "day": "2026-04-12",
           "newSubs": 5,
-          "stillActive": 5
+          "stillActive": 3
         },
         {
-          "day": "2026-02-21",
-          "newSubs": 2,
+          "day": "2026-04-13",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-04-14",
+          "newSubs": 3,
           "stillActive": 2
         },
         {
-          "day": "2026-02-22",
+          "day": "2026-04-15",
           "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-16",
+          "newSubs": 4,
           "stillActive": 4
         },
         {
-          "day": "2026-02-23",
-          "newSubs": 6,
-          "stillActive": 5
+          "day": "2026-04-17",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-18",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-19",
+          "newSubs": 3,
+          "stillActive": 2
         }
       ],
       "dailySessions": [
         {
-          "day": "2026-02-04",
-          "sessions": 342
+          "day": "2026-03-21",
+          "sessions": 412
         },
         {
-          "day": "2026-02-05",
-          "sessions": 353
+          "day": "2026-03-22",
+          "sessions": 418
         },
         {
-          "day": "2026-02-06",
-          "sessions": 388
+          "day": "2026-03-23",
+          "sessions": 530
         },
         {
-          "day": "2026-02-07",
-          "sessions": 324
+          "day": "2026-03-24",
+          "sessions": 610
         },
         {
-          "day": "2026-02-08",
-          "sessions": 411
+          "day": "2026-03-25",
+          "sessions": 867
         },
         {
-          "day": "2026-02-09",
-          "sessions": 392
+          "day": "2026-03-26",
+          "sessions": 1135
         },
         {
-          "day": "2026-02-10",
-          "sessions": 421
+          "day": "2026-03-27",
+          "sessions": 864
         },
         {
-          "day": "2026-02-11",
-          "sessions": 474
+          "day": "2026-03-28",
+          "sessions": 841
         },
         {
-          "day": "2026-02-12",
-          "sessions": 497
+          "day": "2026-03-29",
+          "sessions": 795
         },
         {
-          "day": "2026-02-13",
-          "sessions": 352
+          "day": "2026-03-30",
+          "sessions": 650
         },
         {
-          "day": "2026-02-14",
-          "sessions": 351
+          "day": "2026-03-31",
+          "sessions": 696
         },
         {
-          "day": "2026-02-15",
-          "sessions": 333
+          "day": "2026-04-01",
+          "sessions": 995
         },
         {
-          "day": "2026-02-16",
-          "sessions": 359
+          "day": "2026-04-02",
+          "sessions": 721
         },
         {
-          "day": "2026-02-17",
-          "sessions": 514
+          "day": "2026-04-03",
+          "sessions": 668
         },
         {
-          "day": "2026-02-18",
-          "sessions": 461
+          "day": "2026-04-04",
+          "sessions": 550
         },
         {
-          "day": "2026-02-19",
-          "sessions": 461
+          "day": "2026-04-05",
+          "sessions": 668
         },
         {
-          "day": "2026-02-20",
-          "sessions": 470
+          "day": "2026-04-06",
+          "sessions": 629
         },
         {
-          "day": "2026-02-21",
-          "sessions": 421
+          "day": "2026-04-07",
+          "sessions": 534
         },
         {
-          "day": "2026-02-22",
-          "sessions": 402
+          "day": "2026-04-08",
+          "sessions": 478
         },
         {
-          "day": "2026-02-23",
-          "sessions": 490
+          "day": "2026-04-09",
+          "sessions": 456
         },
         {
-          "day": "2026-02-24",
-          "sessions": 485
+          "day": "2026-04-10",
+          "sessions": 476
         },
         {
-          "day": "2026-02-25",
-          "sessions": 468
+          "day": "2026-04-11",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-12",
+          "sessions": 502
+        },
+        {
+          "day": "2026-04-13",
+          "sessions": 486
+        },
+        {
+          "day": "2026-04-14",
+          "sessions": 456
+        },
+        {
+          "day": "2026-04-15",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-16",
+          "sessions": 507
+        },
+        {
+          "day": "2026-04-17",
+          "sessions": 457
+        },
+        {
+          "day": "2026-04-18",
+          "sessions": 484
+        },
+        {
+          "day": "2026-04-19",
+          "sessions": 529
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1319,
-        "annual": 1097,
-        "newActive": 76,
-        "newCancelled": 20,
-        "newPending": 4,
-        "newSuspended": 1
+        "monthly": 1218,
+        "annual": 1029,
+        "newActive": 105,
+        "newCancelled": 17,
+        "newPending": 6,
+        "newSuspended": 2
       }
     },
     "90d": {
       "kpis": {
-        "totalActiveSubs": 2508,
-        "activeSubsChange": -8.2,
-        "totalMrr": 78969,
-        "newSignups": 804,
-        "signupsChange": -39.5,
-        "retentionRate": 51.2,
-        "retentionChange": 7.1,
-        "websiteSessions": 9169,
+        "totalActiveSubs": 2373,
+        "activeSubsChange": -12.3,
+        "totalMrr": 74872,
+        "newSignups": 467,
+        "signupsChange": -66.8,
+        "retentionRate": 64.2,
+        "retentionChange": 42.4,
+        "websiteSessions": 38825,
         "sessionsChange": 0,
-        "conversionRate": 8.77,
-        "churned": 338,
-        "churnChange": -43
+        "conversionRate": 1.2,
+        "churned": 125,
+        "churnChange": -81
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 9169,
+          "value": 38825,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 804,
+          "value": 467,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 412,
+          "value": 300,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 2018
+          "sessions": 7159
         },
         {
           "source": "Direct",
-          "sessions": 2354
+          "sessions": 11261
         },
         {
           "source": "Referral",
-          "sessions": 1087
+          "sessions": 3130
         },
         {
           "source": "Paid Search",
-          "sessions": 3279
+          "sessions": 13667
         },
         {
           "source": "Email",
-          "sessions": 422
+          "sessions": 2253
         },
         {
           "source": "Social",
-          "sessions": 9
+          "sessions": 1355
         }
       ],
       "dailySignups": [
         {
-          "day": "2025-11-28",
-          "newSubs": 39,
-          "stillActive": 19
-        },
-        {
-          "day": "2025-11-29",
-          "newSubs": 64,
-          "stillActive": 29
-        },
-        {
-          "day": "2025-11-30",
-          "newSubs": 52,
-          "stillActive": 28
-        },
-        {
-          "day": "2025-12-01",
-          "newSubs": 47,
-          "stillActive": 25
-        },
-        {
-          "day": "2025-12-02",
-          "newSubs": 67,
-          "stillActive": 26
-        },
-        {
-          "day": "2025-12-03",
-          "newSubs": 41,
-          "stillActive": 8
-        },
-        {
-          "day": "2025-12-04",
-          "newSubs": 69,
-          "stillActive": 8
-        },
-        {
-          "day": "2025-12-05",
-          "newSubs": 35,
-          "stillActive": 7
-        },
-        {
-          "day": "2025-12-06",
-          "newSubs": 3,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-07",
-          "newSubs": 2,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-08",
-          "newSubs": 3,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-09",
-          "newSubs": 4,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-11",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-12",
-          "newSubs": 4,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-13",
-          "newSubs": 2,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-14",
-          "newSubs": 5,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-15",
-          "newSubs": 4,
-          "stillActive": 3
-        },
-        {
-          "day": "2025-12-16",
-          "newSubs": 2,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-17",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-18",
-          "newSubs": 4,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-19",
-          "newSubs": 4,
-          "stillActive": 4
-        },
-        {
-          "day": "2025-12-20",
-          "newSubs": 1,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-22",
-          "newSubs": 7,
-          "stillActive": 3
-        },
-        {
-          "day": "2025-12-23",
-          "newSubs": 4,
-          "stillActive": 3
-        },
-        {
-          "day": "2025-12-24",
-          "newSubs": 1,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-25",
-          "newSubs": 6,
-          "stillActive": 3
-        },
-        {
-          "day": "2025-12-26",
-          "newSubs": 5,
-          "stillActive": 2
-        },
-        {
-          "day": "2025-12-27",
-          "newSubs": 1,
-          "stillActive": 0
-        },
-        {
-          "day": "2025-12-28",
-          "newSubs": 3,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-29",
-          "newSubs": 6,
-          "stillActive": 2
-        },
-        {
-          "day": "2025-12-30",
-          "newSubs": 5,
-          "stillActive": 1
-        },
-        {
-          "day": "2025-12-31",
-          "newSubs": 3,
-          "stillActive": 2
-        },
-        {
-          "day": "2026-01-01",
-          "newSubs": 7,
-          "stillActive": 5
-        },
-        {
-          "day": "2026-01-02",
-          "newSubs": 12,
-          "stillActive": 4
-        },
-        {
-          "day": "2026-01-03",
-          "newSubs": 6,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-01-04",
-          "newSubs": 6,
-          "stillActive": 5
-        },
-        {
-          "day": "2026-01-05",
-          "newSubs": 2,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-06",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-07",
-          "newSubs": 2,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-08",
-          "newSubs": 4,
-          "stillActive": 4
-        },
-        {
-          "day": "2026-01-09",
-          "newSubs": 1,
-          "stillActive": 0
-        },
-        {
-          "day": "2026-01-10",
-          "newSubs": 2,
-          "stillActive": 0
-        },
-        {
-          "day": "2026-01-11",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-12",
-          "newSubs": 1,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-13",
-          "newSubs": 6,
-          "stillActive": 1
-        },
-        {
-          "day": "2026-01-14",
-          "newSubs": 5,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-01-15",
-          "newSubs": 11,
-          "stillActive": 11
-        },
-        {
-          "day": "2026-01-16",
-          "newSubs": 4,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-01-17",
-          "newSubs": 13,
-          "stillActive": 10
-        },
-        {
-          "day": "2026-01-18",
-          "newSubs": 5,
-          "stillActive": 3
-        },
-        {
-          "day": "2026-01-19",
-          "newSubs": 7,
-          "stillActive": 6
-        },
-        {
           "day": "2026-01-20",
           "newSubs": 9,
-          "stillActive": 6
+          "stillActive": 5
         },
         {
           "day": "2026-01-21",
           "newSubs": 18,
-          "stillActive": 16
+          "stillActive": 14
         },
         {
           "day": "2026-01-22",
           "newSubs": 16,
-          "stillActive": 11
+          "stillActive": 10
         },
         {
           "day": "2026-01-23",
@@ -1002,12 +884,12 @@
         {
           "day": "2026-01-24",
           "newSubs": 22,
-          "stillActive": 20
+          "stillActive": 18
         },
         {
           "day": "2026-01-25",
           "newSubs": 14,
-          "stillActive": 12
+          "stillActive": 9
         },
         {
           "day": "2026-01-26",
@@ -1022,27 +904,27 @@
         {
           "day": "2026-01-28",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-29",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 2
         },
         {
           "day": "2026-01-30",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-31",
           "newSubs": 6,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-01",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-02",
@@ -1057,27 +939,27 @@
         {
           "day": "2026-02-04",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-05",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-02-06",
           "newSubs": 7,
-          "stillActive": 3
+          "stillActive": 0
         },
         {
           "day": "2026-02-07",
           "newSubs": 5,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-08",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-02-09",
@@ -1087,17 +969,17 @@
         {
           "day": "2026-02-10",
           "newSubs": 4,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-11",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-12",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-13",
@@ -1107,7 +989,7 @@
         {
           "day": "2026-02-14",
           "newSubs": 6,
-          "stillActive": 5
+          "stillActive": 1
         },
         {
           "day": "2026-02-15",
@@ -1117,12 +999,12 @@
         {
           "day": "2026-02-16",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-17",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-18",
@@ -1132,17 +1014,17 @@
         {
           "day": "2026-02-19",
           "newSubs": 1,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-02-20",
           "newSubs": 5,
-          "stillActive": 5
+          "stillActive": 4
         },
         {
           "day": "2026-02-21",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-22",
@@ -1152,7 +1034,277 @@
         {
           "day": "2026-02-23",
           "newSubs": 6,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-24",
+          "newSubs": 4,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-25",
+          "newSubs": 6,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-02-26",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-27",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-28",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-01",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-02",
+          "newSubs": 7,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-03",
+          "newSubs": 8,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-04",
+          "newSubs": 10,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-05",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-06",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-07",
+          "newSubs": 6,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-08",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-09",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-10",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-11",
+          "newSubs": 4,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-12",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-13",
+          "newSubs": 3,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-14",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-15",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-16",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-17",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-19",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-20",
+          "newSubs": 7,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-21",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-22",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-23",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-24",
+          "newSubs": 9,
+          "stillActive": 9
+        },
+        {
+          "day": "2026-03-25",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-03-26",
+          "newSubs": 6,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-27",
+          "newSubs": 7,
           "stillActive": 5
+        },
+        {
+          "day": "2026-03-28",
+          "newSubs": 6,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-29",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-03-30",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-31",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-04-01",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-04-02",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-03",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-04",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-05",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-06",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-07",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-08",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-09",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-10",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-11",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-12",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-13",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-04-14",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-15",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-16",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-17",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-18",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-19",
+          "newSubs": 3,
+          "stillActive": 2
         }
       ],
       "dailySessions": [
@@ -1243,95 +1395,307 @@
         {
           "day": "2026-02-25",
           "sessions": 468
+        },
+        {
+          "day": "2026-02-26",
+          "sessions": 483
+        },
+        {
+          "day": "2026-02-27",
+          "sessions": 452
+        },
+        {
+          "day": "2026-02-28",
+          "sessions": 423
+        },
+        {
+          "day": "2026-03-01",
+          "sessions": 468
+        },
+        {
+          "day": "2026-03-02",
+          "sessions": 541
+        },
+        {
+          "day": "2026-03-03",
+          "sessions": 561
+        },
+        {
+          "day": "2026-03-04",
+          "sessions": 482
+        },
+        {
+          "day": "2026-03-05",
+          "sessions": 616
+        },
+        {
+          "day": "2026-03-06",
+          "sessions": 500
+        },
+        {
+          "day": "2026-03-07",
+          "sessions": 499
+        },
+        {
+          "day": "2026-03-08",
+          "sessions": 509
+        },
+        {
+          "day": "2026-03-09",
+          "sessions": 598
+        },
+        {
+          "day": "2026-03-10",
+          "sessions": 480
+        },
+        {
+          "day": "2026-03-11",
+          "sessions": 462
+        },
+        {
+          "day": "2026-03-12",
+          "sessions": 486
+        },
+        {
+          "day": "2026-03-13",
+          "sessions": 528
+        },
+        {
+          "day": "2026-03-14",
+          "sessions": 442
+        },
+        {
+          "day": "2026-03-15",
+          "sessions": 531
+        },
+        {
+          "day": "2026-03-16",
+          "sessions": 493
+        },
+        {
+          "day": "2026-03-17",
+          "sessions": 441
+        },
+        {
+          "day": "2026-03-18",
+          "sessions": 420
+        },
+        {
+          "day": "2026-03-19",
+          "sessions": 388
+        },
+        {
+          "day": "2026-03-20",
+          "sessions": 493
+        },
+        {
+          "day": "2026-03-21",
+          "sessions": 412
+        },
+        {
+          "day": "2026-03-22",
+          "sessions": 418
+        },
+        {
+          "day": "2026-03-23",
+          "sessions": 530
+        },
+        {
+          "day": "2026-03-24",
+          "sessions": 610
+        },
+        {
+          "day": "2026-03-25",
+          "sessions": 867
+        },
+        {
+          "day": "2026-03-26",
+          "sessions": 1135
+        },
+        {
+          "day": "2026-03-27",
+          "sessions": 864
+        },
+        {
+          "day": "2026-03-28",
+          "sessions": 841
+        },
+        {
+          "day": "2026-03-29",
+          "sessions": 795
+        },
+        {
+          "day": "2026-03-30",
+          "sessions": 650
+        },
+        {
+          "day": "2026-03-31",
+          "sessions": 696
+        },
+        {
+          "day": "2026-04-01",
+          "sessions": 995
+        },
+        {
+          "day": "2026-04-02",
+          "sessions": 721
+        },
+        {
+          "day": "2026-04-03",
+          "sessions": 668
+        },
+        {
+          "day": "2026-04-04",
+          "sessions": 550
+        },
+        {
+          "day": "2026-04-05",
+          "sessions": 668
+        },
+        {
+          "day": "2026-04-06",
+          "sessions": 629
+        },
+        {
+          "day": "2026-04-07",
+          "sessions": 534
+        },
+        {
+          "day": "2026-04-08",
+          "sessions": 478
+        },
+        {
+          "day": "2026-04-09",
+          "sessions": 456
+        },
+        {
+          "day": "2026-04-10",
+          "sessions": 476
+        },
+        {
+          "day": "2026-04-11",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-12",
+          "sessions": 502
+        },
+        {
+          "day": "2026-04-13",
+          "sessions": 486
+        },
+        {
+          "day": "2026-04-14",
+          "sessions": 456
+        },
+        {
+          "day": "2026-04-15",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-16",
+          "sessions": 507
+        },
+        {
+          "day": "2026-04-17",
+          "sessions": 457
+        },
+        {
+          "day": "2026-04-18",
+          "sessions": 484
+        },
+        {
+          "day": "2026-04-19",
+          "sessions": 529
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1319,
-        "annual": 1097,
-        "newActive": 412,
-        "newCancelled": 338,
-        "newPending": 19,
-        "newSuspended": 35
+        "monthly": 1218,
+        "annual": 1029,
+        "newActive": 300,
+        "newCancelled": 125,
+        "newPending": 24,
+        "newSuspended": 18
       }
     },
     "ytd": {
       "kpis": {
-        "totalActiveSubs": 2508,
-        "activeSubsChange": -10.3,
-        "totalMrr": 78969,
-        "newSignups": 309,
-        "signupsChange": -70,
-        "retentionRate": 75.4,
-        "retentionChange": 49,
-        "websiteSessions": 9169,
+        "totalActiveSubs": 2373,
+        "activeSubsChange": -11.5,
+        "totalMrr": 74872,
+        "newSignups": 563,
+        "signupsChange": -63.5,
+        "retentionRate": 61.3,
+        "retentionChange": 44.6,
+        "websiteSessions": 38825,
         "sessionsChange": 0,
-        "conversionRate": 3.37,
-        "churned": 59,
-        "churnChange": -86.8
+        "conversionRate": 1.45,
+        "churned": 167,
+        "churnChange": -77.8
       },
       "funnel": [
         {
           "stage": "Sessions",
-          "value": 9169,
+          "value": 38825,
           "source": "ga4"
         },
         {
           "stage": "New Signups",
-          "value": 309,
+          "value": 563,
           "source": "memberpress"
         },
         {
           "stage": "Active Members",
-          "value": 233,
+          "value": 345,
           "source": "memberpress"
         }
       ],
       "trafficSources": [
         {
           "source": "Organic Search",
-          "sessions": 2018
+          "sessions": 7159
         },
         {
           "source": "Direct",
-          "sessions": 2354
+          "sessions": 11261
         },
         {
           "source": "Referral",
-          "sessions": 1087
+          "sessions": 3130
         },
         {
           "source": "Paid Search",
-          "sessions": 3279
+          "sessions": 13667
         },
         {
           "source": "Email",
-          "sessions": 422
+          "sessions": 2253
         },
         {
           "source": "Social",
-          "sessions": 9
+          "sessions": 1355
         }
       ],
       "dailySignups": [
         {
           "day": "2026-01-01",
           "newSubs": 7,
-          "stillActive": 5
+          "stillActive": 4
         },
         {
           "day": "2026-01-02",
           "newSubs": 12,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-03",
           "newSubs": 6,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-01-04",
           "newSubs": 6,
-          "stillActive": 5
+          "stillActive": 4
         },
         {
           "day": "2026-01-05",
@@ -1346,12 +1710,12 @@
         {
           "day": "2026-01-07",
           "newSubs": 2,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-01-08",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 1
         },
         {
           "day": "2026-01-09",
@@ -1366,32 +1730,32 @@
         {
           "day": "2026-01-11",
           "newSubs": 1,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-01-12",
           "newSubs": 1,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-01-13",
           "newSubs": 6,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-01-14",
           "newSubs": 5,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-01-15",
           "newSubs": 11,
-          "stillActive": 11
+          "stillActive": 10
         },
         {
           "day": "2026-01-16",
           "newSubs": 4,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-01-17",
@@ -1401,27 +1765,27 @@
         {
           "day": "2026-01-18",
           "newSubs": 5,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-01-19",
           "newSubs": 7,
-          "stillActive": 6
+          "stillActive": 5
         },
         {
           "day": "2026-01-20",
           "newSubs": 9,
-          "stillActive": 6
+          "stillActive": 5
         },
         {
           "day": "2026-01-21",
           "newSubs": 18,
-          "stillActive": 16
+          "stillActive": 14
         },
         {
           "day": "2026-01-22",
           "newSubs": 16,
-          "stillActive": 11
+          "stillActive": 10
         },
         {
           "day": "2026-01-23",
@@ -1431,12 +1795,12 @@
         {
           "day": "2026-01-24",
           "newSubs": 22,
-          "stillActive": 20
+          "stillActive": 18
         },
         {
           "day": "2026-01-25",
           "newSubs": 14,
-          "stillActive": 12
+          "stillActive": 9
         },
         {
           "day": "2026-01-26",
@@ -1451,27 +1815,27 @@
         {
           "day": "2026-01-28",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-01-29",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 2
         },
         {
           "day": "2026-01-30",
           "newSubs": 4,
-          "stillActive": 4
+          "stillActive": 3
         },
         {
           "day": "2026-01-31",
           "newSubs": 6,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-01",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-02",
@@ -1486,27 +1850,27 @@
         {
           "day": "2026-02-04",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-05",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-02-06",
           "newSubs": 7,
-          "stillActive": 3
+          "stillActive": 0
         },
         {
           "day": "2026-02-07",
           "newSubs": 5,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-08",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 1
         },
         {
           "day": "2026-02-09",
@@ -1516,17 +1880,17 @@
         {
           "day": "2026-02-10",
           "newSubs": 4,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-11",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-12",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 2
         },
         {
           "day": "2026-02-13",
@@ -1536,7 +1900,7 @@
         {
           "day": "2026-02-14",
           "newSubs": 6,
-          "stillActive": 5
+          "stillActive": 1
         },
         {
           "day": "2026-02-15",
@@ -1546,12 +1910,12 @@
         {
           "day": "2026-02-16",
           "newSubs": 3,
-          "stillActive": 3
+          "stillActive": 1
         },
         {
           "day": "2026-02-17",
           "newSubs": 3,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-18",
@@ -1561,17 +1925,17 @@
         {
           "day": "2026-02-19",
           "newSubs": 1,
-          "stillActive": 1
+          "stillActive": 0
         },
         {
           "day": "2026-02-20",
           "newSubs": 5,
-          "stillActive": 5
+          "stillActive": 4
         },
         {
           "day": "2026-02-21",
           "newSubs": 2,
-          "stillActive": 2
+          "stillActive": 0
         },
         {
           "day": "2026-02-22",
@@ -1581,7 +1945,277 @@
         {
           "day": "2026-02-23",
           "newSubs": 6,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-02-24",
+          "newSubs": 4,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-25",
+          "newSubs": 6,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-02-26",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-27",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-02-28",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-01",
+          "newSubs": 6,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-02",
+          "newSubs": 7,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-03",
+          "newSubs": 8,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-04",
+          "newSubs": 10,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-05",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-06",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-07",
+          "newSubs": 6,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-08",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-09",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-10",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-11",
+          "newSubs": 4,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-12",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-13",
+          "newSubs": 3,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-14",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-15",
+          "newSubs": 6,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-16",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-17",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-03-19",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-20",
+          "newSubs": 7,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-21",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-22",
+          "newSubs": 5,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-03-23",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-03-24",
+          "newSubs": 9,
+          "stillActive": 9
+        },
+        {
+          "day": "2026-03-25",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-03-26",
+          "newSubs": 6,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-27",
+          "newSubs": 7,
           "stillActive": 5
+        },
+        {
+          "day": "2026-03-28",
+          "newSubs": 6,
+          "stillActive": 6
+        },
+        {
+          "day": "2026-03-29",
+          "newSubs": 5,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-03-30",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-03-31",
+          "newSubs": 6,
+          "stillActive": 5
+        },
+        {
+          "day": "2026-04-01",
+          "newSubs": 10,
+          "stillActive": 8
+        },
+        {
+          "day": "2026-04-02",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-03",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-04",
+          "newSubs": 4,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-05",
+          "newSubs": 2,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-06",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-07",
+          "newSubs": 4,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-08",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-09",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-10",
+          "newSubs": 2,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-11",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-12",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-13",
+          "newSubs": 1,
+          "stillActive": 0
+        },
+        {
+          "day": "2026-04-14",
+          "newSubs": 3,
+          "stillActive": 2
+        },
+        {
+          "day": "2026-04-15",
+          "newSubs": 5,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-16",
+          "newSubs": 4,
+          "stillActive": 4
+        },
+        {
+          "day": "2026-04-17",
+          "newSubs": 3,
+          "stillActive": 3
+        },
+        {
+          "day": "2026-04-18",
+          "newSubs": 1,
+          "stillActive": 1
+        },
+        {
+          "day": "2026-04-19",
+          "newSubs": 3,
+          "stillActive": 2
         }
       ],
       "dailySessions": [
@@ -1672,15 +2306,227 @@
         {
           "day": "2026-02-25",
           "sessions": 468
+        },
+        {
+          "day": "2026-02-26",
+          "sessions": 483
+        },
+        {
+          "day": "2026-02-27",
+          "sessions": 452
+        },
+        {
+          "day": "2026-02-28",
+          "sessions": 423
+        },
+        {
+          "day": "2026-03-01",
+          "sessions": 468
+        },
+        {
+          "day": "2026-03-02",
+          "sessions": 541
+        },
+        {
+          "day": "2026-03-03",
+          "sessions": 561
+        },
+        {
+          "day": "2026-03-04",
+          "sessions": 482
+        },
+        {
+          "day": "2026-03-05",
+          "sessions": 616
+        },
+        {
+          "day": "2026-03-06",
+          "sessions": 500
+        },
+        {
+          "day": "2026-03-07",
+          "sessions": 499
+        },
+        {
+          "day": "2026-03-08",
+          "sessions": 509
+        },
+        {
+          "day": "2026-03-09",
+          "sessions": 598
+        },
+        {
+          "day": "2026-03-10",
+          "sessions": 480
+        },
+        {
+          "day": "2026-03-11",
+          "sessions": 462
+        },
+        {
+          "day": "2026-03-12",
+          "sessions": 486
+        },
+        {
+          "day": "2026-03-13",
+          "sessions": 528
+        },
+        {
+          "day": "2026-03-14",
+          "sessions": 442
+        },
+        {
+          "day": "2026-03-15",
+          "sessions": 531
+        },
+        {
+          "day": "2026-03-16",
+          "sessions": 493
+        },
+        {
+          "day": "2026-03-17",
+          "sessions": 441
+        },
+        {
+          "day": "2026-03-18",
+          "sessions": 420
+        },
+        {
+          "day": "2026-03-19",
+          "sessions": 388
+        },
+        {
+          "day": "2026-03-20",
+          "sessions": 493
+        },
+        {
+          "day": "2026-03-21",
+          "sessions": 412
+        },
+        {
+          "day": "2026-03-22",
+          "sessions": 418
+        },
+        {
+          "day": "2026-03-23",
+          "sessions": 530
+        },
+        {
+          "day": "2026-03-24",
+          "sessions": 610
+        },
+        {
+          "day": "2026-03-25",
+          "sessions": 867
+        },
+        {
+          "day": "2026-03-26",
+          "sessions": 1135
+        },
+        {
+          "day": "2026-03-27",
+          "sessions": 864
+        },
+        {
+          "day": "2026-03-28",
+          "sessions": 841
+        },
+        {
+          "day": "2026-03-29",
+          "sessions": 795
+        },
+        {
+          "day": "2026-03-30",
+          "sessions": 650
+        },
+        {
+          "day": "2026-03-31",
+          "sessions": 696
+        },
+        {
+          "day": "2026-04-01",
+          "sessions": 995
+        },
+        {
+          "day": "2026-04-02",
+          "sessions": 721
+        },
+        {
+          "day": "2026-04-03",
+          "sessions": 668
+        },
+        {
+          "day": "2026-04-04",
+          "sessions": 550
+        },
+        {
+          "day": "2026-04-05",
+          "sessions": 668
+        },
+        {
+          "day": "2026-04-06",
+          "sessions": 629
+        },
+        {
+          "day": "2026-04-07",
+          "sessions": 534
+        },
+        {
+          "day": "2026-04-08",
+          "sessions": 478
+        },
+        {
+          "day": "2026-04-09",
+          "sessions": 456
+        },
+        {
+          "day": "2026-04-10",
+          "sessions": 476
+        },
+        {
+          "day": "2026-04-11",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-12",
+          "sessions": 502
+        },
+        {
+          "day": "2026-04-13",
+          "sessions": 486
+        },
+        {
+          "day": "2026-04-14",
+          "sessions": 456
+        },
+        {
+          "day": "2026-04-15",
+          "sessions": 473
+        },
+        {
+          "day": "2026-04-16",
+          "sessions": 507
+        },
+        {
+          "day": "2026-04-17",
+          "sessions": 457
+        },
+        {
+          "day": "2026-04-18",
+          "sessions": 484
+        },
+        {
+          "day": "2026-04-19",
+          "sessions": 529
         }
       ],
       "subscriptionBreakdown": {
-        "monthly": 1319,
-        "annual": 1097,
-        "newActive": 233,
-        "newCancelled": 59,
-        "newPending": 11,
-        "newSuspended": 6
+        "monthly": 1218,
+        "annual": 1029,
+        "newActive": 345,
+        "newCancelled": 167,
+        "newPending": 24,
+        "newSuspended": 27
       }
     }
   }
